@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+
+.App-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 10px;
+  background-color: #5a6885;
+  color: #fff;
+  border-radius: 5px;
+  padding: 8px;
+  border-color: #282c34;
+  box-shadow: none;
+  width: 80px;
+}
+
+.App-btnLogin {
+  margin-top: 10px;
+}
+
+.App-btnRegister {
+  margin-top: 60px;
+}

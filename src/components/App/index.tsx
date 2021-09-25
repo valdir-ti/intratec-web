@@ -1,15 +1,27 @@
+import { useHistory } from 'react-router-dom';
 import './App.css';
 
-function App() {
+const App = () => {
+
+  const history = useHistory()
+
+  const redirectLogin = () => {
+    history.push('/login')
+  }
+
+  const redirectRegister = () => {
+    history.push('/register')
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Projeto Intratec Tecnologia
-        </p>
+        <button className="App-btn App-btnLogin" onClick={redirectLogin}>Login</button>
+        <button className="App-btn App-btnRegister" onClick={redirectRegister}>Register</button>
+        <p>Projeto Intratec Tecnologia</p>
       </header>
     </div>
   );
 }
 
-export default App;
+export default App
