@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.App-btnLogin {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: #5a6885;
+  color: #fff;
+  border-radius: 5px;
+  padding: 8px;
+  border-color: #282c34;
+  box-shadow: none;
+  width: 80px;
+}
