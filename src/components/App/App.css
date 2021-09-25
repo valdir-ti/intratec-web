@@ -37,12 +37,11 @@
   }
 }
 
-.App-btnLogin {
+.App-btn {
   position: absolute;
   top: 0;
-  left: 0;
-  margin-top: 10px;
-  margin-left: 10px;
+  right: 0;
+  margin-right: 10px;
   background-color: #5a6885;
   color: #fff;
   border-radius: 5px;
@@ -50,4 +49,12 @@
   border-color: #282c34;
   box-shadow: none;
   width: 80px;
+}
+
+.App-btnLogin {
+  margin-top: 10px;
+}
+
+.App-btnRegister {
+  margin-top: 60px;
 }

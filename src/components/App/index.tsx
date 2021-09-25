@@ -9,10 +9,15 @@ const App = () => {
     history.push('/login')
   }
 
+  const redirectRegister = () => {
+    history.push('/register')
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <button className="App-btnLogin" onClick={redirectLogin}>Login</button>
+        <button className="App-btn App-btnLogin" onClick={redirectLogin}>Login</button>
+        <button className="App-btn App-btnRegister" onClick={redirectRegister}>Register</button>
         <p>Projeto Intratec Tecnologia</p>
       </header>
     </div>
