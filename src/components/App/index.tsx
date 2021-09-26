@@ -1,5 +1,6 @@
-import { useHistory } from 'react-router-dom';
-import './App.css';
+import { useHistory } from 'react-router-dom'
+import Button from '@mui/material/Button';
+import './App.css'
 
 const App = () => {
 
@@ -16,8 +17,10 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <button className="App-btn App-btnLogin" onClick={redirectLogin}>Login</button>
-        <button className="App-btn App-btnRegister" onClick={redirectRegister}>Register</button>
+        <div className="App-btn">
+          <Button variant='contained' onClick={redirectLogin}>Login</Button>
+          <Button variant='contained' onClick={redirectRegister}>Register</Button>
+        </div>
         <p>Projeto Intratec Tecnologia</p>
       </header>
     </div>
