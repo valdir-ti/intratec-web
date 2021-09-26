@@ -19,8 +19,8 @@ const App = () => {
       <header className="App-header">
         <p>Projeto Intratec Tecnologia</p>
         <div className="App-btn">
-          <Button variant='primary' onClick={redirectLogin}>Login</Button>
-          <Button variant='primary' onClick={redirectRegister}>Register</Button>
+          <Button variant='primary' size="sm" onClick={redirectLogin}>Login</Button>
+          <Button variant='primary' size="sm" onClick={redirectRegister}>Register</Button>
         </div>
       </header>
     </div>
