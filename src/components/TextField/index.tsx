@@ -1,6 +1,6 @@
 import { useField, ErrorMessage } from 'formik'
 
-export const TextField = ({label, ...props}) => {
+export const TextField = ({label, ...props}: any) => {
   const [field, meta] = useField(props)
 
   return (
