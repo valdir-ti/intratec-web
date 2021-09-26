@@ -1,9 +1,15 @@
-import React from 'react';
+import {FormLogin} from './FormLogin';
 
-// import { Container } from './styles';
-
-const Login: React.FC = () => {
-  return <>Login Page</>;
+const Login = () => {
+  return (
+    <div className="container mt-3">
+      <div className="row">
+        <div className="col-md-12">
+          <FormLogin />
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default Login;
