@@ -1,5 +1,5 @@
 import { useHistory } from 'react-router-dom'
-import Button from '@mui/material/Button';
+import Button from 'react-bootstrap/Button';
 import './App.css'
 
 const App = () => {
@@ -17,11 +17,11 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <div className="App-btn">
-          <Button variant='contained' onClick={redirectLogin}>Login</Button>
-          <Button variant='contained' onClick={redirectRegister}>Register</Button>
-        </div>
         <p>Projeto Intratec Tecnologia</p>
+        <div className="App-btn">
+          <Button variant='primary' onClick={redirectLogin}>Login</Button>
+          <Button variant='primary' onClick={redirectRegister}>Register</Button>
+        </div>
       </header>
     </div>
   );
