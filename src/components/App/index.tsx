@@ -1,28 +1,59 @@
-import { useHistory } from 'react-router-dom'
-import Button from 'react-bootstrap/Button';
 import './App.css'
 
 const App = () => {
-
-  const history = useHistory()
-
-  const redirectLogin = () => {
-    history.push('/login')
-  }
-
-  const redirectRegister = () => {
-    history.push('/register')
-  }
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>Projeto Intratec Tecnologia</p>
-        <div className="App-btn">
-          <Button variant='primary' size="sm" onClick={redirectLogin}>Login</Button>
-          <Button variant='primary' size="sm" onClick={redirectRegister}>Register</Button>
-        </div>
-      </header>
+    <div className="container">
+      <nav>
+        <div>Navbar things</div>
+        <div>Navbar things</div>
+      </nav>
+      <main>
+        <div>Main things</div>
+        <div>Main things</div>
+        <div>Main things</div>
+        <div>Main things</div>
+        <div>Main things</div>
+      </main>
+      <div className="sidebar">
+        <div>Sidebar things</div>
+        <div>Sidebar things</div>
+        <div>Sidebar things</div>
+        <div>Sidebar things</div>
+      </div>
+      <div className="content1">
+        <div>Content 1 things</div>
+        <div>Content 1 things</div>
+        <div>Content 1 things</div>
+        <div>Content 1 things</div>
+      </div>
+      <div className="content2">
+        <div>Content 2 things</div>
+        <div>Content 2 things</div>
+        <div>Content 2 things</div>
+        <div>Content 2 things</div>
+      </div>
+      <div className="content3">
+        <div>Content 3 things</div>
+        <div>Content 3 things</div>
+        <div>Content 3 things</div>
+        <div>Content 3 things</div>
+      </div>
+      <div className="content4">
+        <div>Content 4 things</div>
+        <div>Content 4 things</div>
+        <div>Content 4 things</div>
+        <div>Content 4 things</div>
+      </div>
+      <div className="list">
+        <div>List things</div>
+        <div>List things</div>
+        <div>List things</div>
+        <div>List things</div>
+      </div>
+      <footer>
+        <div>Footer things</div>
+        <div>Footer things</div>
+      </footer>
     </div>
   );
 }
