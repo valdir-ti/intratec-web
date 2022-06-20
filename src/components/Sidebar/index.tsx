@@ -1,5 +1,3 @@
-import { useContext } from 'react';
-
 const Sidebar = () => {
 
   return (
