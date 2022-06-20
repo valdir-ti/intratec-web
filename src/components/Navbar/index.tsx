@@ -1,12 +1,14 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+
+import { SidebarContext } from '../../context/SidebarContext';
 
 const Navbar = () => {
 
-  const [open, setOpen] = useState(true);
+  const sidebarContext = useContext(SidebarContext);
+  const { state, dispatch } = sidebarContext;
 
   function handleToggle () {
-    console.log('handleToggle')
-    setOpen(!open)
+    dispatch({ type: 'TOGGLE_SIDEBAR' })
   }
 
   return (

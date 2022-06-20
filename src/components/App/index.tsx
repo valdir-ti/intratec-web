@@ -1,14 +1,22 @@
+import { useContext } from 'react';
+
 import List from '../List';
 import Main from '../Main';
 import Navbar from '../Navbar';
 import Sidebar from '../Sidebar';
 import Widget from '../Widget';
 
+import { SidebarContext } from '../../context/SidebarContext';
+
 import './App.css'
 
 const App = () => {
+
+  const sidebarContext = useContext(SidebarContext);
+  const { state: { open } } = sidebarContext;
+
   return (
-    <div className="container">
+    <div className={open ? "container" : "container container-collapse"}>
       <nav>
         <Navbar />
       </nav>

@@ -117,6 +117,9 @@ a {
       "sidebar list list"
       "footer footer footer";
   }
+  .container-collapse {
+    grid-template-columns: 80px 1fr 1fr;
+  }
 }
 
 @media only screen and (max-width: 880px) {
@@ -132,6 +135,9 @@ a {
       "sidebar content4"
       "sidebar list"
       "footer footer";
+  }
+  .container-collapse {
+    grid-template-columns: 80px 1fr;
   }
 }
 
