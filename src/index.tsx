@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 
-import Routes from './routes/Routes';
+import App from './components/App';
+
+import { SidebarProvider } from './context/SidebarContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Routes />
+    <SidebarProvider>
+      <App />
+    </SidebarProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
