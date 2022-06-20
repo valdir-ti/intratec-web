@@ -1,11 +1,10 @@
-import { useContext, useState } from 'react'
-
+import { useContext } from 'react'
 import { SidebarContext } from '../../context/SidebarContext';
 
 const Navbar = () => {
 
   const sidebarContext = useContext(SidebarContext);
-  const { state, dispatch } = sidebarContext;
+  const { dispatch } = sidebarContext;
 
   function handleToggle () {
     dispatch({ type: 'TOGGLE_SIDEBAR' })
