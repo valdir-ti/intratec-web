@@ -31,6 +31,10 @@ nav {
   grid-area: nav;
   border-radius: var(--main-radius);
   padding-top: var(--main-padding);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 .5rem;
 }
 
 main {
@@ -87,6 +91,9 @@ footer {
   grid-area: footer;
   border-radius: var(--main-radius);
   padding-top: var(--main-padding);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 a {

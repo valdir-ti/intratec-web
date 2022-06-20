@@ -4,9 +4,13 @@ import './index.css';
 
 import App from './components/App';
 
+import { SidebarProvider } from './context/SidebarContext';
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <SidebarProvider>
+      <App />
+    </SidebarProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

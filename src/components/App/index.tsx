@@ -1,58 +1,40 @@
+import List from '../List';
+import Main from '../Main';
+import Navbar from '../Navbar';
+import Sidebar from '../Sidebar';
+import Widget from '../Widget';
+
 import './App.css'
 
 const App = () => {
   return (
     <div className="container">
       <nav>
-        <div>Navbar things</div>
-        <div>Navbar things</div>
+        <Navbar />
       </nav>
       <main>
-        <div>Main things</div>
-        <div>Main things</div>
-        <div>Main things</div>
-        <div>Main things</div>
-        <div>Main things</div>
+        <Main />
       </main>
       <div className="sidebar">
-        <div>Sidebar things</div>
-        <div>Sidebar things</div>
-        <div>Sidebar things</div>
-        <div>Sidebar things</div>
+        <Sidebar />
       </div>
       <div className="content1">
-        <div>Content 1 things</div>
-        <div>Content 1 things</div>
-        <div>Content 1 things</div>
-        <div>Content 1 things</div>
+        <Widget />
       </div>
       <div className="content2">
-        <div>Content 2 things</div>
-        <div>Content 2 things</div>
-        <div>Content 2 things</div>
-        <div>Content 2 things</div>
+        <Widget />
       </div>
       <div className="content3">
-        <div>Content 3 things</div>
-        <div>Content 3 things</div>
-        <div>Content 3 things</div>
-        <div>Content 3 things</div>
+        <Widget />
       </div>
       <div className="content4">
-        <div>Content 4 things</div>
-        <div>Content 4 things</div>
-        <div>Content 4 things</div>
-        <div>Content 4 things</div>
+        <Widget />
       </div>
       <div className="list">
-        <div>List things</div>
-        <div>List things</div>
-        <div>List things</div>
-        <div>List things</div>
+        <List />
       </div>
       <footer>
-        <div>Footer things</div>
-        <div>Footer things</div>
+        <p>Developed by Valdir Silva</p>
       </footer>
     </div>
   );
