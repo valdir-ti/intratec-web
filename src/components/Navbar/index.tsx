@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 const Navbar = () => {
 
   const [open, setOpen] = useState(true);
 
   function handleToggle () {
+    console.log('handleToggle')
     setOpen(!open)
   }
 
