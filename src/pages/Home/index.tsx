@@ -6,7 +6,7 @@ import Navbar from '../../components/Navbar';
 import Sidebar from '../../components/Sidebar';
 import Widget from '../../components/Widget';
 
-import { SidebarContext } from '../../context/SidebarContext';
+import { SidebarContext } from '../../context/sidebar/sidebarContext';
 
 import './styles.scss'
 
@@ -14,6 +14,8 @@ const Home = () => {
 
   const sidebarContext = useContext(SidebarContext);
   const { state: { open } } = sidebarContext;
+
+  console.log(open)
 
   return (
     <div className={open ? "container" : "container container-collapse"}>

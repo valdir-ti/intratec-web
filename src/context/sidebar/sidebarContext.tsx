@@ -1,5 +1,5 @@
 import { createContext, Dispatch, useReducer } from 'react'
-import { initialState, sidebarReducer, Action, AppState } from '../SidebarReducer';
+import { initialState, sidebarReducer, Action, AppState } from './sidebarReducer';
 
 interface SidebarProviderProps {
     children: React.ReactNode;
