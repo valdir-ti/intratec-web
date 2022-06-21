@@ -1,3 +1,5 @@
+import './styles.scss'
+
 const Main = () => {
   return (
     <div>Main</div>

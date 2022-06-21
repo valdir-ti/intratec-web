@@ -1,50 +1,63 @@
-import { useContext } from 'react';
+import { useContext } from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Navigate
+} from "react-router-dom";
 
-import List from '../List';
-import Main from '../Main';
-import Navbar from '../Navbar';
-import Sidebar from '../Sidebar';
-import Widget from '../Widget';
+import Home from '../../pages/Home';
+import Login from "../../pages/Login";
+import List from "../List";
+import Single from "../Single";
 
-import { SidebarContext } from '../../context/SidebarContext';
+import { AuthContext } from '../../context/authentication/authContext';
 
-import './App.css'
+import './styles.scss'
 
 const App = () => {
 
-  const sidebarContext = useContext(SidebarContext);
-  const { state: { open } } = sidebarContext;
+  const { state: { currentUser } } = useContext(AuthContext)
+
+  const RequireAuth = ({ children }: any) => {
+    return currentUser ? (children) : <Navigate to='/login' />
+  }
 
   return (
-    <div className={open ? "container" : "container container-collapse"}>
-      <nav>
-        <Navbar />
-      </nav>
-      <main>
-        <Main />
-      </main>
-      <div className="sidebar">
-        <Sidebar />
-      </div>
-      <div className="content1">
-        <Widget />
-      </div>
-      <div className="content2">
-        <Widget />
-      </div>
-      <div className="content3">
-        <Widget />
-      </div>
-      <div className="content4">
-        <Widget />
-      </div>
-      <div className="list">
-        <List />
-      </div>
-      <footer>
-        <p>Developed by Valdir Silva</p>
-      </footer>
-    </div>
+    <BrowserRouter>
+      <Routes>
+          <Route path="/">
+            <Route path="login" element={<Login />} />
+
+            <Route
+              index
+              element={
+                <RequireAuth>
+                  <Home />
+                </RequireAuth>
+              }
+            />
+            <Route path="users">
+              <Route
+                index
+                element={
+                  <RequireAuth>
+                    <List />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path=":userId"
+                element={
+                  <RequireAuth>
+                    <Single />
+                  </RequireAuth>
+                }
+              />
+            </Route>
+          </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
