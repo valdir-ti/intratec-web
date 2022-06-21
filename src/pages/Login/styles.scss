@@ -1,0 +1,42 @@
+.login {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        input, button {
+            width: 200px;
+            height: 30px;
+            margin: 10px;
+            border-radius: 5px;
+            border-width: 1px;
+            padding: 5px;
+        }
+
+        button {
+            background-color: purple;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+
+            &:hover {
+                background-color: #fff;
+                color: purple;
+            }
+        }
+
+        span {
+            font-size: 14px;
+            color: red;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    }
+}

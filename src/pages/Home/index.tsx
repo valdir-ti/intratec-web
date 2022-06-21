@@ -8,7 +8,7 @@ import Widget from '../../components/Widget';
 
 import { SidebarContext } from '../../context/SidebarContext';
 
-import './styles.css'
+import './styles.scss'
 
 const Home = () => {
 

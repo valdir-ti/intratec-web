@@ -1,6 +1,8 @@
 import { useContext } from 'react'
 import { SidebarContext } from '../../context/SidebarContext';
 
+import './styles.scss'
+
 const Navbar = () => {
 
   const sidebarContext = useContext(SidebarContext);
