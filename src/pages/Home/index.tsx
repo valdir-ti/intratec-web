@@ -8,45 +8,55 @@ import Widget from '../../components/Widget';
 
 import { SidebarContext } from '../../context/sidebar/sidebarContext';
 
-import './styles.scss'
+import {
+  Container,
+  Nav,
+  Main as MainStyled,
+  Sidebar as SidebarStyled,
+  ContentOne,
+  ContentTwo,
+  ContentThree,
+  ContentFour,
+  List as ListStyled,
+  Footer,
+  FooterP
+} from './styles'
 
 const Home = () => {
 
   const sidebarContext = useContext(SidebarContext);
   const { state: { open } } = sidebarContext;
 
-  console.log(open)
-
   return (
-    <div className={open ? "container" : "container container-collapse"}>
-      <nav>
+    <Container open={open}>
+      <Nav>
         <Navbar />
-      </nav>
-      <main>
+      </Nav>
+      <MainStyled>
         <Main />
-      </main>
-      <div className="sidebar">
+      </MainStyled>
+      <SidebarStyled>
         <Sidebar />
-      </div>
-      <div className="content1">
+      </SidebarStyled>
+      <ContentOne>
         <Widget />
-      </div>
-      <div className="content2">
+      </ContentOne>
+      <ContentTwo>
         <Widget />
-      </div>
-      <div className="content3">
+      </ContentTwo>
+      <ContentThree>
         <Widget />
-      </div>
-      <div className="content4">
+      </ContentThree>
+      <ContentFour>
         <Widget />
-      </div>
-      <div className="list">
+      </ContentFour>
+      <ListStyled>
         <List />
-      </div>
-      <footer>
-        <p>Developed by Valdir Silva</p>
-      </footer>
-    </div>
+      </ListStyled>
+      <Footer>
+        <FooterP>Developed by Valdir Silva</FooterP>
+      </Footer>
+      </Container>
   );
 }
 
