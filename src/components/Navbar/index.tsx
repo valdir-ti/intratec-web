@@ -1,24 +1,41 @@
+import {
+  ArrowBack,
+  ArrowForward
+} from '@mui/icons-material';
 import { useContext } from 'react'
+
+
 import { SidebarContext } from '../../context/sidebar/sidebarContext';
 
-import './styles.scss'
+import {
+  Container,
+  Left,
+  Right,
+  NavbarIconWrapper,
+  NavbarIconWrapperResponsive
+} from './styles'
 
 const Navbar = () => {
 
   const sidebarContext = useContext(SidebarContext);
-  const { dispatch } = sidebarContext;
+  const { state: { open }, dispatch } = sidebarContext;
 
   function handleToggle () {
     dispatch({ type: 'TOGGLE_SIDEBAR' })
   }
 
   return (
-    <>
-      <div className="left">
-        <button onClick={handleToggle}>Toggle</button>
-      </div>
-      <div className="right">Right</div>
-    </>
+    <Container>
+      <Left>
+        <NavbarIconWrapper open={open}>
+          {open ? <ArrowBack onClick={handleToggle} titleAccess={'Close Menu'} /> : <ArrowForward onClick={handleToggle} titleAccess={'Open Menu'}/>}
+        </NavbarIconWrapper>
+        <NavbarIconWrapperResponsive>
+          <ArrowForward onClick={handleToggle} titleAccess={'Close Menu'} />
+        </NavbarIconWrapperResponsive>
+      </Left>
+      <Right>Right</Right>
+    </Container>
   )
 }
 

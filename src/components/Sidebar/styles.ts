@@ -89,7 +89,7 @@ export const IconWrapper = styled.span<Props>`
     font-size: 13px;
     margin-left: ${props => props.open ? '10px' : '20px'};
     margin-right: 5px;
-    `
+`
 export const MenuIconWrapper = styled.span`
     display: none;
     @media only screen and (max-width: 550px) {

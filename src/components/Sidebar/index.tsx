@@ -11,7 +11,7 @@ import {
   SettingsApplications,
   SettingsSystemDaydream,
   Store,
-  MenuOpen
+  ArrowBack
 } from '@mui/icons-material';
 
 import { AuthContext } from '../../context/authentication/authContext'
@@ -58,7 +58,7 @@ const Sidebar = () => {
           Intratec Tecnologia
         </ContainerLogoSpan>
         <MenuIconWrapper>
-          <MenuOpen onClick={handleSidebar}/>
+          <ArrowBack onClick={handleSidebar}/>
         </MenuIconWrapper>
       </ContainerLogoResponsive>
       }
