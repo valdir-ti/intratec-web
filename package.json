@@ -24,7 +24,7 @@
     "yup": "^0.32.9"
   },
   "scripts": {
-    "start": "yarn cache clean && yarn && react-scripts start",
+    "start": "yarn cache clean && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
