@@ -1,5 +1,10 @@
 import {
-  Menu
+  Menu,
+  ListOutlined,
+  LanguageOutlined,
+  DarkModeOutlined,
+  ChatBubbleOutline,
+  NotificationsOutlined
 } from '@mui/icons-material';
 import { useContext } from 'react'
 
@@ -10,7 +15,7 @@ import {
   Container,
   Left,
   Right,
-  NavbarIconWrapper,
+  IconWrapper,
   NavbarIconWrapperResponsive
 } from './styles'
 
@@ -26,14 +31,30 @@ const Navbar = () => {
   return (
     <Container>
       <Left>
-        <NavbarIconWrapper open={open}>
+        <IconWrapper open={open}>
           <Menu onClick={handleToggle} titleAccess={open ? 'Close Menu' : 'Open Menu'} />
-        </NavbarIconWrapper>
+        </IconWrapper>
         <NavbarIconWrapperResponsive>
           <Menu onClick={handleToggle} titleAccess={'Close Menu'} />
         </NavbarIconWrapperResponsive>
       </Left>
-      <Right>Right</Right>
+      <Right>
+        <IconWrapper open={open} hover title='Language Selector'>
+          <LanguageOutlined />
+        </IconWrapper>
+        <IconWrapper open={open} hover title='Dark Mode'>
+          <DarkModeOutlined />
+        </IconWrapper>
+        <IconWrapper open={open} hover title='Notifications'>
+          <NotificationsOutlined />
+        </IconWrapper>
+        <IconWrapper open={open} hover title='Chat'>
+          <ChatBubbleOutline />
+        </IconWrapper>
+        <IconWrapper open={open} hover title='User Settings'>
+          <ListOutlined />
+        </IconWrapper>
+      </Right>
     </Container>
   )
 }

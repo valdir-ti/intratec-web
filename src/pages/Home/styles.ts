@@ -64,14 +64,12 @@ export const Container = styled.div<Props>`
 `;
 
 export const Nav = styled.nav`
-  background: #a7ffeb;
   grid-area: nav;
   border-radius: var(--main-radius);
   padding-top: var(--main-padding);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 .5rem;
 `
 
 export const Main = styled.main`
