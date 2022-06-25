@@ -1,13 +1,16 @@
 import styled from 'styled-components'
 
 interface Props {
-    open: boolean;
+    open?: boolean;
 }
 
 export const Container = styled.div`
     border-right: 1px solid var(--lightgray);
     height: 100vh;
     overflow: auto;
+    @media only screen and (max-width: 550px) {
+        width: 80px;
+    }
 `
 export const ContainerLogo = styled.div`
     height: 60px;
@@ -15,7 +18,17 @@ export const ContainerLogo = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-`
+    `
+export const ContainerLogoResponsive = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5px;
+    border-bottom: 0.5px solid var(--lightgray);
+    height: 60px;
+`;
+
 export const ContainerLogoSpan = styled.div<Props>`
     color: var(--purple);
     font-size: ${props => props.open ? '16px' : '10px'};
@@ -23,6 +36,7 @@ export const ContainerLogoSpan = styled.div<Props>`
 
     @media only screen and (max-width: 1000px) {
         font-size: ${props => props.open ? '13px' : '10px'};
+        width: 90%;
     }
 `
 
@@ -68,7 +82,17 @@ export const IconWrapper = styled.span<Props>`
     font-size: 13px;
     margin-left: ${props => props.open ? '10px' : '20px'};
     margin-right: 5px;
+    `
+export const MenuIconWrapper = styled.span`
+    display: none;
+    @media only screen and (max-width: 550px) {
+        display: block;
+        color: var(--main);
+        font-weight: 300;
+        font-size: 10px;
+    }
 `
+
 export const ContainerBottom = styled.div`
     display: flex;
     align-items: center;

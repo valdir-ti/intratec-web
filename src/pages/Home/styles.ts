@@ -81,16 +81,16 @@ export const Main = styled.main`
   padding-top: var(--main-padding);
 `
 
-export const Sidebar = styled.div`
+export const Sidebar = styled.div<Props>`
   grid-area: sidebar;
 
   @media only screen and (max-width: 550px) {
     position: absolute;
-    left: -180px;
-    height: 80%;
+    left: ${props => props.open ? '-145px' : '0'};
+    background-color: var(--white);
+    height: 100vh;
   }
 `
-
 export const ContentOne = styled.div`
   background: #6fffd2;
   grid-area: content1;

@@ -35,7 +35,7 @@ const Home = () => {
       <MainStyled>
         <Main />
       </MainStyled>
-      <SidebarStyled>
+      <SidebarStyled open={open}>
         <Sidebar />
       </SidebarStyled>
       <ContentOne>
