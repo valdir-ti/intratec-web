@@ -9,7 +9,7 @@ export const Container = styled.div`
     height: 100vh;
     overflow: auto;
     @media only screen and (max-width: 550px) {
-        width: 80px;
+        width: 200px;
     }
 `
 export const ContainerLogo = styled.div`
@@ -21,12 +21,13 @@ export const ContainerLogo = styled.div`
     `
 export const ContainerLogoResponsive = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     padding-top: 5px;
     border-bottom: 0.5px solid var(--lightgray);
     height: 60px;
+    width: 100%;
 `;
 
 export const ContainerLogoSpan = styled.div<Props>`
@@ -38,13 +39,15 @@ export const ContainerLogoSpan = styled.div<Props>`
         font-size: ${props => props.open ? '13px' : '10px'};
         width: 90%;
     }
+    @media only screen and (max-width: 550px) {
+        width: 70%;
+        font-size: 12px;
+    }
 `
-
 export const ContainerCenter = styled.div`
     display: flex;
     justify-content: start;
 `
-
 export const Title = styled.p<Props>`
     font-size: ${props => props.open ? '10px' : '11px'};
     font-weight: bold;
@@ -73,8 +76,12 @@ export const ContainerCenterLi = styled.li`
         background-color: var(--second);
     }
 `
-export const ContainerCenterSpan = styled.span`
+export const ContainerCenterSpan = styled.span<Props>`
+    display: ${props => props.open ? 'block' : 'none'};
 
+    @media only screen and (max-width: 550px) {
+        display: block;
+    }
 `
 export const IconWrapper = styled.span<Props>`
     color: var(--main);
@@ -90,9 +97,10 @@ export const MenuIconWrapper = styled.span`
         color: var(--main);
         font-weight: 300;
         font-size: 10px;
+        margin-left: 5px;
+        cursor: pointer;
     }
 `
-
 export const ContainerBottom = styled.div`
     display: flex;
     align-items: center;

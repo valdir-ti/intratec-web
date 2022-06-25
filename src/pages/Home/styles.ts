@@ -86,7 +86,7 @@ export const Sidebar = styled.div<Props>`
 
   @media only screen and (max-width: 550px) {
     position: absolute;
-    left: ${props => props.open ? '-145px' : '0'};
+    left: ${props => props.open ? '-200px' : '0'};
     background-color: var(--white);
     height: 100vh;
   }

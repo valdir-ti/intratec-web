@@ -57,8 +57,8 @@ const Sidebar = () => {
         <ContainerLogoSpan open={open} title={'Intratec Tecnologia'}>
           Intratec Tecnologia
         </ContainerLogoSpan>
-        <MenuIconWrapper onClick={handleSidebar}>
-          <MenuOpen />
+        <MenuIconWrapper>
+          <MenuOpen onClick={handleSidebar}/>
         </MenuIconWrapper>
       </ContainerLogoResponsive>
       }
@@ -69,71 +69,71 @@ const Sidebar = () => {
             <IconWrapper open={open}>
               <Dashboard />
             </IconWrapper>
-            {open && <ContainerCenterSpan>Dashboard</ContainerCenterSpan>}
+            <ContainerCenterSpan open={open}>Dashboard</ContainerCenterSpan>
           </ContainerCenterLi>
           <Title open={open} title={'List'}>LISTS</Title>
           <ContainerCenterLi title={'Users'}>
             <IconWrapper open={open}>
               <PersonOutlineOutlined />
             </IconWrapper>
-            {open && <ContainerCenterSpan>Users</ContainerCenterSpan>}
+            <ContainerCenterSpan open={open}>Users</ContainerCenterSpan>
           </ContainerCenterLi>
           <ContainerCenterLi title={'Products'}>
             <IconWrapper open={open}>
               <Store />
             </IconWrapper>
-            {open && <ContainerCenterSpan>Products</ContainerCenterSpan>}
+            <ContainerCenterSpan open={open}>Products</ContainerCenterSpan>
           </ContainerCenterLi>
           <ContainerCenterLi title={'Orders'}>
             <IconWrapper open={open}>
               <CreditCard />
             </IconWrapper>
-            {open && <ContainerCenterSpan>Orders</ContainerCenterSpan>}
+            <ContainerCenterSpan open={open}>Orders</ContainerCenterSpan>
           </ContainerCenterLi>
           <Title open={open} title={'Useful'}>USEFUL</Title>
           <ContainerCenterLi title={'Stats'}>
             <IconWrapper open={open}>
               <InsertChart />
             </IconWrapper>
-            {open && <ContainerCenterSpan>Stats</ContainerCenterSpan>}
+            <ContainerCenterSpan open={open}>Stats</ContainerCenterSpan>
           </ContainerCenterLi>
           <ContainerCenterLi title={'Notifications'}>
             <IconWrapper open={open}>
               <NotificationsNone />
             </IconWrapper>
-            {open && <ContainerCenterSpan>Notifications</ContainerCenterSpan>}
+            <ContainerCenterSpan open={open}>Notifications</ContainerCenterSpan>
           </ContainerCenterLi>
           <Title open={open} title={'Service'}>SERVICE</Title>
           <ContainerCenterLi title={'System Health'}>
             <IconWrapper open={open}>
               <SettingsSystemDaydream />
             </IconWrapper>
-            {open && <ContainerCenterSpan>System Health</ContainerCenterSpan>}
+            <ContainerCenterSpan open={open}>System Health</ContainerCenterSpan>
           </ContainerCenterLi>
           <ContainerCenterLi title={'Logs'}>
             <IconWrapper open={open}>
               <PsychologyOutlined />
             </IconWrapper>
-            {open && <ContainerCenterSpan>Logs</ContainerCenterSpan>}
+            <ContainerCenterSpan open={open}>Logs</ContainerCenterSpan>
           </ContainerCenterLi>
           <ContainerCenterLi title={'Settings'}>
             <IconWrapper open={open}>
               <SettingsApplications />
             </IconWrapper>
-            {open && <ContainerCenterSpan>Settings</ContainerCenterSpan>}
+            <ContainerCenterSpan open={open}>Settings</ContainerCenterSpan>
           </ContainerCenterLi>
           <Title open={open} title={'User'}>USER</Title>
           <ContainerCenterLi title={'Profile'}>
             <IconWrapper open={open}>
               <AccountCircleOutlined />
             </IconWrapper>
-            {open && <ContainerCenterSpan>Profile</ContainerCenterSpan>}
+            <ContainerCenterSpan open={open}>Profile</ContainerCenterSpan>
           </ContainerCenterLi>
           <ContainerCenterLi onClick={handleLogout} title={'Logout'}>
             <IconWrapper open={open}>
               <ExitToApp />
             </IconWrapper>
-            {open && <ContainerCenterSpan>Logout</ContainerCenterSpan>}
+            <ContainerCenterSpan open={open}>Logout</ContainerCenterSpan>
           </ContainerCenterLi>
         </ContainerCenterUl>
       </ContainerCenter>
