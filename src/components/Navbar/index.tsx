@@ -1,6 +1,5 @@
 import {
-  ArrowBack,
-  ArrowForward
+  Menu
 } from '@mui/icons-material';
 import { useContext } from 'react'
 
@@ -28,10 +27,10 @@ const Navbar = () => {
     <Container>
       <Left>
         <NavbarIconWrapper open={open}>
-          {open ? <ArrowBack onClick={handleToggle} titleAccess={'Close Menu'} /> : <ArrowForward onClick={handleToggle} titleAccess={'Open Menu'}/>}
+          <Menu onClick={handleToggle} titleAccess={open ? 'Close Menu' : 'Open Menu'} />
         </NavbarIconWrapper>
         <NavbarIconWrapperResponsive>
-          <ArrowForward onClick={handleToggle} titleAccess={'Close Menu'} />
+          <Menu onClick={handleToggle} titleAccess={'Close Menu'} />
         </NavbarIconWrapperResponsive>
       </Left>
       <Right>Right</Right>
