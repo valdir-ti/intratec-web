@@ -14,6 +14,7 @@ export const GlobalStyle = createGlobalStyle`
         --second: #ECE8FF;
         --purple: #6439FF;
         --lightgray: #ddd;
+        --darkgray: #888
         --main-radius: 5px;
         --main-padding: 5px;
     }

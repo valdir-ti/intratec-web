@@ -14,6 +14,7 @@ import {
 } from '@mui/icons-material';
 
 import { AuthContext } from '../../context/authentication/authContext'
+import { SidebarContext } from '../../context/sidebar/sidebarContext'
 
 import {
   Container,
@@ -24,13 +25,17 @@ import {
   ContainerCenterUl,
   ContainerCenterLi,
   ContainerCenterSpan,
+  IconWrapper,
   ContainerBottom,
-  IconWrapper
+  ContainerBottomDiv
 } from './styles'
 
 const Sidebar = () => {
 
   const { dispatch: AuthDispatch } = useContext(AuthContext);
+  const { state: { open } } = useContext(SidebarContext);
+
+  console.log('State ===> ', open)
 
   function handleLogout() {
     AuthDispatch({type:"LOGOUT"})
@@ -39,87 +44,88 @@ const Sidebar = () => {
   return (
     <Container>
       <ContainerLogo>
-        <ContainerLogoSpan>
+        <ContainerLogoSpan open={open}>
           Intratec Tecnologia
         </ContainerLogoSpan>
       </ContainerLogo>
       <ContainerCenter>
         <ContainerCenterUl>
-          <Title>MAIN</Title>
+          <Title open={open}>MAIN</Title>
           <ContainerCenterLi>
-            <IconWrapper>
+            <IconWrapper open={open}>
               <Dashboard />
             </IconWrapper>
-            <ContainerCenterSpan>Dashboard</ContainerCenterSpan>
+            {open && <ContainerCenterSpan>Dashboard</ContainerCenterSpan>}
           </ContainerCenterLi>
-          <Title>LISTS</Title>
+          <Title open={open}>LISTS</Title>
           <ContainerCenterLi>
-            <IconWrapper>
+            <IconWrapper open={open}>
               <PersonOutlineOutlined />
             </IconWrapper>
-            <ContainerCenterSpan>Users</ContainerCenterSpan>
+            {open && <ContainerCenterSpan>Users</ContainerCenterSpan>}
           </ContainerCenterLi>
           <ContainerCenterLi>
-            <IconWrapper>
+            <IconWrapper open={open}>
               <Store />
             </IconWrapper>
-            <ContainerCenterSpan>Products</ContainerCenterSpan>
+            {open && <ContainerCenterSpan>Products</ContainerCenterSpan>}
           </ContainerCenterLi>
           <ContainerCenterLi>
-            <IconWrapper>
+            <IconWrapper open={open}>
               <CreditCard />
             </IconWrapper>
-            <ContainerCenterSpan>Orders</ContainerCenterSpan>
+            {open && <ContainerCenterSpan>Orders</ContainerCenterSpan>}
           </ContainerCenterLi>
-          <Title>USEFUL</Title>
+          <Title open={open}>USEFUL</Title>
           <ContainerCenterLi>
-            <IconWrapper>
+            <IconWrapper open={open}>
               <InsertChart />
             </IconWrapper>
-            <ContainerCenterSpan>Stats</ContainerCenterSpan>
+            {open && <ContainerCenterSpan>Stats</ContainerCenterSpan>}
           </ContainerCenterLi>
           <ContainerCenterLi>
-            <IconWrapper>
+            <IconWrapper open={open}>
               <NotificationsNone />
             </IconWrapper>
-            <ContainerCenterSpan>Notifications</ContainerCenterSpan>
+            {open && <ContainerCenterSpan>Notifications</ContainerCenterSpan>}
           </ContainerCenterLi>
-          <Title>SERVICE</Title>
+          <Title open={open}>SERVICE</Title>
           <ContainerCenterLi>
-            <IconWrapper>
+            <IconWrapper open={open}>
               <SettingsSystemDaydream />
             </IconWrapper>
-            <ContainerCenterSpan>System Health</ContainerCenterSpan>
+            {open && <ContainerCenterSpan>System Health</ContainerCenterSpan>}
           </ContainerCenterLi>
           <ContainerCenterLi>
-            <IconWrapper>
+            <IconWrapper open={open}>
               <PsychologyOutlined />
             </IconWrapper>
-            <ContainerCenterSpan>Logs</ContainerCenterSpan>
+            {open && <ContainerCenterSpan>Logs</ContainerCenterSpan>}
           </ContainerCenterLi>
           <ContainerCenterLi>
-            <IconWrapper>
+            <IconWrapper open={open}>
               <SettingsApplications />
             </IconWrapper>
-            <ContainerCenterSpan>Settings</ContainerCenterSpan>
+            {open && <ContainerCenterSpan>Settings</ContainerCenterSpan>}
           </ContainerCenterLi>
-          <Title>USER</Title>
+          <Title open={open}>USER</Title>
           <ContainerCenterLi>
-            <IconWrapper>
+            <IconWrapper open={open}>
               <AccountCircleOutlined />
             </IconWrapper>
-            <ContainerCenterSpan>Profile</ContainerCenterSpan>
+            {open && <ContainerCenterSpan>Profile</ContainerCenterSpan>}
           </ContainerCenterLi>
           <ContainerCenterLi onClick={handleLogout}>
-            <IconWrapper>
+            <IconWrapper open={open}>
               <ExitToApp />
             </IconWrapper>
-            <ContainerCenterSpan>Logout</ContainerCenterSpan>
+            {open && <ContainerCenterSpan>Logout</ContainerCenterSpan>}
           </ContainerCenterLi>
         </ContainerCenterUl>
       </ContainerCenter>
       <ContainerBottom>
-        Color Options
+        <ContainerBottomDiv />
+        <ContainerBottomDiv />
       </ContainerBottom>
     </Container>
   )
