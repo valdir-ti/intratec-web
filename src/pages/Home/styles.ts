@@ -82,9 +82,7 @@ export const Main = styled.main`
 `
 
 export const Sidebar = styled.div`
-  background: #18ffff;
   grid-area: sidebar;
-  border-radius: var(--main-radius);
 
   @media only screen and (max-width: 550px) {
     position: absolute;
