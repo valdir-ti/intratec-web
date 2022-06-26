@@ -18,7 +18,7 @@ export const ContainerLogo = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    `
+`
 export const ContainerLogoResponsive = styled.div`
     display: flex;
     flex-direction: row;
@@ -29,7 +29,6 @@ export const ContainerLogoResponsive = styled.div`
     height: 60px;
     width: 100%;
 `;
-
 export const ContainerLogoSpan = styled.div<Props>`
     color: var(--purple);
     font-size: ${props => props.open ? '16px' : '10px'};

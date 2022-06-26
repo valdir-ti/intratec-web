@@ -39,19 +39,19 @@ const Navbar = () => {
         </NavbarIconWrapperResponsive>
       </Left>
       <Right>
-        <IconWrapper open={open} hover title='Language Selector'>
+        <IconWrapper right hover title='Language Selector'>
           <LanguageOutlined />
         </IconWrapper>
-        <IconWrapper open={open} hover title='Dark Mode'>
+        <IconWrapper right hover title='Dark Mode'>
           <DarkModeOutlined />
         </IconWrapper>
-        <IconWrapper open={open} hover title='Notifications'>
+        <IconWrapper right hover title='Notifications'>
           <NotificationsOutlined />
         </IconWrapper>
-        <IconWrapper open={open} hover title='Chat'>
+        <IconWrapper right hover title='Chat'>
           <ChatBubbleOutline />
         </IconWrapper>
-        <IconWrapper open={open} hover title='User Settings'>
+        <IconWrapper right hover title='User Settings'>
           <ListOutlined />
         </IconWrapper>
       </Right>
