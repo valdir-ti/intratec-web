@@ -28,6 +28,7 @@ export const IconWrapper = styled.span<Props>`
     font-size: 13px;
     margin-left: 10px;
     margin-right: 5px;
+    position: relative;
     @media only screen and (max-width: 550px) {
         display: ${props => props.right ? 'block' : 'none'};
     }

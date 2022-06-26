@@ -10,6 +10,7 @@ import { useContext } from 'react'
 
 
 import { SidebarContext } from '../../context/sidebar/sidebarContext';
+import Counter from '../Counter';
 
 import {
   Container,
@@ -48,9 +49,11 @@ const Navbar = () => {
         </IconWrapper>
         <IconWrapper right hover title='Notifications'>
           <NotificationsOutlined />
+          <Counter total={2}/>
         </IconWrapper>
         <IconWrapper right hover title='Chat'>
           <ChatBubbleOutline />
+          <Counter total={7}/>
         </IconWrapper>
         <IconWrapper right hover title='User Settings'>
           <ListOutlined />
