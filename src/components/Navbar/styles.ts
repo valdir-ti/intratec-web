@@ -35,5 +35,6 @@ export const NavbarIconWrapperResponsive = styled.span`
         display: block;
         cursor: pointer;
         color: var(--main);
+        margin-left: 10px;
     }
 `
