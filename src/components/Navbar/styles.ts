@@ -37,7 +37,8 @@ export const IconWrapper = styled.span<Props>`
     }
 `
 export const Avatar = styled.img`
-    width: 32px;
+    width: 30px;
+    height: 30px;
     border-radius: 50px;
 `
 export const NavbarIconWrapperResponsive = styled.span`
