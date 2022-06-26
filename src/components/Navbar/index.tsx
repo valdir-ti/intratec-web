@@ -16,7 +16,8 @@ import {
   Left,
   Right,
   IconWrapper,
-  NavbarIconWrapperResponsive
+  NavbarIconWrapperResponsive,
+  Avatar
 } from './styles'
 
 const Navbar = () => {
@@ -53,6 +54,12 @@ const Navbar = () => {
         </IconWrapper>
         <IconWrapper right hover title='User Settings'>
           <ListOutlined />
+        </IconWrapper>
+        <IconWrapper right title='Avatar user'>
+          <Avatar
+            src={'https://avatars.githubusercontent.com/u/11434239?v=4'}
+            alt="Avatar"
+          />
         </IconWrapper>
       </Right>
     </Container>

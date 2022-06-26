@@ -35,6 +35,10 @@ export const IconWrapper = styled.span<Props>`
         color: ${props => props.hover ? '#6439FF' : ''};
     }
 `
+export const Avatar = styled.img`
+    width: 32px;
+    border-radius: 50px;
+`
 export const NavbarIconWrapperResponsive = styled.span`
     display: none;
     @media only screen and (max-width: 550px) {
