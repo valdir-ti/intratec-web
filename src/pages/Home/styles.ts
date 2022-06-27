@@ -90,33 +90,24 @@ export const Sidebar = styled.div<Props>`
   }
 `
 export const ContentOne = styled.div`
-  background: #6fffd2;
   grid-area: content1;
-  border-radius: var(--main-radius);
-  padding-top: var(--main-padding);
-`
+  padding: var(--main-padding);
+  `
 
 export const ContentTwo = styled.div`
-  background: #64ffda;
   grid-area: content2;
-  border-radius: var(--main-radius);
-  padding-top: var(--main-padding);
-`
+  padding: var(--main-padding);
+  `
 
 export const ContentThree = styled.div`
-  background: #73ffba;
   grid-area: content3;
-  border-radius: var(--main-radius);
-  padding-top: var(--main-padding);
-`
+  padding: var(--main-padding);
+  `
 
 export const ContentFour = styled.div`
-  background: #ff2526;
   grid-area: content4;
-  border-radius: var(--main-radius);
-  padding-top: var(--main-padding);
+  padding: var(--main-padding);
 `
-
 export const List = styled.div`
   background: #ff25ee;
   grid-area: list;
