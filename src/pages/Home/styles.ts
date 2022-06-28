@@ -12,7 +12,7 @@ export const Container = styled.div<Props>`
   grid-template-areas:
     "sidebar nav nav nav nav"
     "sidebar content1 content2 content3 content4"
-    "sidebar main main main main"
+    "sidebar feature feature chart chart"
     "sidebar list list list list"
     "footer footer footer footer footer";
   grid-gap: 0.1rem;
@@ -22,43 +22,41 @@ export const Container = styled.div<Props>`
   text-align: center;
 
   @media only screen and (max-width: 1200px) {
-    grid-template-columns: ${props => props.open ? '0.5fr 1fr 1fr' : '80px 1fr 1fr'};
+    grid-template-columns: ${props => props.open ? '0.6fr 1fr 1fr' : '80px 1fr 1fr'};
     grid-template-rows: 60px 1fr 1fr 2fr 1fr 50px;
     grid-template-areas:
       "sidebar nav nav"
       "sidebar content1 content2"
       "sidebar content3 content4"
-      "sidebar main main"
+      "sidebar feature chart"
       "sidebar list list"
       "footer footer footer";
   }
 
   @media only screen and (max-width: 880px) {
-    grid-template-columns: ${props => props.open ? '0.3fr 1fr' : '80px 1fr'};
-    grid-template-rows: 60px 1fr 1fr 1fr 1fr 3fr 2fr 60px;
+    grid-template-columns: ${props => props.open ? '0.6fr 1fr 1fr' : '80px 1fr'};
+    grid-template-rows: 60px 1fr  1fr 1fr 1fr 3fr 2fr 60px;
     grid-template-areas:
-      "sidebar nav"
-      "sidebar content1"
-      "sidebar content2"
-      "sidebar content3"
-      "sidebar content4"
-      "sidebar main"
-      "sidebar list"
-      "footer footer";
+      "sidebar nav nav"
+      "sidebar content1 content2"
+      "sidebar content3 content4"
+      "sidebar feature feature"
+      "sidebar chart chart"
+      "sidebar list list"
+      "footer footer footer";
   }
 
   @media only screen and (max-width: 550px) {
-    grid-template-columns: 1fr;
-    grid-template-rows: .5fr 1fr 1fr 1fr 1fr 3fr 2fr .5fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: .5fr 1fr .5fr;
     grid-template-areas:
-      "nav"
-      "content1"
-      "content2"
-      "content3"
-      "content4"
-      "main"
-      "list"
-      "footer";
+      "nav nav"
+      "content1 content2"
+      "content3 content4"
+      "feature feature"
+      "chart chart"
+      "list list"
+      "footer footer";
   }
 `;
 
@@ -73,15 +71,25 @@ export const Nav = styled.nav`
 export const Main = styled.main`
   grid-area: main;
   min-height: 220px;
+  padding: var(--main-padding);
+`
+export const Feature = styled.div`
+  grid-area: feature;
+  padding: var(--main-padding);
+`
+export const Chart = styled.div`
+  grid-area: chart;
+  padding: var(--main-padding);
 `
 export const Sidebar = styled.div<Props>`
   grid-area: sidebar;
+  z-index: 1;
 
   @media only screen and (max-width: 550px) {
-    position: absolute;
+    position: fixed;
     left: ${props => props.open ? '-200px' : '0'};
     background-color: var(--white);
-    height: 100vh;
+    height: 100%;
   }
 `
 export const ContentOne = styled.div`
@@ -105,7 +113,7 @@ export const ContentFour = styled.div`
   min-height: 120px;
 `
 export const List = styled.div`
-  background: #ff25ee;
+  background: #cdcc;
   grid-area: list;
   border-radius: var(--main-radius);
   padding-top: var(--main-padding);

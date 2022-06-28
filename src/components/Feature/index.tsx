@@ -13,7 +13,7 @@ const Feature = ({status}: any) => {
       </Top>
       <Bottom>
         <FeatureChart>
-          <CircularProgressbar value={70} text='70%' strokeWidth={2}/>
+          <CircularProgressbar value={70} text='70%' strokeWidth={4}/>
         </FeatureChart>
         <BottomTitle>Total sales made today</BottomTitle>
         <BottomAmount>R$400</BottomAmount>

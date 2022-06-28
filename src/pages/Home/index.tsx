@@ -8,17 +8,20 @@ import {
 } from '@mui/icons-material';
 
 import List from '../../components/List';
-import Main from '../../components/Main';
+// import Main from '../../components/Main';
 import Navbar from '../../components/Navbar';
 import Sidebar from '../../components/Sidebar';
 import Widget from '../../components/Widget';
+import Chart from '../../components/Chart';
+import Feature from '../../components/Feature';
 
 import { SidebarContext } from '../../context/sidebar/sidebarContext';
 
 import {
   Container,
   Nav,
-  Main as MainStyled,
+  Chart as ChartStyled,
+  Feature as FeatureStyled,
   Sidebar as SidebarStyled,
   ContentOne,
   ContentTwo,
@@ -86,9 +89,6 @@ const Home = () => {
       <Nav>
         <Navbar />
       </Nav>
-      <MainStyled>
-        <Main />
-      </MainStyled>
       <SidebarStyled open={open}>
         <Sidebar />
       </SidebarStyled>
@@ -104,6 +104,12 @@ const Home = () => {
       <ContentFour>
         <Widget data={dataWidget[3]}/>
       </ContentFour>
+      <FeatureStyled>
+        <Feature />
+      </FeatureStyled>
+      <ChartStyled>
+        <Chart />
+      </ChartStyled>
       <ListStyled>
         <List />
       </ListStyled>
