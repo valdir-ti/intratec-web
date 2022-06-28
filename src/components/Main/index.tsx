@@ -1,8 +1,14 @@
-import './styles.scss'
+import Feature from '../Feature'
+import Chart from '../index/Chart'
+
+import { Container } from './styles'
 
 const Main = () => {
   return (
-    <div>Main</div>
+    <Container>
+      <Feature />
+      <Chart />
+    </Container>
   )
 }
 

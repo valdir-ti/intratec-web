@@ -16,7 +16,6 @@ export const Container = styled.div<Props>`
     "sidebar list list list list"
     "footer footer footer footer footer";
   grid-gap: 0.1rem;
-  font-weight: 800;
   text-transform: uppercase;
   font-size: 12px;
   color: #004d40;
@@ -72,10 +71,8 @@ export const Nav = styled.nav`
   justify-content: space-between;
 `
 export const Main = styled.main`
-  background: #84ffff;
   grid-area: main;
-  border-radius: var(--main-radius);
-  padding-top: var(--main-padding);
+  min-height: 220px;
 `
 export const Sidebar = styled.div<Props>`
   grid-area: sidebar;
@@ -112,6 +109,7 @@ export const List = styled.div`
   grid-area: list;
   border-radius: var(--main-radius);
   padding-top: var(--main-padding);
+  min-height: 220px;
 `
 export const Footer = styled.footer`
   background: #1de9b6;
