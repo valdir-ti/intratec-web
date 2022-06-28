@@ -1,5 +1,5 @@
 import Feature from '../Feature'
-import Chart from '../index/Chart'
+import Chart from '../Chart'
 
 import { Container } from './styles'
 

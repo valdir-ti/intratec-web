@@ -16,8 +16,9 @@ export const Top = styled.div`
     color: var(--darkgray);
 `
 export const TopTitle = styled.div`
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
+    padding: 10px;
 `
 export const Bottom = styled.div`
     padding: 20px;
