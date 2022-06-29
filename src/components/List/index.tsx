@@ -1,8 +1,15 @@
-import './styles.scss'
+import TableList from '../Table'
+import { Container, Title } from './styles'
 
 const List = () => {
+
+
+
   return (
-    <div>List</div>
+    <Container>
+      <Title>Latest Transactions</Title>
+      <TableList />
+    </Container>
   )
 }
 

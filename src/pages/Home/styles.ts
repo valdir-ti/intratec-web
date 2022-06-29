@@ -113,11 +113,8 @@ export const ContentFour = styled.div`
   min-height: 120px;
 `
 export const List = styled.div`
-  background: #cdcc;
   grid-area: list;
-  border-radius: var(--main-radius);
-  padding-top: var(--main-padding);
-  min-height: 220px;
+  padding: var(--main-padding);
 `
 export const Footer = styled.footer`
   background: #1de9b6;
