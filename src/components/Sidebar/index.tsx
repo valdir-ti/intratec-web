@@ -30,7 +30,8 @@ import {
   IconWrapper,
   MenuIconWrapper,
   ContainerBottom,
-  ContainerBottomDiv
+  ContainerBottomDiv,
+  LinkStyle
 } from './styles'
 
 const Sidebar = () => {
@@ -39,6 +40,7 @@ const Sidebar = () => {
   const { state: { open }, dispatch: SidebarDispatch } = useContext(SidebarContext);
 
   function handleLogout() {
+    closeSidebar()
     AuthDispatch({type:"LOGOUT"})
   }
 
@@ -46,17 +48,28 @@ const Sidebar = () => {
     SidebarDispatch({ type: 'TOGGLE_SIDEBAR' })
   }
 
+  function closeSidebar() {
+    if(!open){
+      return SidebarDispatch({ type: 'TOGGLE_SIDEBAR' })
+    }
+    return
+  }
+
   return (
     <Container>
       {open ?
-      <ContainerLogo>
-        <ContainerLogoSpan open={open} title={'Intratec Tecnologia'}>
-          Intratec Tecnologia
-        </ContainerLogoSpan>
-      </ContainerLogo>:<ContainerLogoResponsive>
-        <ContainerLogoSpan open={open} title={'Intratec Tecnologia'}>
-          Intratec Tecnologia
-        </ContainerLogoSpan>
+      <ContainerLogo onClick={closeSidebar}>
+        <LinkStyle to='/' logo>
+          <ContainerLogoSpan open={open} title={'Intratec Tecnologia'}>
+            Intratec Tecnologia
+          </ContainerLogoSpan>
+        </LinkStyle>
+      </ContainerLogo>:<ContainerLogoResponsive onClick={closeSidebar}>
+        <LinkStyle to='/'>
+          <ContainerLogoSpan open={open} title={'Intratec Tecnologia'}>
+            Intratec Tecnologia
+          </ContainerLogoSpan>
+        </LinkStyle>
         <MenuIconWrapper>
           <Close onClick={handleSidebar}/>
         </MenuIconWrapper>
@@ -65,70 +78,90 @@ const Sidebar = () => {
       <ContainerCenter>
         <ContainerCenterUl>
           <Title open={open} title={'Main'}>MAIN</Title>
-          <ContainerCenterLi title={'Dashboard'}>
-            <IconWrapper open={open}>
-              <Dashboard />
-            </IconWrapper>
-            <ContainerCenterSpan open={open}>Dashboard</ContainerCenterSpan>
-          </ContainerCenterLi>
+            <ContainerCenterLi title={'Dashboard'} onClick={closeSidebar}>
+              <LinkStyle to='/'>
+                <IconWrapper open={open}>
+                    <Dashboard />
+                </IconWrapper>
+                <ContainerCenterSpan open={open}>Dashboard</ContainerCenterSpan>
+              </LinkStyle>
+            </ContainerCenterLi>
           <Title open={open} title={'List'}>LISTS</Title>
-          <ContainerCenterLi title={'Users'}>
-            <IconWrapper open={open}>
-              <PersonOutlineOutlined />
-            </IconWrapper>
-            <ContainerCenterSpan open={open}>Users</ContainerCenterSpan>
-          </ContainerCenterLi>
-          <ContainerCenterLi title={'Products'}>
-            <IconWrapper open={open}>
-              <Store />
-            </IconWrapper>
-            <ContainerCenterSpan open={open}>Products</ContainerCenterSpan>
-          </ContainerCenterLi>
-          <ContainerCenterLi title={'Orders'}>
-            <IconWrapper open={open}>
-              <CreditCard />
-            </IconWrapper>
-            <ContainerCenterSpan open={open}>Orders</ContainerCenterSpan>
-          </ContainerCenterLi>
+              <ContainerCenterLi title={'Users'} onClick={closeSidebar}>
+                <LinkStyle to='/users'>
+                    <IconWrapper open={open}>
+                        <PersonOutlineOutlined />
+                    </IconWrapper>
+                    <ContainerCenterSpan open={open}>Users</ContainerCenterSpan>
+                </LinkStyle>
+              </ContainerCenterLi>
+              <ContainerCenterLi title={'Products'} onClick={closeSidebar}>
+                <LinkStyle to='/products'>
+                    <IconWrapper open={open}>
+                      <Store />
+                    </IconWrapper>
+                    <ContainerCenterSpan open={open}>Products</ContainerCenterSpan>
+                </LinkStyle>
+              </ContainerCenterLi>
+              <ContainerCenterLi title={'Orders'} onClick={closeSidebar}>
+                <LinkStyle to='/orders'>
+                    <IconWrapper open={open}>
+                      <CreditCard />
+                    </IconWrapper>
+                    <ContainerCenterSpan open={open}>Orders</ContainerCenterSpan>
+                </LinkStyle>
+              </ContainerCenterLi>
           <Title open={open} title={'Useful'}>USEFUL</Title>
-          <ContainerCenterLi title={'Stats'}>
-            <IconWrapper open={open}>
-              <InsertChart />
-            </IconWrapper>
-            <ContainerCenterSpan open={open}>Stats</ContainerCenterSpan>
-          </ContainerCenterLi>
-          <ContainerCenterLi title={'Notifications'}>
-            <IconWrapper open={open}>
-              <NotificationsNone />
-            </IconWrapper>
-            <ContainerCenterSpan open={open}>Notifications</ContainerCenterSpan>
-          </ContainerCenterLi>
+            <ContainerCenterLi title={'Stats'} onClick={closeSidebar}>
+              <LinkStyle to='/stats'>
+                  <IconWrapper open={open}>
+                    <InsertChart />
+                  </IconWrapper>
+                  <ContainerCenterSpan open={open}>Stats</ContainerCenterSpan>
+              </LinkStyle>
+            </ContainerCenterLi>
+            <ContainerCenterLi title={'Notifications'} onClick={closeSidebar}>
+              <LinkStyle to='/notifications'>
+                  <IconWrapper open={open}>
+                    <NotificationsNone />
+                  </IconWrapper>
+                  <ContainerCenterSpan open={open}>Notifications</ContainerCenterSpan>
+              </LinkStyle>
+            </ContainerCenterLi>
           <Title open={open} title={'Service'}>SERVICE</Title>
-          <ContainerCenterLi title={'System Health'}>
-            <IconWrapper open={open}>
-              <SettingsSystemDaydream />
-            </IconWrapper>
-            <ContainerCenterSpan open={open}>System Health</ContainerCenterSpan>
-          </ContainerCenterLi>
-          <ContainerCenterLi title={'Logs'}>
-            <IconWrapper open={open}>
-              <PsychologyOutlined />
-            </IconWrapper>
-            <ContainerCenterSpan open={open}>Logs</ContainerCenterSpan>
-          </ContainerCenterLi>
-          <ContainerCenterLi title={'Settings'}>
-            <IconWrapper open={open}>
-              <SettingsApplications />
-            </IconWrapper>
-            <ContainerCenterSpan open={open}>Settings</ContainerCenterSpan>
-          </ContainerCenterLi>
+            <ContainerCenterLi title={'System Health'} onClick={closeSidebar}>
+              <LinkStyle to='/system-health'>
+                  <IconWrapper open={open}>
+                    <SettingsSystemDaydream />
+                  </IconWrapper>
+                  <ContainerCenterSpan open={open}>System Health</ContainerCenterSpan>
+              </LinkStyle>
+            </ContainerCenterLi>
+            <ContainerCenterLi title={'Logs'} onClick={closeSidebar}>
+              <LinkStyle to='/logs'>
+                  <IconWrapper open={open}>
+                    <PsychologyOutlined />
+                  </IconWrapper>
+                  <ContainerCenterSpan open={open}>Logs</ContainerCenterSpan>
+              </LinkStyle>
+            </ContainerCenterLi>
+            <ContainerCenterLi title={'Settings'} onClick={closeSidebar}>
+              <LinkStyle to='/settings'>
+                  <IconWrapper open={open}>
+                    <SettingsApplications />
+                  </IconWrapper>
+                  <ContainerCenterSpan open={open}>Settings</ContainerCenterSpan>
+              </LinkStyle>
+            </ContainerCenterLi>
           <Title open={open} title={'User'}>USER</Title>
-          <ContainerCenterLi title={'Profile'}>
-            <IconWrapper open={open}>
-              <AccountCircleOutlined />
-            </IconWrapper>
-            <ContainerCenterSpan open={open}>Profile</ContainerCenterSpan>
-          </ContainerCenterLi>
+            <ContainerCenterLi title={'Profile'} onClick={closeSidebar}>
+              <LinkStyle to='/profile'>
+                  <IconWrapper open={open}>
+                    <AccountCircleOutlined />
+                  </IconWrapper>
+                  <ContainerCenterSpan open={open}>Profile</ContainerCenterSpan>
+              </LinkStyle>
+            </ContainerCenterLi>
           <ContainerCenterLi onClick={handleLogout} title={'Logout'}>
             <IconWrapper open={open}>
               <ExitToApp />

@@ -32,10 +32,9 @@ import {
   FooterP
 } from './styles'
 
-const Home = () => {
+import Layout from '../Layout';
 
-  const sidebarContext = useContext(SidebarContext);
-  const { state: { open } } = sidebarContext;
+const Home = () => {
 
   const dataWidget = [
     {
@@ -85,38 +84,9 @@ const Home = () => {
   ]
 
   return (
-    <Container open={open}>
-      <Nav>
-        <Navbar />
-      </Nav>
-      <SidebarStyled open={open}>
-        <Sidebar />
-      </SidebarStyled>
-      <ContentOne>
-        <Widget data={dataWidget[0]} />
-      </ContentOne>
-      <ContentTwo>
-        <Widget data={dataWidget[1]} />
-      </ContentTwo>
-      <ContentThree>
-        <Widget data={dataWidget[2]} />
-      </ContentThree>
-      <ContentFour>
-        <Widget data={dataWidget[3]}/>
-      </ContentFour>
-      <FeatureStyled>
-        <Feature />
-      </FeatureStyled>
-      <ChartStyled>
-        <Chart />
-      </ChartStyled>
-      <ListStyled>
-        <List />
-      </ListStyled>
-      <Footer>
-        <FooterP>Developed by Valdir Silva</FooterP>
-      </Footer>
-      </Container>
+    <Layout>
+      <div>Dashboard</div>
+    </Layout>
   );
 }
 

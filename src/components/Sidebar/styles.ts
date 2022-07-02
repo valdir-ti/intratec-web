@@ -1,7 +1,9 @@
-import styled from 'styled-components'
+import { Link } from "react-router-dom";
+import styled from 'styled-components';
 
 interface Props {
     open?: boolean;
+    logo?: boolean;
 }
 
 export const Container = styled.div`
@@ -12,14 +14,14 @@ export const Container = styled.div`
     @media only screen and (max-width: 550px) {
         width: 200px;
     }
-`
+`;
 export const ContainerLogo = styled.div`
     height: 60px;
     border-bottom: 0.5px solid var(--lightgray);
     display: flex;
     justify-content: center;
     align-items: center;
-`
+`;
 export const ContainerLogoResponsive = styled.div`
     display: flex;
     flex-direction: row;
@@ -29,6 +31,21 @@ export const ContainerLogoResponsive = styled.div`
     border-bottom: 0.5px solid var(--lightgray);
     height: 60px;
     width: 100%;
+`;
+export const LinkStyle = styled(Link)<Props>`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    justify-content: ${props => props.logo ? 'center' : 'flex-start'};
+    color: var(--main);
+    &:hover,
+    &:focus{
+        color: var(--main);
+    }
+    &:active{
+        color: var(--main);
+    };
 `;
 export const ContainerLogoSpan = styled.div<Props>`
     color: var(--purple);
@@ -43,11 +60,11 @@ export const ContainerLogoSpan = styled.div<Props>`
         width: 70%;
         font-size: 12px;
     }
-`
+`;
 export const ContainerCenter = styled.div`
     display: flex;
     justify-content: start;
-`
+`;
 export const Title = styled.p<Props>`
     font-size: ${props => props.open ? '10px' : '11px'};
     font-weight: bold;
@@ -55,7 +72,7 @@ export const Title = styled.p<Props>`
     margin-bottom: 5px;
     margin-left: ${props => props.open ? '10px' : '18px'};
     color: var(--darkgray);
-`
+`;
 export const ContainerCenterUl = styled.ul`
     width: 100%;
     list-style: none;
@@ -64,32 +81,32 @@ export const ContainerCenterUl = styled.ul`
     display: flex;
     flex-direction: column;
     align-items: start;
-`
+`;
 export const ContainerCenterLi = styled.li`
     display: flex;
     align-items: center;
     padding: 5px;
     cursor: pointer;
-    color: var(--darkgray);
+    color: var(--main);
     width: 100%;
     &:hover{
         background-color: var(--second);
     }
-`
+`;
 export const ContainerCenterSpan = styled.span<Props>`
     display: ${props => props.open ? 'block' : 'none'};
 
     @media only screen and (max-width: 550px) {
         display: block;
     }
-`
+`;
 export const IconWrapper = styled.span<Props>`
     color: var(--main);
     font-weight: 600;
     font-size: 13px;
     margin-left: ${props => props.open ? '10px' : '20px'};
     margin-right: 5px;
-`
+`;
 export const MenuIconWrapper = styled.span`
     display: none;
     @media only screen and (max-width: 550px) {
@@ -100,12 +117,12 @@ export const MenuIconWrapper = styled.span`
         margin-left: 5px;
         cursor: pointer;
     }
-`
+`;
 export const ContainerBottom = styled.div`
     display: flex;
     align-items: center;
     margin: 10px;
-`
+`;
 export const ContainerBottomDiv = styled.div`
     width: 20px;
     height: 20px;
@@ -120,4 +137,4 @@ export const ContainerBottomDiv = styled.div`
     &:nth-child(2){
         background-color: #333;
     }
-`
+`;

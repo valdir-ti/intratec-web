@@ -1,8 +1,11 @@
-import './styles.scss'
+import Layout from '../../pages/Layout'
+import {Container} from './styles'
 
 const Single = () => {
   return (
-    <div>Single</div>
+    <Layout>
+      <Container>Single</Container>
+    </Layout>
   )
 }
 

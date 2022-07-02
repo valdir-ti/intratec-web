@@ -1,15 +1,14 @@
+import Layout from '../../pages/Layout'
 import TableList from '../Table'
-import { Container, Title } from './styles'
+import { Title } from './styles'
 
 const List = () => {
 
-
-
   return (
-    <Container>
+    <Layout>
       <Title>Latest Transactions</Title>
       <TableList />
-    </Container>
+    </Layout>
   )
 }
 
