@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 interface Props {
     open?: boolean;
-    logo?: boolean;
 }
 
 export const Container = styled.div`
@@ -22,22 +21,13 @@ export const ContainerLogo = styled.div`
     justify-content: center;
     align-items: center;
 `;
-export const ContainerLogoResponsive = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding-top: 5px;
-    border-bottom: 0.5px solid var(--lightgray);
-    height: 60px;
-    width: 100%;
-`;
+
 export const LinkStyle = styled(Link)<Props>`
     width: 100%;
     display: flex;
     align-items: center;
     text-decoration: none;
-    justify-content: ${props => props.logo ? 'center' : 'flex-start'};
+    justify-content: ${props => props.open ? 'center' : 'flex-start'};
     color: var(--main);
     &:hover,
     &:focus{
@@ -48,16 +38,17 @@ export const LinkStyle = styled(Link)<Props>`
     };
 `;
 export const ContainerLogoSpan = styled.div<Props>`
+    width: 100%;
     color: var(--purple);
     font-size: ${props => props.open ? '16px' : '10px'};
     font-weight: bold;
 
     @media only screen and (max-width: 1000px) {
         font-size: ${props => props.open ? '13px' : '10px'};
-        width: 90%;
+        width: 100%;
     }
     @media only screen and (max-width: 550px) {
-        width: 70%;
+        width: 100%;
         font-size: 12px;
     }
 `;
@@ -114,7 +105,7 @@ export const MenuIconWrapper = styled.span`
         color: var(--main);
         font-weight: 300;
         font-size: 10px;
-        margin-left: 5px;
+        margin-right: 10px;
         cursor: pointer;
     }
 `;

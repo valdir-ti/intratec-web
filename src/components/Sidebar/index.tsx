@@ -20,7 +20,7 @@ import { SidebarContext } from '../../context/sidebar/sidebarContext'
 import {
   Container,
   ContainerLogo,
-  ContainerLogoResponsive,
+  // ContainerLogoResponsive,
   ContainerLogoSpan,
   ContainerCenter,
   Title,
@@ -57,24 +57,16 @@ const Sidebar = () => {
 
   return (
     <Container>
-      {open ?
-      <ContainerLogo onClick={closeSidebar}>
-        <LinkStyle to='/' logo>
-          <ContainerLogoSpan open={open} title={'Intratec Tecnologia'}>
-            Intratec Tecnologia
-          </ContainerLogoSpan>
-        </LinkStyle>
-      </ContainerLogo>:<ContainerLogoResponsive onClick={closeSidebar}>
-        <LinkStyle to='/'>
-          <ContainerLogoSpan open={open} title={'Intratec Tecnologia'}>
+      <ContainerLogo>
+        <LinkStyle to='/' onClick={closeSidebar}>
+          <ContainerLogoSpan open={open}>
             Intratec Tecnologia
           </ContainerLogoSpan>
         </LinkStyle>
         <MenuIconWrapper>
           <Close onClick={handleSidebar}/>
         </MenuIconWrapper>
-      </ContainerLogoResponsive>
-      }
+      </ContainerLogo>
       <ContainerCenter>
         <ContainerCenterUl>
           <Title open={open} title={'Main'}>MAIN</Title>
