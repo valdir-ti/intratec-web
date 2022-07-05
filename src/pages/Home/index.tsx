@@ -19,10 +19,9 @@ import { SidebarContext } from '../../context/sidebar/sidebarContext';
 
 import {
   Container,
-  Nav,
+  ContainerWidget,
   Chart as ChartStyled,
   Feature as FeatureStyled,
-  Sidebar as SidebarStyled,
   ContentOne,
   ContentTwo,
   ContentThree,
@@ -85,7 +84,20 @@ const Home = () => {
 
   return (
     <Layout>
-      <div>Dashboard</div>
+      <Container>
+          <ContentOne>
+            <Widget data={dataWidget[0]}/>
+          </ContentOne>
+          <ContentTwo>
+            <Widget data={dataWidget[1]}/>
+          </ContentTwo>
+          <ContentThree>
+            <Widget data={dataWidget[2]}/>
+          </ContentThree>
+          <ContentFour>
+            <Widget data={dataWidget[3]}/>
+          </ContentFour>
+      </Container>
     </Layout>
   );
 }
