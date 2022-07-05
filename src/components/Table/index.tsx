@@ -8,7 +8,11 @@ import Paper from '@mui/material/Paper';
 
 import { Container, CellWrapper, ProductImg, CellStatusWrapper } from './styles'
 
-const TableList = () => {
+interface ITableList {
+    title: string
+}
+
+const TableList = ({ title }: ITableList) => {
 
     const rows = [
         {
@@ -65,6 +69,7 @@ const TableList = () => {
 
     return (
         <Container>
+            <h1>{title}</h1>
             <TableContainer component={Paper}>
                 <Table aria-label="simple table">
                     <TableHead>
@@ -101,7 +106,7 @@ const TableList = () => {
                     ))}
                     </TableBody>
                 </Table>
-                </TableContainer>
+            </TableContainer>
         </Container>
     )
 }

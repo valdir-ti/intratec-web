@@ -72,6 +72,7 @@ export const Content = styled.div`
   grid-area: content;
   min-height: 220px;
   padding: var(--main-padding);
+  overflow: auto;
 `
 
 export const Footer = styled.footer`

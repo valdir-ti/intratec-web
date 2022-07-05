@@ -7,19 +7,14 @@ import {
   AccountBalanceWallet
 } from '@mui/icons-material';
 
-import List from '../../components/List';
-// import Main from '../../components/Main';
-import Navbar from '../../components/Navbar';
-import Sidebar from '../../components/Sidebar';
 import Widget from '../../components/Widget';
 import Chart from '../../components/Chart';
 import Feature from '../../components/Feature';
+import TableList from '../../components/Table';
 
-import { SidebarContext } from '../../context/sidebar/sidebarContext';
 
 import {
   Container,
-  ContainerWidget,
   Chart as ChartStyled,
   Feature as FeatureStyled,
   ContentOne,
@@ -27,8 +22,6 @@ import {
   ContentThree,
   ContentFour,
   List as ListStyled,
-  Footer,
-  FooterP
 } from './styles'
 
 import Layout from '../Layout';
@@ -97,6 +90,15 @@ const Home = () => {
           <ContentFour>
             <Widget data={dataWidget[3]}/>
           </ContentFour>
+           <FeatureStyled>
+            <Feature />
+          </FeatureStyled>
+          <ChartStyled>
+            <Chart />
+          </ChartStyled>
+          {/* <ListStyled> */}
+            {/* <TableList /> */}
+          {/* </ListStyled> */}
       </Container>
     </Layout>
   );
