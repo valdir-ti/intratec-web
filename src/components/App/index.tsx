@@ -6,10 +6,11 @@ import {
   Navigate
 } from "react-router-dom";
 
-import Home from '../../pages/Home';
-import Login from "../../pages/Login";
 import List from "../List";
 import Single from "../Single";
+import NotFound from "../NotFound";
+import Home from '../../pages/Home';
+import Login from "../../pages/Login";
 
 import { AuthContext } from '../../context/authentication/authContext';
 
@@ -26,6 +27,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
+          <Route path="*" element={<NotFound />} />
           <Route path="/">
             <Route path="login" element={<Login />} />
 
@@ -173,7 +175,7 @@ const App = () => {
                 }
               />
             </Route>
-            <Route path="profile">
+            <Route path="profile1">
               <Route
                 index
                 element={
