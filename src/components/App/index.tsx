@@ -175,7 +175,7 @@ const App = () => {
                 }
               />
             </Route>
-            <Route path="profile1">
+            <Route path="profile">
               <Route
                 index
                 element={
