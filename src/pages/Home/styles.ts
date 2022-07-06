@@ -1,13 +1,10 @@
 import styled from "styled-components";
-
-interface Props {
-  open?: boolean;
-}
+import TableContainer from '@mui/material/TableContainer';
 
 export const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: .1fr 1fr 1fr;
+  grid-template-rows: .2fr 1fr 1fr;
   grid-template-areas:
   "content1 content2 content3 content4"
   "feature feature chart chart"
@@ -22,18 +19,8 @@ export const Container = styled.div`
       "content1 content2"
       "content3 content4"
       "feature feature"
-      "chart chart";
-  }
-
-  @media only screen and (max-width: 880px) {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas:
-      "content1 content2"
-      "content3 content4"
-      "feature feature"
-      "chart chart";
-    margin: 5px;
+      "chart chart"
+      "list list";
   }
 
   @media only screen and (max-width: 550px) {
@@ -45,7 +32,8 @@ export const Container = styled.div`
       "content3"
       "content4"
       "feature"
-      "chart";
+      "chart"
+      "list";
     margin: 5px;
   }
 `;
@@ -74,7 +62,7 @@ export const ContentFour = styled.div`
   grid-area: content4;
   min-height: 120px;
 `
-export const List = styled.div`
+export const List = styled(TableContainer)`
   grid-area: list;
   padding: var(--main-padding);
 `

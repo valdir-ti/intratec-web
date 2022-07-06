@@ -25,3 +25,5 @@ export const CellStatusWrapper = styled.div<Props>`
     border-radius: 5px;
     font-weight: 600;
 `;
+
+export const Title = styled.div``

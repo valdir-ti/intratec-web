@@ -1,12 +1,10 @@
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 
-import { Container, CellWrapper, ProductImg, CellStatusWrapper } from './styles'
+import { Title, CellWrapper, ProductImg, CellStatusWrapper } from './styles'
 
 interface ITableList {
     title: string
@@ -68,46 +66,44 @@ const TableList = ({ title }: ITableList) => {
     ]
 
     return (
-        <Container>
-            <h1>{title}</h1>
-            <TableContainer component={Paper}>
-                <Table aria-label="simple table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Tracking ID</TableCell>
-                            <TableCell>Product</TableCell>
-                            <TableCell>Customer</TableCell>
-                            <TableCell>Date</TableCell>
-                            <TableCell>Amount</TableCell>
-                            <TableCell>Payment method</TableCell>
-                            <TableCell>Status</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                    {rows.map((row) => (
-                        <TableRow key={row.id}>
-                            <TableCell>{row.id}</TableCell>
-                            <TableCell>
-                                <CellWrapper>
-                                    <ProductImg src={row.img} alt={row.product} />
-                                    {row.product}
-                                </CellWrapper>
-                            </TableCell>
-                            <TableCell>{row.customer}</TableCell>
-                            <TableCell>{row.date}</TableCell>
-                            <TableCell>{row.amount}</TableCell>
-                            <TableCell>{row.method}</TableCell>
-                            <TableCell>
-                                <CellStatusWrapper value={row.status}>
-                                    {row.status}
-                                </CellStatusWrapper>
-                            </TableCell>
-                        </TableRow>
-                    ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-        </Container>
+        <>
+            <Title>{title}</Title>
+            <Table aria-label="simple table">
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Tracking ID</TableCell>
+                        <TableCell>Product</TableCell>
+                        <TableCell>Customer</TableCell>
+                        <TableCell>Date</TableCell>
+                        <TableCell>Amount</TableCell>
+                        <TableCell>Payment method</TableCell>
+                        <TableCell>Status</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                {rows.map((row) => (
+                    <TableRow key={row.id}>
+                        <TableCell>{row.id}</TableCell>
+                        <TableCell>
+                            <CellWrapper>
+                                <ProductImg src={row.img} alt={row.product} />
+                                {row.product}
+                            </CellWrapper>
+                        </TableCell>
+                        <TableCell>{row.customer}</TableCell>
+                        <TableCell>{row.date}</TableCell>
+                        <TableCell>{row.amount}</TableCell>
+                        <TableCell>{row.method}</TableCell>
+                        <TableCell>
+                            <CellStatusWrapper value={row.status}>
+                                {row.status}
+                            </CellStatusWrapper>
+                        </TableCell>
+                    </TableRow>
+                ))}
+                </TableBody>
+            </Table>
+        </>
     )
 }
 

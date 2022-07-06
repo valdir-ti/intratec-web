@@ -12,7 +12,6 @@ import Chart from '../../components/Chart';
 import Feature from '../../components/Feature';
 import TableList from '../../components/Table';
 
-
 import {
   Container,
   Chart as ChartStyled,
@@ -96,9 +95,9 @@ const Home = () => {
           <ChartStyled>
             <Chart />
           </ChartStyled>
-          {/* <ListStyled> */}
-            {/* <TableList /> */}
-          {/* </ListStyled> */}
+          <ListStyled>
+            <TableList title='Last Transactions'/>
+          </ListStyled>
       </Container>
     </Layout>
   );
