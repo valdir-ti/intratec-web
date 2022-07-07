@@ -14,13 +14,14 @@ import {
   Close
 } from '@mui/icons-material';
 
+import useConfirm from '../hooks/ConfirmDialog';
+
 import { AuthContext } from '../../context/authentication/authContext'
 import { SidebarContext } from '../../context/sidebar/sidebarContext'
 
 import {
   Container,
   ContainerLogo,
-  // ContainerLogoResponsive,
   ContainerLogoSpan,
   ContainerCenter,
   Title,
@@ -36,12 +37,20 @@ import {
 
 const Sidebar = () => {
 
+  const {ConfirmationDialog, confirm} = useConfirm(
+    'Sair',
+    'Deseja realmente fazer o logout?',
+  )
+
   const { dispatch: AuthDispatch } = useContext(AuthContext);
   const { state: { open }, dispatch: SidebarDispatch } = useContext(SidebarContext);
 
-  function handleLogout() {
-    closeSidebar()
-    AuthDispatch({type:"LOGOUT"})
+  async function handleLogout() {
+    const confirmAnswer = await confirm()
+    if(confirmAnswer){
+      closeSidebar()
+      AuthDispatch({type:"LOGOUT"})
+    }
   }
 
   function handleSidebar() {
@@ -166,6 +175,7 @@ const Sidebar = () => {
         <ContainerBottomDiv />
         <ContainerBottomDiv />
       </ContainerBottom>
+      <ConfirmationDialog />
     </Container>
   )
 }
