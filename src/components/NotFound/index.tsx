@@ -1,6 +1,11 @@
+import { Container, Title, SubTitle } from "./styles"
+
 const NotFound = () => {
   return (
-    <div>NotFound</div>
+    <Container>
+      <Title>404 - Page Not Found!</Title>
+      <SubTitle to='/'>Return to dashboard</SubTitle>
+    </Container>
   )
 }
 
