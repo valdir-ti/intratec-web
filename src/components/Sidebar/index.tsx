@@ -16,8 +16,8 @@ import {
 
 import useConfirm from '../../hooks/ConfirmDialog';
 
-import { AuthContext } from '../../context/authentication/authContext'
-import { SidebarContext } from '../../context/sidebar/sidebarContext'
+import { AuthContext } from '../../context/authentication/authContext';
+import { SidebarContext } from '../../context/sidebar/sidebarContext';
 
 import {
   Container,

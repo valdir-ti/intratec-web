@@ -1,21 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './components/App';
-
-import { SidebarProvider } from './context/sidebar/sidebarContext';
-import { AuthProvider } from './context/authentication/authContext';
-
-import { GlobalStyle } from './global'
+import App from './App';
 
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalStyle />
-    <AuthProvider>
-      <SidebarProvider>
-        <App />
-      </SidebarProvider>
-    </AuthProvider>
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

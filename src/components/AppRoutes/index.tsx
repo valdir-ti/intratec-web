@@ -14,9 +14,10 @@ import Login from "../../pages/Login";
 
 import { AuthContext } from '../../context/authentication/authContext';
 
-import './styles'
+import './styles';
 
-const App = () => {
+const AppRoutes
+ = () => {
 
   const { state: { currentUser } } = useContext(AuthContext)
 
@@ -191,4 +192,4 @@ const App = () => {
   );
 }
 
-export default App
+export default AppRoutes
