@@ -6,6 +6,8 @@ declare module 'styled-components' {
 
     colors: {
       background: string;
+      menu: string;
+      menuActive: string;
       text: string;
       border: string;
       hover: string;

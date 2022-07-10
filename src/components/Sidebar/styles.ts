@@ -6,8 +6,6 @@ interface Props {
 }
 
 export const Container = styled.div`
-    border-right: 1px solid ${props => props.theme.colors.border};
-    border-bottom: 1px solid ${props => props.theme.colors.border};
     height: 100%;
     overflow: auto;
     @media only screen and (max-width: 550px) {
