@@ -15,9 +15,7 @@ import {
     Container,
     Nav,
     Sidebar as SidebarStyled,
-    Content,
-    Footer,
-    FooterP
+    Content
 } from './styles';
 
 import usePersistedState from '../../hooks/usePersistedState';
@@ -50,9 +48,6 @@ const Layout = ({ children }: any) => {
                 <Content>
                     {children}
                 </Content>
-                <Footer>
-                    <FooterP>Developed by Valdir Silva</FooterP>
-                </Footer>
             </Container>
         </ThemeProvider>
     )
