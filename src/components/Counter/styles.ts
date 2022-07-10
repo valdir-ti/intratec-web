@@ -5,7 +5,7 @@ export const CounterContainer = styled.div`
     height: 15px;
     border-radius: 50px;
     background-color: red;
-    color: var(--white);
+    color: "white";
     display: flex;
     align-items: center;
     justify-content: center;

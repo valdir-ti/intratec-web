@@ -13,7 +13,7 @@ export const Container = styled.div`
 
 export const Title = styled.div`
     font-weight: 500;
-    color: var(--darkgray);
+    color: ${props => props.theme.colors.text};
     margin-bottom: 15px;
     font-size: 15px;
 `;

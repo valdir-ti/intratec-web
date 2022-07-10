@@ -25,7 +25,7 @@ export const Left = styled.div`
 export const LeftTitle = styled.span`
     font-weight: bold;
     font-size: 14px;
-    color: var(--darkgray);
+    color: ${props => props.theme.colors.text};
 `
 export const LeftCounter = styled.span`
     font-size: 28px;

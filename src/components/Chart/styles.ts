@@ -11,5 +11,5 @@ export const ChartTitle = styled.div`
     text-align: left;
     padding: 10px;
     font-size: 15px;
-    color: var(--darkgray);
+    color: ${props => props.theme.colors.text};
 `;

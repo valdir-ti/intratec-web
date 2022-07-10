@@ -4,5 +4,5 @@ export const Container = styled.div`
     display: flex;
     width: 100%;
     height: 100%;
-    background-color: antiquewhite;
+    background-color: color: ${props => props.theme.colors.background};
 `

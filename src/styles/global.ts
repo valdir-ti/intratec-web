@@ -16,12 +16,6 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     :root {
-        --main: #7481F8;
-        --second: #ECE8FF;
-        --purple: #6439FF;
-        --lightgray: #ddd;
-        --darkgray: #888;
-        --white: #fff;
         --main-radius: 5px;
         --main-padding: 5px;
     }

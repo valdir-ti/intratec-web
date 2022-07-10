@@ -8,7 +8,7 @@ export const Container = styled.div`
     flex-direction: column;
     width: 100vw;
     height: 100vh;
-    background-color: #f5f5f5;
+    background-color: ${props => props.theme.colors.background};
 `;
 
 export const Title = styled.p`
@@ -20,6 +20,6 @@ export const Title = styled.p`
 export const SubTitle = styled(Link)`
     font-size: 1.5rem;
     cursor: pointer;
-    color: #00bcd4;
+    color: ${props => props.theme.colors.text};
     font-style: italic;
 `

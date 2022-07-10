@@ -14,7 +14,7 @@ export const Top = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: var(--darkgray);
+    color: ${props => props.theme.colors.text};
 `
 export const TopTitle = styled.div`
     font-size: 15px;
@@ -35,7 +35,7 @@ export const FeatureChart = styled.div`
 `
 export const BottomTitle = styled.p`
     font-weight: 500;
-    color: var(--darkgray);
+    color: ${props => props.theme.colors.text};
 `
 export const BottomAmount = styled.p`
     font-size: 30px;
@@ -44,21 +44,21 @@ export const BottomAmount = styled.p`
 export const BottomDesc = styled.p`
     font-weight: 300;
     font-size: 12px;
-    color: var(--darkgray);
+    color: ${props => props.theme.colors.text};
     text-align: center;
-    `
+`
 export const BottomSummary = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    `
+`
 export const BottomSummaryItem = styled.div`
     text-align: center;
-    `
+`
 export const BottomSummaryItemTitle = styled.div`
     font-size: 14px;
-    color: var(--darkgray);
+    color: ${props => props.theme.colors.text};
 `
 export const BottomSummaryItemResult = styled.div<Props>`
     display: flex;

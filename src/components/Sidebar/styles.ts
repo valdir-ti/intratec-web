@@ -6,8 +6,8 @@ interface Props {
 }
 
 export const Container = styled.div`
-    border-right: 1px solid var(--lightgray);
-    border-bottom: 1px solid var(--lightgray);
+    border-right: 1px solid ${props => props.theme.colors.border};
+    border-bottom: 1px solid ${props => props.theme.colors.border};
     height: 100%;
     overflow: auto;
     @media only screen and (max-width: 550px) {
@@ -16,7 +16,7 @@ export const Container = styled.div`
 `;
 export const ContainerLogo = styled.div`
     height: 60px;
-    border-bottom: 0.5px solid var(--lightgray);
+    border-bottom: 0.5px solid ${props => props.theme.colors.border};
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,18 +28,18 @@ export const LinkStyle = styled(Link)<Props>`
     align-items: center;
     text-decoration: none;
     justify-content: ${props => props.open ? 'center' : 'flex-start'};
-    color: var(--main);
+    color: ${props => props.theme.colors.text};
     &:hover,
     &:focus{
-        color: var(--main);
+        color: ${props => props.theme.colors.text};
     }
     &:active{
-        color: var(--main);
+        color: ${props => props.theme.colors.text};
     };
 `;
 export const ContainerLogoSpan = styled.div<Props>`
     width: 100%;
-    color: var(--purple);
+    color: ${props => props.theme.colors.text};
     font-size: ${props => props.open ? '16px' : '10px'};
     font-weight: bold;
 
@@ -62,7 +62,7 @@ export const Title = styled.p<Props>`
     margin-top: 15px;
     margin-bottom: 5px;
     margin-left: ${props => props.open ? '10px' : '18px'};
-    color: var(--darkgray);
+    color: ${props => props.theme.colors.border};
 `;
 export const ContainerCenterUl = styled.ul`
     width: 100%;
@@ -78,10 +78,10 @@ export const ContainerCenterLi = styled.li`
     align-items: center;
     padding: 5px;
     cursor: pointer;
-    color: var(--main);
+    color: ${props => props.theme.colors.text};
     width: 100%;
     &:hover{
-        background-color: var(--second);
+        background-color: ${props => props.theme.colors.hover};
     }
 `;
 export const ContainerCenterSpan = styled.span<Props>`
@@ -92,7 +92,7 @@ export const ContainerCenterSpan = styled.span<Props>`
     }
 `;
 export const IconWrapper = styled.span<Props>`
-    color: var(--main);
+    color: ${props => props.theme.colors.text};
     font-weight: 600;
     font-size: 13px;
     margin-left: ${props => props.open ? '10px' : '20px'};
@@ -102,7 +102,7 @@ export const MenuIconWrapper = styled.span`
     display: none;
     @media only screen and (max-width: 550px) {
         display: block;
-        color: var(--main);
+        color: ${props => props.theme.colors.text};
         font-weight: 300;
         font-size: 10px;
         margin-right: 10px;
@@ -118,7 +118,7 @@ export const ContainerBottomDiv = styled.div`
     width: 20px;
     height: 20px;
     border-radius: 5px;
-    border: 1px solid var(--main);
+    border: 1px solid ${props => props.theme.colors.border};
     cursor: pointer;
     margin: 5px;
 

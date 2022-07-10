@@ -16,7 +16,7 @@ export const Container = styled.div<Props>`
   grid-gap: 0.1rem;
   text-transform: uppercase;
   font-size: 12px;
-  color: #004d40;
+  color: ${props => props.theme.colors.text};
   text-align: center;
 
   @media only screen and (max-width: 1200px) {
@@ -63,7 +63,7 @@ export const Sidebar = styled.div<Props>`
   @media only screen and (max-width: 550px) {
     position: fixed;
     left: ${props => props.open ? '-200px' : '0'};
-    background-color: var(--white);
+    background-color: ${props => props.theme.colors.background};
     height: 100%;
   }
 `
@@ -76,7 +76,7 @@ export const Content = styled.div`
 `
 
 export const Footer = styled.footer`
-  background: #1de9b6;
+  background: ${props => props.theme.colors.background};
   grid-area: footer;
   border-radius: var(--main-radius);
   padding-top: var(--main-padding);

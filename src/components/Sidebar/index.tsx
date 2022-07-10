@@ -14,7 +14,7 @@ import {
   Close
 } from '@mui/icons-material';
 
-import useConfirm from '../../hooks/ConfirmDialog';
+import useConfirm from '../../hooks/useConfirmDialog';
 
 import { AuthContext } from '../../context/authentication/authContext';
 import { SidebarContext } from '../../context/sidebar/sidebarContext';
