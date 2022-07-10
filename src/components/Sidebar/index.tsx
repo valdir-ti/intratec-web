@@ -35,7 +35,11 @@ import {
   LinkStyle
 } from './styles'
 
-const Sidebar = () => {
+interface ISidebar {
+  toggleTheme: (theme: string) => void;
+}
+
+const Sidebar = ({ toggleTheme }: ISidebar) => {
 
   const {ConfirmationDialog, confirm} = useConfirm(
     'Sair',
@@ -62,6 +66,10 @@ const Sidebar = () => {
       return SidebarDispatch({ type: 'TOGGLE_SIDEBAR' })
     }
     return
+  }
+
+  function handleTheme(theme: string) {
+    toggleTheme(theme)
   }
 
   return (
@@ -172,8 +180,8 @@ const Sidebar = () => {
         </ContainerCenterUl>
       </ContainerCenter>
       <ContainerBottom>
-        <ContainerBottomDiv />
-        <ContainerBottomDiv />
+        <ContainerBottomDiv onClick={() => handleTheme('light')} />
+        <ContainerBottomDiv onClick={() => handleTheme('dark')} />
       </ContainerBottom>
       <ConfirmationDialog />
     </Container>

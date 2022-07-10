@@ -16,8 +16,7 @@ import { AuthContext } from '../../context/authentication/authContext';
 
 import './styles';
 
-const AppRoutes
- = () => {
+const AppRoutes = () => {
 
   const { state: { currentUser } } = useContext(AuthContext)
 

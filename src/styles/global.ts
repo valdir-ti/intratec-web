@@ -6,7 +6,13 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         outline: 0;
         box-sizing: border-box;
+    }
+
+    body {
+        background: ${props => props.theme.colors.background};
+        color: ${props => props.theme.colors.text};
         font-family: 'Roboto', sans-serif;
+        font-size: 14;
     }
 
     :root {

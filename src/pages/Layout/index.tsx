@@ -1,9 +1,15 @@
 import { useContext } from 'react';
+import { ThemeProvider, DefaultTheme } from 'styled-components';
 
 import { SidebarContext } from '../../context/sidebar/sidebarContext';
 
 import Navbar from '../../components/Navbar';
 import Sidebar from '../../components/Sidebar';
+
+import dark from '../../styles/themes/dark';
+import light from '../../styles/themes/light';
+
+import { GlobalStyle } from '../../styles/global';
 
 import {
     Container,
@@ -12,28 +18,43 @@ import {
     Content,
     Footer,
     FooterP
-} from './styles'
+} from './styles';
+
+import usePersistedState from '../../hooks/usePersistedState';
 
 const Layout = ({ children }: any) => {
 
     const sidebarContext = useContext(SidebarContext);
     const { state: { open } } = sidebarContext;
 
+    const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', light);
+
+    const toggleTheme = (theme: string) => {
+        if (theme === 'light') {
+            setTheme(light);
+        }else{
+            setTheme(dark);
+        }
+    }
+
     return (
-        <Container open={open}>
-            <Nav>
-                <Navbar />
-            </Nav>
-            <SidebarStyled open={open}>
-                <Sidebar />
-            </SidebarStyled>
-            <Content>
-                {children}
-            </Content>
-            <Footer>
-                <FooterP>Developed by Valdir Silva</FooterP>
-            </Footer>
-        </Container>
+        <ThemeProvider theme={theme}>
+            <GlobalStyle />
+            <Container open={open}>
+                <Nav>
+                    <Navbar />
+                </Nav>
+                <SidebarStyled open={open}>
+                    <Sidebar toggleTheme={toggleTheme} />
+                </SidebarStyled>
+                <Content>
+                    {children}
+                </Content>
+                <Footer>
+                    <FooterP>Developed by Valdir Silva</FooterP>
+                </Footer>
+            </Container>
+        </ThemeProvider>
     )
 }
 
