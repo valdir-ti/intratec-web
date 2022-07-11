@@ -67,4 +67,17 @@ export const Content = styled.div`
   min-height: 220px;
   padding: var(--main-padding);
   overflow: auto;
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: ${props => props.theme.colors.secondBackground};
+    border-radius: 50px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    border: 2px solid ${props => props.theme.colors.menu};
+    background-color: ${props => props.theme.colors.menu};
+  }
 `;
