@@ -1,10 +1,10 @@
 const dark = {
     title: 'dark',
     colors: {
-      text: '#1c1139',
+      text: '#d1b7f6',
       secondText: '#d7d5fa',
       background: '#2e2749',
-      secondBackground: '##3c3465',
+      secondBackground: '#3c3465',
       menu: '#d1b7f6',
       menuActive: '#7481f8',
       border: '#999',
