@@ -8,13 +8,14 @@ interface Props {
 export const Container = styled.div`
     height: 100%;
     overflow: auto;
+    background-color: ${props => props.theme.colors.secondBackground};
+    color: ${props => props.theme.colors.text};
     @media only screen and (max-width: 550px) {
         width: 200px;
     }
 `;
 export const ContainerLogo = styled.div`
     height: 60px;
-    border-bottom: 0.5px solid ${props => props.theme.colors.border};
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,18 +27,18 @@ export const LinkStyle = styled(Link)<Props>`
     align-items: center;
     text-decoration: none;
     justify-content: ${props => props.open ? 'center' : 'flex-start'};
-    color: ${props => props.theme.colors.text};
+    color: ${props => props.theme.colors.menu};
     &:hover,
     &:focus{
-        color: ${props => props.theme.colors.text};
+        color: ${props => props.theme.colors.menu};
     }
     &:active{
-        color: ${props => props.theme.colors.text};
+        color: ${props => props.theme.colors.menu};
     };
 `;
 export const ContainerLogoSpan = styled.div<Props>`
     width: 100%;
-    color: ${props => props.theme.colors.text};
+    color: ${props => props.theme.colors.logo};
     font-size: ${props => props.open ? '16px' : '10px'};
     font-weight: bold;
 
@@ -60,7 +61,6 @@ export const Title = styled.p<Props>`
     margin-top: 15px;
     margin-bottom: 5px;
     margin-left: ${props => props.open ? '10px' : '18px'};
-    color: ${props => props.theme.colors.border};
 `;
 export const ContainerCenterUl = styled.ul`
     width: 100%;
@@ -76,21 +76,23 @@ export const ContainerCenterLi = styled.li`
     align-items: center;
     padding: 5px;
     cursor: pointer;
-    color: ${props => props.theme.colors.text};
     width: 100%;
+    font-weight: bold;
     &:hover{
         background-color: ${props => props.theme.colors.hover};
+        color: ${props => props.theme.colors.menu};
     }
-`;
+    `;
 export const ContainerCenterSpan = styled.span<Props>`
     display: ${props => props.open ? 'block' : 'none'};
+    color: ${props => props.theme.colors.menu};
 
     @media only screen and (max-width: 550px) {
         display: block;
     }
 `;
 export const IconWrapper = styled.span<Props>`
-    color: ${props => props.theme.colors.text};
+    color: ${props => props.theme.colors.menuIcon};
     font-weight: 600;
     font-size: 13px;
     margin-left: ${props => props.open ? '10px' : '20px'};
@@ -100,7 +102,6 @@ export const MenuIconWrapper = styled.span`
     display: none;
     @media only screen and (max-width: 550px) {
         display: block;
-        color: ${props => props.theme.colors.text};
         font-weight: 300;
         font-size: 10px;
         margin-right: 10px;

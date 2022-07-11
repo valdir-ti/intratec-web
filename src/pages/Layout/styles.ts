@@ -12,7 +12,6 @@ export const Container = styled.div<Props>`
   grid-template-areas:
     "sidebar nav nav"
     "sidebar content content";
-  grid-gap: 0.1rem;
   text-transform: uppercase;
   font-size: 12px;
   color: ${props => props.theme.colors.text};
@@ -46,7 +45,6 @@ export const Container = styled.div<Props>`
 export const Nav = styled.nav`
   grid-area: nav;
   border-radius: var(--main-radius);
-  padding-top: var(--main-padding);
   display: flex;
   align-items: center;
   justify-content: space-between;

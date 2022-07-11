@@ -1,12 +1,16 @@
 const light = {
     title: 'light',
     colors: {
-      background: '#f5f5f5',
-      menu: '#999',
-      menuActive: '#7481f8',
-      text: '#7481f8',
+      text: '#1c1139',
+      secondText: '#332c56',
+      background: '#f3f1ff',
+      secondBackground: '#fdfcff',
+      menu: '#61547f',
+      menuActive: '#eddeff',
       border: '#ccc',
-      hover: '#ECE8FF'
+      hover: '#eddeff',
+      logo: '#c4ade5',
+      menuIcon: '#d2bfed'
     },
 };
 

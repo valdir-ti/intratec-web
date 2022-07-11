@@ -3,12 +3,15 @@ import TableContainer from '@mui/material/TableContainer';
 
 export const Container = styled.div`
   display: grid;
+  padding: 20px;
+  margin-top: 5px;
+  gap: 10px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: .2fr 1fr 1fr;
   grid-template-areas:
-  "content1 content2 content3 content4"
-  "feature feature chart chart"
-  "list list list list";
+    "content1 content2 content3 content4"
+    "feature feature chart chart"
+    "list list list list";
   text-transform: uppercase;
   font-size: 12px;
 

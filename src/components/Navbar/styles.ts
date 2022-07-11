@@ -12,18 +12,18 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid ${props => props.theme.colors.border};
+    background-color: ${props => props.theme.colors.secondBackground};
+    color: ${props => props.theme.colors.menu};
 `
 export const Left = styled.div``
 export const Right = styled.div`
-    margin-right: 5px;
+    margin-right: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
 `
 export const IconWrapper = styled.span<Props>`
     cursor: pointer;
-    color: ${props => props.theme.colors.text};
     font-weight: 600;
     font-size: 13px;
     margin-left: 10px;
@@ -33,7 +33,7 @@ export const IconWrapper = styled.span<Props>`
         display: ${props => props.right ? 'block' : 'none'};
     }
     &:hover {
-        color: ${props => props.hover ? '#6439FF' : ''};
+        color: ${props => props.theme.colors.hover};
     }
 `
 export const Avatar = styled.img`
@@ -46,7 +46,6 @@ export const NavbarIconWrapperResponsive = styled.span`
     @media only screen and (max-width: 550px) {
         display: block;
         cursor: pointer;
-        color: ${props => props.theme.colors.text};
         margin-left: 10px;
     }
 `

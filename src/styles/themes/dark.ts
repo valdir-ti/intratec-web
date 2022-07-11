@@ -1,12 +1,16 @@
 const dark = {
     title: 'dark',
     colors: {
-      background: '#171717',
-      menu: '#999',
+      text: '#1c1139',
+      secondText: '#d7d5fa',
+      background: '#2e2749',
+      secondBackground: '##3c3465',
+      menu: '#d1b7f6',
       menuActive: '#7481f8',
-      text: '#EDEDED',
       border: '#999',
-      hover: '#da003724'
+      hover: '#cfbae1',
+      logo: '#d1b7f6',
+      menuIcon: '#ccbef2'
     },
 };
 

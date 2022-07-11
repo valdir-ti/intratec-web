@@ -9,6 +9,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    background-color: ${props => props.theme.colors.secondBackground};
 `;
 
 export const Title = styled.div`
