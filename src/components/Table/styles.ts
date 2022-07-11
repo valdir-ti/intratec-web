@@ -8,6 +8,10 @@ export const Container = styled.div`
     width: 100%;
     background-color: ${props => props.theme.colors.secondBackground};
 `;
+
+export const ContainerTable = styled.div`
+    overflow-x: auto;
+`;
 export const CellWrapper = styled.div`
     display: flex;
     align-items: center;
