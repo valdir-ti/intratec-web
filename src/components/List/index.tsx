@@ -1,11 +1,14 @@
 import Layout from '../../pages/Layout'
 import TableList from '../Table'
+import { Container } from './styles'
 
 const List = () => {
 
   return (
     <Layout>
-      <TableList title="Last Transactions"/>
+      <Container>
+        <TableList title="Last Transaction"/>
+      </Container>
     </Layout>
   )
 }

@@ -6,6 +6,7 @@ interface Props {
 
 export const Container = styled.div`
     width: 100%;
+    background-color: ${props => props.theme.colors.secondBackground};
 `;
 export const CellWrapper = styled.div`
     display: flex;
@@ -26,4 +27,10 @@ export const CellStatusWrapper = styled.div<Props>`
     font-weight: 600;
 `;
 
-export const Title = styled.div``
+export const Title = styled.div`
+    font-weight: 500;
+    color: ${props => props.theme.colors.text};
+    margin: 10px;
+    padding: 10px;
+    font-size: 20px;
+`;

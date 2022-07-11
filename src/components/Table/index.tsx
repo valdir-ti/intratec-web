@@ -4,7 +4,7 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
-import { Title, CellWrapper, ProductImg, CellStatusWrapper } from './styles'
+import { Title, CellWrapper, ProductImg, CellStatusWrapper, Container } from './styles'
 
 interface ITableList {
     title: string
@@ -66,7 +66,7 @@ const TableList = ({ title }: ITableList) => {
     ]
 
     return (
-        <>
+        <Container>
             <Title>{title}</Title>
             <Table aria-label="simple table">
                 <TableHead>
@@ -103,7 +103,7 @@ const TableList = ({ title }: ITableList) => {
                 ))}
                 </TableBody>
             </Table>
-        </>
+        </Container>
     )
 }
 
