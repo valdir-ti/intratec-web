@@ -20,7 +20,6 @@ export const ContainerLogo = styled.div`
     justify-content: center;
     align-items: center;
 `;
-
 export const LinkStyle = styled(Link)<Props>`
     width: 100%;
     display: flex;
@@ -28,13 +27,9 @@ export const LinkStyle = styled(Link)<Props>`
     text-decoration: none;
     justify-content: ${props => props.open ? 'center' : 'flex-start'};
     color: ${props => props.theme.colors.menu};
-    &:hover,
-    &:focus{
-        color: ${props => props.theme.colors.menu};
+    &:hover {
+        color: ${props => props.theme.colors.secondText};
     }
-    &:active{
-        color: ${props => props.theme.colors.menu};
-    };
 `;
 export const ContainerLogoSpan = styled.div<Props>`
     width: 100%;
@@ -78,21 +73,31 @@ export const ContainerCenterLi = styled.li`
     cursor: pointer;
     width: 100%;
     font-weight: bold;
-    &:hover{
+    &:hover, &:active {
         background-color: ${props => props.theme.colors.hover};
-        color: ${props => props.theme.colors.menu};
+        color: ${props => props.theme.colors.secondText};
     }
-    `;
+`;
+export const ContainerCenterLiLogout = styled.li`
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: bold;
+    color: ${props => props.theme.colors.menu};
+    &:hover, &:active {
+        background-color: ${props => props.theme.colors.hover};
+        color: ${props => props.theme.colors.secondText};
+    }
+`;
 export const ContainerCenterSpan = styled.span<Props>`
     display: ${props => props.open ? 'block' : 'none'};
-    color: ${props => props.theme.colors.menu};
-
     @media only screen and (max-width: 550px) {
         display: block;
     }
 `;
 export const IconWrapper = styled.span<Props>`
-    color: ${props => props.theme.colors.menuIcon};
     font-weight: 600;
     font-size: 13px;
     margin-left: ${props => props.open ? '10px' : '20px'};

@@ -27,6 +27,7 @@ import {
   Title,
   ContainerCenterUl,
   ContainerCenterLi,
+  ContainerCenterLiLogout,
   ContainerCenterSpan,
   IconWrapper,
   MenuIconWrapper,
@@ -171,12 +172,12 @@ const Sidebar = ({ toggleTheme }: ISidebar) => {
                   <ContainerCenterSpan open={open}>Profile</ContainerCenterSpan>
               </LinkStyle>
             </ContainerCenterLi>
-          <ContainerCenterLi onClick={handleLogout} title={'Logout'}>
+          <ContainerCenterLiLogout onClick={handleLogout} title={'Logout'}>
             <IconWrapper open={open}>
               <ExitToApp />
             </IconWrapper>
             <ContainerCenterSpan open={open}>Logout</ContainerCenterSpan>
-          </ContainerCenterLi>
+          </ContainerCenterLiLogout>
         </ContainerCenterUl>
       </ContainerCenter>
       <ContainerBottom>
