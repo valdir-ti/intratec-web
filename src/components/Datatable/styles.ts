@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
 
 export const Container = styled.div`
@@ -6,8 +7,11 @@ export const Container = styled.div`
     background-color: black;
 `;
 
-export const Datagrid = styled(DataGrid)`
+export const LinkStyle = styled(Link)`
+    text-decoration: none;
+`
 
+export const Datagrid = styled(DataGrid)`
     & .active {
         color: green;
         background-color: rgba(0,128,0,0.19);
@@ -50,6 +54,11 @@ export const Datagrid = styled(DataGrid)`
             background-color: #00008b2e;
         }
     }
+    & .viewButtonLink {
+        &:visited {
+            color: #0000ee;
+        }
+    }
     & .deleteButton {
         display: flex;
         align-items: center;
@@ -59,12 +68,16 @@ export const Datagrid = styled(DataGrid)`
         height: 35px;
         padding: 5px 5px;
         border-radius: 5px;
-        color: darkred;
         color: crimson;
         border: 1px solid rgba(220,20,60,0.6);
         cursor: pointer;
         &:hover {
             background-color: #dc143c36;
+        }
+    }
+    & .deleteButtonLink {
+        &:visited {
+            color: crimson
         }
     }
 `;
