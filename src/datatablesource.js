@@ -1,3 +1,5 @@
+import Loading from "./components/Loading";
+
 export const userColumns = [
   { field: "id", headerName: "ID", width: 70 },
   {
@@ -10,14 +12,22 @@ export const userColumns = [
           className="cellWithImg"
           style={{ display: "flex", alignItems: "center" }}
         >
-          <img
-            className="cellImg"
-            src={params.row.img}
-            alt="avatar"
-            width={32}
-            height={32}
-            style={{ borderRadius: "50%", objectFit: "cover", marginRight: 20 }}
-          />
+          {params.row.img ? (
+            <img
+              className="cellImg"
+              src={params.row.img}
+              alt="avatar"
+              width={32}
+              height={32}
+              style={{
+                borderRadius: "50%",
+                objectFit: "cover",
+                marginRight: 20,
+              }}
+            />
+          ) : (
+            <Loading />
+          )}
           {params.row.username}
         </div>
       );
@@ -46,6 +56,7 @@ export const userColumns = [
     },
   },
 ];
+
 //temporary data
 export const userRows = [
   {
