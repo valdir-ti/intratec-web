@@ -10,7 +10,8 @@ const light = {
       border: '#ccc',
       hover: '#eddeff',
       logo: '#c4ade5',
-      menuIcon: '#d2bfed'
+      menuIcon: '#d2bfed',
+      navbar: '#d2bfed2e'
     },
 };
 

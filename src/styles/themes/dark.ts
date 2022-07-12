@@ -10,7 +10,8 @@ const dark = {
       border: '#999',
       hover: '#cfbae1',
       logo: '#d1b7f6',
-      menuIcon: '#ccbef2'
+      menuIcon: '#ccbef2',
+      navbar: '#3c34659e'
     },
 };
 

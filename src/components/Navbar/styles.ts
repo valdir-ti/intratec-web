@@ -12,7 +12,7 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: ${props => props.theme.colors.secondBackground};
+    background-color: ${props => props.theme.colors.navbar};
     color: ${props => props.theme.colors.menu};
 `
 export const Left = styled.div``

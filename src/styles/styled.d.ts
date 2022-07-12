@@ -14,6 +14,7 @@ declare module 'styled-components' {
       hover: string;
       logo: string;
       menuIcon: string;
+      navbar: string;
     }
   }
 }
