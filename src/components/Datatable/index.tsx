@@ -5,13 +5,25 @@ import { userRows, userColumns } from '../../datatablesource';
 
 import useConfirm from '../../hooks/useConfirmDialog';
 
+import Toaster from '../Toaster';
+
 import { Datagrid, LinkStyle } from './styles';
 
 const columns = userColumns
 
 const Datatable = () => {
 
-    const {ConfirmationDialog, confirm} = useConfirm(
+    const [open, setOpen] = useState(false);
+
+    const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+
+      setOpen(false);
+    };
+
+    const { ConfirmationDialog, confirm } = useConfirm(
       'Excluir',
       'Deseja realmente excluir o item selecionado?',
     );
@@ -22,6 +34,7 @@ const Datatable = () => {
       const confirmAnswer = await confirm()
       if(confirmAnswer){
         setData(data.filter((item) => item.id !== id));
+        setOpen(true);
       }
     };
 
@@ -55,6 +68,12 @@ const Datatable = () => {
           disableSelectionOnClick
         />
         <ConfirmationDialog />
+        <Toaster
+          open={open}
+          title='Item deletado com sucesso!'
+          severity='success'
+          onClose={handleClose}
+        />
       </Box>
     )
 }
