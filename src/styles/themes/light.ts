@@ -11,7 +11,17 @@ const light = {
       hover: '#eddeff',
       logo: '#c4ade5',
       menuIcon: '#d2bfed',
-      navbar: '#d2bfed2e'
+      navbar: '#d2bfed2e',
+      activeBackground: '#008000a3',
+      activeText: 'greenyellow',
+      pendingBackground: '#ffa500c4',
+      pendingText: '#f3f584',
+      passiveBackground: '#ff0000bf',
+      passiveText: '#db9999',
+      viewButton: '#087c0b',
+      viewButtonText: '#087c0b',
+      deleteButton: '#FF2323',
+      deleteButtonText: '#FF2323',
     },
 };
 

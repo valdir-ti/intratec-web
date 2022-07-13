@@ -11,7 +11,17 @@ const dark = {
       hover: '#cfbae1',
       logo: '#d1b7f6',
       menuIcon: '#ccbef2',
-      navbar: '#3c34659e'
+      navbar: '#3c34659e',
+      activeBackground: '#008000a3',
+      activeText: 'greenyellow',
+      pendingBackground: '#ffa500c4',
+      pendingText: '#f3f584',
+      passiveBackground: '#ff0000bf',
+      passiveText: '#db9999',
+      viewButton: '#FFF',
+      viewButtonText: '#FFF',
+      deleteButton: '#FF2323',
+      deleteButtonText: '#FF2323',
     },
 };
 

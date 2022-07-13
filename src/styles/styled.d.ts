@@ -15,6 +15,16 @@ declare module 'styled-components' {
       logo: string;
       menuIcon: string;
       navbar: string;
+      activeBackground: string;
+      activeText: string;
+      pendingBackground: string;
+      pendingText: string;
+      passiveBackground: string;
+      passiveText: string;
+      viewButton: string;
+      viewButtonText: string;
+      deleteButton: string;
+      deleteButtonText: string;
     }
   }
 }

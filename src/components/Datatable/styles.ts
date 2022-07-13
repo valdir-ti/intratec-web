@@ -12,23 +12,34 @@ export const LinkStyle = styled(Link)`
 `
 
 export const Datagrid = styled(DataGrid)`
+    & .MuiDataGrid-columnHeadersInner {
+        color: ${props => props.theme.colors.text};
+    }
+    & .MuiDataGrid-virtualScroller {
+        color: ${props => props.theme.colors.text};
+    }
+    & .MuiDataGrid-cell {
+        &:focus{
+            outline: none !important;
+        }
+    }
     & .active {
-        color: green;
-        background-color: rgba(0,128,0,0.19);
+        color: ${props => props.theme.colors.activeText};
+        background-color: ${props => props.theme.colors.activeBackground};
         padding: 4px;
         border-radius: 5px;
         font-size: 12px;
     }
     & .pending {
-        color: goldenrod;
-        background-color: rgba(255,217,0,0.1);
+        color: ${props => props.theme.colors.pendingText};
+        background-color: ${props => props.theme.colors.pendingBackground};
         padding: 4px;
         border-radius: 5px;
         font-size: 12px;
     }
     & .passive {
-        color: crimson;
-        background-color: rgba(255,0,0,0.5);
+        color: ${props => props.theme.colors.passiveText};
+        background-color: ${props => props.theme.colors.passiveBackground};
         padding: 4px;
         border-radius: 5px;
         font-size: 12px;
@@ -47,16 +58,19 @@ export const Datagrid = styled(DataGrid)`
         height: 35px;
         padding: 2px 5px;
         border-radius: 5px;
-        color: darkblue;
-        border: 1px solid rgba(0,0,139,0.6);
+        border: 1px solid ${props => props.theme.colors.viewButton};
         cursor: pointer;
         &:hover {
-            background-color: #00008b2e;
+            background-color: ${props => props.theme.colors.activeBackground};
+        }
+        &:visited {
+            color: ${props => props.theme.colors.viewButton};
         }
     }
     & .viewButtonLink {
+        color: ${props => props.theme.colors.viewButtonText};
         &:visited {
-            color: #0000ee;
+            color: ${props => props.theme.colors.viewButtonText};
         }
     }
     & .deleteButton {
@@ -68,16 +82,20 @@ export const Datagrid = styled(DataGrid)`
         height: 35px;
         padding: 5px 5px;
         border-radius: 5px;
-        color: crimson;
-        border: 1px solid rgba(220,20,60,0.6);
+        color: ${props => props.theme.colors.deleteButtonText};
+        border: 1px solid ${props => props.theme.colors.deleteButton};
         cursor: pointer;
-        &:hover {
-            background-color: #dc143c36;
+        &:hover, &:visited {
+            background-color: ${props => props.theme.colors.deleteButton};
+            color: #FFF;
+        }
+        &:visited {
+            color: ${props => props.theme.colors.deleteButton};
         }
     }
     & .deleteButtonLink {
         &:visited {
-            color: crimson
+            ${props => props.theme.colors.viewButtonText};
         }
     }
 `;
