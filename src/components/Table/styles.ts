@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Table from '@mui/material/Table';
 
 interface Props {
     value: string;
@@ -6,12 +7,21 @@ interface Props {
 
 export const Container = styled.div`
     width: 100%;
+    height: 100%;
     background-color: ${props => props.theme.colors.secondBackground};
+    overflow-x: auto;
 `;
 
 export const ContainerTable = styled.div`
+    color: ${props => props.theme.colors.text};
     overflow-x: auto;
 `;
+export const TableStyled = styled(Table)`
+
+    & .MuiTableCell-root {
+        color: ${props => props.theme.colors.text};
+    }
+`
 export const CellWrapper = styled.div`
     display: flex;
     align-items: center;

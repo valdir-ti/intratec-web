@@ -1,11 +1,9 @@
-import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
-import { Title, CellWrapper, ProductImg, CellStatusWrapper, Container, ContainerTable } from './styles'
-
+import * as S from './styles'
 interface ITableList {
     title: string
 }
@@ -66,10 +64,10 @@ const TableList = ({ title }: ITableList) => {
     ]
 
     return (
-        <Container>
-            <Title>{title}</Title>
-            <ContainerTable>
-                <Table aria-label="simple table">
+        <S.Container>
+            <S.Title>{title}</S.Title>
+            <S.ContainerTable>
+                <S.TableStyled aria-label="simple table">
                     <TableHead>
                         <TableRow>
                             <TableCell>Tracking ID</TableCell>
@@ -86,26 +84,26 @@ const TableList = ({ title }: ITableList) => {
                         <TableRow key={row.id}>
                             <TableCell>{row.id}</TableCell>
                             <TableCell>
-                                <CellWrapper>
-                                    <ProductImg src={row.img} alt={row.product} />
+                                <S.CellWrapper>
+                                    <S.ProductImg src={row.img} alt={row.product} />
                                     {row.product}
-                                </CellWrapper>
+                                </S.CellWrapper>
                             </TableCell>
                             <TableCell>{row.customer}</TableCell>
                             <TableCell>{row.date}</TableCell>
                             <TableCell>{row.amount}</TableCell>
                             <TableCell>{row.method}</TableCell>
                             <TableCell>
-                                <CellStatusWrapper value={row.status}>
+                                <S.CellStatusWrapper value={row.status}>
                                     {row.status}
-                                </CellStatusWrapper>
+                                </S.CellStatusWrapper>
                             </TableCell>
                         </TableRow>
                     ))}
                     </TableBody>
-                </Table>
-            </ContainerTable>
-        </Container>
+                </S.TableStyled>
+            </S.ContainerTable>
+        </S.Container>
     )
 }
 
