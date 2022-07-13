@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import {
-    Button, Dialog, DialogActions,
-    DialogContent, DialogContentText, DialogTitle,
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle,
 } from '@mui/material';
+
+import * as S from './styles';
 
 const useConfirm = (title: string, message: string) => {
 
@@ -27,7 +31,7 @@ const useConfirm = (title: string, message: string) => {
     }
 
     const ConfirmationDialog = () => (
-        <Dialog
+        <S.Container
             open={promise !== null}
             fullWidth
         >
@@ -36,10 +40,10 @@ const useConfirm = (title: string, message: string) => {
                 <DialogContentText>{message}</DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleConfirm}>Sim</Button>
-                <Button onClick={handleCancel}>Não</Button>
+                <S.DialogYesButton onClick={handleConfirm}>Sim</S.DialogYesButton>
+                <S.DialogNoButton onClick={handleCancel}>Não</S.DialogNoButton>
             </DialogActions>
-        </Dialog>
+        </S.Container>
     )
 
     return { confirm, ConfirmationDialog }
