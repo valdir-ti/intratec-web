@@ -3,10 +3,11 @@ import {
   KeyboardArrowUp,
 } from '@mui/icons-material';
 
-import { Left, Right, WidgetContainer, LeftTitle, LeftCounter, LeftLink, RightPercent, RightIconWrapper } from './styles'
+import * as S from './styles'
 
 type DataType = {
   title: string;
+  type: string;
   isMoney: boolean;
   amount: number;
   link: string;
@@ -20,24 +21,28 @@ interface IWidget {
 }
 
 const Widget = ({ data }: IWidget) => {
-
+  const { title, type, isMoney, amount, link, status, iconColor, fontIconColor, icon } = data;
   return (
-    <WidgetContainer>
-      <Left>
-        <LeftTitle>{data.title}</LeftTitle>
-        <LeftCounter>{data.isMoney && 'R$'} {data.amount}</LeftCounter>
-        <LeftLink>{data.link}</LeftLink>
-      </Left>
-      <Right>
-        <RightPercent status={data.status}>
-          {data.status === 'positive' ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+    <S.WidgetContainer>
+      <S.Left>
+        <S.LeftTitle>{title}</S.LeftTitle>
+        <S.LeftCounter>{isMoney && 'R$'} {amount}</S.LeftCounter>
+        <S.LeftLink>
+          <S.LinkStyled to={type}>
+            {link}
+          </S.LinkStyled>
+        </S.LeftLink>
+      </S.Left>
+      <S.Right>
+        <S.RightPercent status={status}>
+          {status === 'positive' ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
           20%
-        </RightPercent>
-        <RightIconWrapper color={data.iconColor} fontColor={data.fontIconColor}>
-          {data.icon}
-        </RightIconWrapper>
-      </Right>
-    </WidgetContainer>
+        </S.RightPercent>
+        <S.RightIconWrapper color={iconColor} fontColor={fontIconColor}>
+          {icon}
+        </S.RightIconWrapper>
+      </S.Right>
+    </S.WidgetContainer>
   )
 }
 

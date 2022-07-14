@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from 'react-router-dom'
 
 type Props = {
     status?: string;
@@ -17,6 +18,13 @@ export const WidgetContainer = styled.div`
     -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
     box-shadow: 0px 1px 8px -3px rgba(201, 201, 201, 0.47);
 `
+export const LinkStyled = styled(Link)`
+    text-decoration: none;
+    color: ${props => props.theme.colors.menu};
+    &:hover {
+        color: ${props => props.theme.colors.menuActive};
+    }
+`
 export const Left = styled.div`
     display: flex;
     flex-direction: column;
@@ -31,17 +39,17 @@ export const LeftTitle = styled.span`
 export const LeftCounter = styled.span`
     font-size: 28px;
     font-weight: 300;
-    `
+`
 export const LeftLink = styled.a`
     font-size: 12px;
     border-bottom: 1px solid gray;
     width: max-content;
-    `
+`
 export const Right = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    `
+`
 export const RightPercent = styled.div<Props>`
     display: flex;
     align-items: center;
