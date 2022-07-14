@@ -14,7 +14,7 @@ export const Container = styled.div`
 
 export const ContainerTable = styled.div`
     color: ${props => props.theme.colors.text};
-    overflow-x: auto;
+    padding: 20px 20px 50px 20px;
 `;
 export const TableStyled = styled(Table)`
 

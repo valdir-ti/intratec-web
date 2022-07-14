@@ -7,7 +7,7 @@ export const Container = styled.div`
   margin-top: 5px;
   gap: 10px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: .2fr 1fr 1fr;
+  grid-template-rows: .2fr 1fr auto;
   grid-template-areas:
     "content1 content2 content3 content4"
     "feature feature chart chart"
@@ -17,7 +17,7 @@ export const Container = styled.div`
 
   @media only screen and (max-width: 1200px) {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: auto;
     grid-template-areas:
       "content1 content2"
       "content3 content4"
@@ -28,7 +28,7 @@ export const Container = styled.div`
 
   @media only screen and (max-width: 550px) {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: auto;
     grid-template-areas:
       "content1"
       "content2"
