@@ -40,7 +40,7 @@ const Layout = ({ children }: any) => {
             <GlobalStyle />
             <Container open={open}>
                 <Nav>
-                    <Navbar />
+                    <Navbar toggleTheme={toggleTheme} theme={theme}/>
                 </Nav>
                 <SidebarStyled open={open}>
                     <Sidebar toggleTheme={toggleTheme} />

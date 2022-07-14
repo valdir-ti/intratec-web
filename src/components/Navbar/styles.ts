@@ -33,7 +33,7 @@ export const IconWrapper = styled.span<Props>`
         display: ${props => props.right ? 'block' : 'none'};
     }
     &:hover {
-        color: ${props => props.theme.colors.hover};
+        color: ${props => props.theme.colors.secondText};
     }
 `
 export const Avatar = styled.img`

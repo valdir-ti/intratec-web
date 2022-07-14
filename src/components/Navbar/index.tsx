@@ -4,7 +4,8 @@ import {
   LanguageOutlined,
   DarkModeOutlined,
   ChatBubbleOutline,
-  NotificationsOutlined
+  NotificationsOutlined,
+  LightModeOutlined
 } from '@mui/icons-material';
 import { useContext } from 'react'
 
@@ -21,13 +22,26 @@ import {
   Avatar
 } from './styles'
 
-const Navbar = () => {
+interface INavbar {
+  toggleTheme: (theme: string) => void;
+  theme: any;
+}
+
+const Navbar = ({ toggleTheme, theme }: INavbar) => {
 
   const sidebarContext = useContext(SidebarContext);
   const { state: { open }, dispatch } = sidebarContext;
 
   function handleToggle () {
     dispatch({ type: 'TOGGLE_SIDEBAR' })
+  }
+
+  function handleTheme() {
+    if (theme.title === 'light') {
+      toggleTheme('dark');
+    }else{
+      toggleTheme('light');
+    }
   }
 
   return (
@@ -44,8 +58,8 @@ const Navbar = () => {
         <IconWrapper right hover title='Language Selector'>
           <LanguageOutlined />
         </IconWrapper>
-        <IconWrapper right hover title='Dark Mode'>
-          <DarkModeOutlined />
+        <IconWrapper right hover title='Dark Mode' onClick={handleTheme}>
+          {theme.title === 'dark' ? <LightModeOutlined /> : <DarkModeOutlined />}
         </IconWrapper>
         <IconWrapper right hover title='Notifications'>
           <NotificationsOutlined />
