@@ -39,6 +39,7 @@ export const CellStatusWrapper = styled.div<Props>`
     padding: 5px;
     border-radius: 5px;
     font-weight: 600;
+    text-align: center;
 `;
 
 export const Title = styled.div`
