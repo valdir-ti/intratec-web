@@ -1,14 +1,15 @@
 import Layout from '../../pages/Layout'
 import Datatable from '../Datatable'
-import { Container } from './styles'
+
+import * as S from './styles'
 
 const List = () => {
-
   return (
     <Layout>
-      <Container>
+      <S.Container>
+        <S.LinkStyled to='/users/new'><S.PlusIcon />Add new user</S.LinkStyled>
         <Datatable />
-      </Container>
+      </S.Container>
     </Layout>
   )
 }

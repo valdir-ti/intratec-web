@@ -6,6 +6,7 @@ import {
   Navigate
 } from "react-router-dom";
 
+import New from "../New";
 import List from "../List";
 import Single from "../Single";
 import NotFound from "../NotFound";
@@ -45,6 +46,14 @@ const AppRoutes = () => {
                 element={
                   <RequireAuth>
                     <List />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="new"
+                element={
+                  <RequireAuth>
+                    <New />
                   </RequireAuth>
                 }
               />
