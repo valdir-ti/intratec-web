@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { auth, googleProvider, githubProvider } from '../../firebase'
+import { auth, googleProvider, githubProvider, facebookProvider } from '../../firebase'
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth"
 
 import { AuthContext } from '../../context/authentication/authContext'
@@ -63,13 +63,15 @@ const Login = () => {
       console.log('Error => ', error)
     })
   }
-
-  // MjHwYCAKw4bMLMUdnZOuoZrtlxV2
   const handleLoginFacebook = () => {
-    handleFunctionality()
-    console.log('Login with Facebook')
+    signInWithPopup(auth, facebookProvider).then((result) => {
+      const user = result.user;
+      dispatch({type: "LOGIN", payload: user})
+      navigate('/')
+    }).catch((error) => {
+      console.log('Error => ', error)
+    })
   }
-
   const handleForgot = () => {
     handleFunctionality()
     console.log('handleForgot')
