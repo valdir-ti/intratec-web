@@ -1,9 +1,8 @@
 import { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Google, Facebook, GitHub } from '@mui/icons-material'
 
-import { auth } from '../../firebase'
-import { signInWithEmailAndPassword } from "firebase/auth"
+import { auth, googleProvider } from '../../firebase'
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth"
 
 import { AuthContext } from '../../context/authentication/authContext'
 
@@ -39,10 +38,10 @@ const Login = () => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorCode, errorMessage)
-      setTimeout(() => {
-        setError(false)
-        setErrorMessage('')
-      }, 2500)
+      // setTimeout(() => {
+      //   setError(false)
+      //   setErrorMessage('')
+      // }, 2500)
     });
   }
 
@@ -50,10 +49,17 @@ const Login = () => {
     handleFunctionality()
     console.log('Login with Github')
   }
-  const handleLoginGoogle = () => {
-    handleFunctionality()
-    console.log('Login with Google')
+  const handleLoginGoogle = async () => {
+    signInWithPopup(auth, googleProvider).then((result) => {
+      const user = result.user;
+      dispatch({type: "LOGIN", payload: user})
+      navigate('/')
+    }).catch((error) => {
+      console.log('Error => ', error)
+    })
   }
+
+  // MjHwYCAKw4bMLMUdnZOuoZrtlxV2
   const handleLoginFacebook = () => {
     handleFunctionality()
     console.log('Login with Facebook')

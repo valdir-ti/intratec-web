@@ -9,9 +9,11 @@ import {
 } from '@mui/icons-material';
 import { useContext } from 'react'
 
-
 import { SidebarContext } from '../../context/sidebar/sidebarContext';
+import { AuthContext } from '../../context/authentication/authContext';
 import Counter from '../Counter';
+
+import GenericaAvatar from '../../assets/generic-avatar.png';
 
 import {
   Container,
@@ -31,6 +33,7 @@ const Navbar = ({ toggleTheme, theme }: INavbar) => {
 
   const sidebarContext = useContext(SidebarContext);
   const { state: { open }, dispatch } = sidebarContext;
+  const { state: { currentUser } } = useContext(AuthContext);
 
   function handleToggle () {
     dispatch({ type: 'TOGGLE_SIDEBAR' })
@@ -72,10 +75,10 @@ const Navbar = ({ toggleTheme, theme }: INavbar) => {
         <IconWrapper right hover title='User Settings'>
           <ListOutlined />
         </IconWrapper>
-        <IconWrapper right title='Avatar user'>
+        <IconWrapper right title={`Avatar de ${currentUser.displayName}`}>
           <Avatar
-            src={'https://avatars.githubusercontent.com/u/11434239?v=4'}
-            alt="Avatar"
+            src={currentUser.photoURL || GenericaAvatar}
+            alt={`Avatar de ${currentUser.displayName}`}
           />
         </IconWrapper>
       </Right>

@@ -89,7 +89,7 @@ export const Form = styled.form`
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 200px;
+    height: 250px;
     @media only screen and (max-width: 550px) {
         height: 60%;
         justify-content: space-evenly;
@@ -106,7 +106,7 @@ export const Title = styled.h1`
 
 export const Input = styled.input`
     width: 200px;
-    height: 30px;
+    height: 35px;
     margin: 10px;
     border-radius: 5px;
     border-width: 0.1px;
@@ -141,7 +141,7 @@ export const Error = styled.div`
     font-size: 12px;
     color: red;
     font-weight: bold;
-    bottom: 165px;
+    bottom: 150px;
     @media only screen and (max-width: 550px) {
         bottom: 95px;
     }
