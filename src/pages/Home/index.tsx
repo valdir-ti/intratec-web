@@ -93,7 +93,7 @@ const Home = () => {
             <Feature />
           </FeatureStyled>
           <ChartStyled>
-            <Chart />
+            <Chart aspect={2 / 1} title='Last 6 months (Revenue)'/>
           </ChartStyled>
           <ListStyled>
             <TableList title='Last Transactions'/>

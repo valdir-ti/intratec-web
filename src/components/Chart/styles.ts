@@ -13,4 +13,8 @@ export const ChartTitle = styled.div`
     padding: 10px;
     font-size: 15px;
     color: ${props => props.theme.colors.text};
+
+    @media only screen and (max-width: 280px) {
+        font-size: 12px;
+    }
 `;

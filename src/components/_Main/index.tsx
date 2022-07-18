@@ -7,7 +7,7 @@ const Main = () => {
   return (
     <Container>
       <Feature />
-      <Chart />
+      <Chart aspect={2 / 1} title='Last 6 months (Revenue)' />
     </Container>
   )
 }

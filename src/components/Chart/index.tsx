@@ -35,11 +35,11 @@ const data = [
   },
 ];
 
-const Chart = () => {
+const Chart = ({ aspect, title }: any) => {
   return (
     <Container>
-      <ChartTitle>Last 6 months (Revenue)</ChartTitle>
-      <ResponsiveContainer width="100%" aspect={2/1}>
+      <ChartTitle>{title}</ChartTitle>
+      <ResponsiveContainer aspect={aspect}>
         <AreaChart data={data}>
             <defs>
                 <linearGradient id="total" x1="0" y1="0" x2="0" y2="1">
