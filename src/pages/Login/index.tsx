@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { auth, googleProvider } from '../../firebase'
+import { auth, googleProvider, githubProvider } from '../../firebase'
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth"
 
 import { AuthContext } from '../../context/authentication/authContext'
@@ -38,16 +38,21 @@ const Login = () => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorCode, errorMessage)
-      // setTimeout(() => {
-      //   setError(false)
-      //   setErrorMessage('')
-      // }, 2500)
+      setTimeout(() => {
+        setError(false)
+        setErrorMessage('')
+      }, 2500)
     });
   }
 
   const handleLoginGithub = () => {
-    handleFunctionality()
-    console.log('Login with Github')
+    signInWithPopup(auth, githubProvider).then((result) => {
+      const user = result.user;
+      dispatch({type: "LOGIN", payload: user})
+      navigate('/')
+    }).catch((error) => {
+      console.log('Error => ', error)
+    })
   }
   const handleLoginGoogle = async () => {
     signInWithPopup(auth, googleProvider).then((result) => {
