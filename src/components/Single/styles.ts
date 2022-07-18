@@ -11,8 +11,8 @@ export const Container = styled.div`
     grid-template-areas:
         "topDetails topChart"
         "bottom bottom";
-    grid-template-columns: .5fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 2fr;
     background-color: ${props => props.theme.colors.background};
     color: ${props => props.theme.colors.menu};
 
@@ -87,7 +87,6 @@ export const TopSecondLine = styled.div`
 `
 export const TopChart = styled.div<Props>`
     grid-area: topChart;
-    width: 100vw;
     -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
     box-shadow: 0px 1px 8px -3px rgba(201, 201, 201, 0.47);
 
@@ -127,6 +126,9 @@ export const TopDetailsTitle = styled.h1`
     @media only screen and (max-width: 550px) {
         margin-bottom: 12px;
     }
+    @media only screen and (max-width: 280px) {
+        font-size: 18px;
+    }
 `
 export const TopDetailsItems = styled.div`
     width: 60%;
@@ -147,12 +149,18 @@ export const TopDetailsItem = styled.h1`
         margin-bottom: 10px;
         font-size: 12px;
     }
+    @media only screen and (max-width: 280px) {
+        font-size: 11px;
+    }
 `
 export const TopDetailsItemKey = styled.h1`
     font-weight: bold;
     font-size: 14px;
     @media only screen and (max-width: 550px) {
         font-size: 13px;
+    }
+    @media only screen and (max-width: 280px) {
+        font-size: 11px;
     }
 `
 export const TopImage = styled.img`
@@ -166,6 +174,13 @@ export const TopImage = styled.img`
         margin: 0;
         width: 72px;
         height: 72px;
+    }
+    @media only screen and (max-width: 280px) {
+        margin-top: 20px;
+        margin-right: 10px;
+        margin-left: 10px;
+        width: 56px;
+        height: 56px;
     }
 `
 export const EditButton = styled.button`
@@ -181,7 +196,6 @@ export const EditButton = styled.button`
 `
 export const Bottom = styled.div<Props>`
     grid-area: bottom;
-    width: 100vw;
     -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
     box-shadow: 0px 1px 8px -3px rgba(201, 201, 201, 0.47);
 
