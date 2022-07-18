@@ -44,13 +44,21 @@ const Login = () => {
       }, 2500)
     });
   }
-
+  
   const handleLoginGithub = () => {
     signInWithPopup(auth, githubProvider).then((result) => {
       const user = result.user;
       dispatch({type: "LOGIN", payload: user})
       navigate('/')
     }).catch((error) => {
+      if (error.code === 'auth/account-exists-with-different-credential') {
+        setError(true)
+        setErrorMessage('Email já cadastrado com outra conta!')
+        setTimeout(() => {
+          setError(false)
+          setErrorMessage('')
+        }, 2500)
+      }
       console.log('Error => ', error)
     })
   }
@@ -69,6 +77,14 @@ const Login = () => {
       dispatch({type: "LOGIN", payload: user})
       navigate('/')
     }).catch((error) => {
+      if (error.code === 'auth/account-exists-with-different-credential') {
+        setError(true)
+        setErrorMessage('Email já cadastrado com outra conta!')
+        setTimeout(() => {
+          setError(false)
+          setErrorMessage('')
+        }, 2500)
+      }
       console.log('Error => ', error)
     })
   }
