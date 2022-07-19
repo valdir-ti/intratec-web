@@ -1,13 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { auth, db } from '../../firebase';
-import { addDoc, collection, doc, serverTimestamp, setDoc } from 'firebase/firestore'
+import { auth, db, storage } from '../../firebase';
+import { doc, serverTimestamp, setDoc } from 'firebase/firestore'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 
 import Layout from '../../pages/Layout'
 
 import * as S from './styles'
+import CustomizedProgressBars from '../CustomizedCirculrProgress';
 
 interface INew {
     inputs: any;
@@ -18,6 +19,7 @@ const New = ({ inputs, title }: INew) => {
 
     const [file, setFile] = useState<File | null>()
     const [data, setData] = useState<any>({})
+    const [percentage, setPercentage] = useState<any>(null)
 
     const handleFile = (e: any) => {
         if(!e.target.files) return
@@ -44,6 +46,44 @@ const New = ({ inputs, title }: INew) => {
 
         setData({...data, [id]: value})
     }
+
+    useEffect(() => {
+        const uploadFile = () => {
+            const name = new Date().getTime() + Math.floor(Math.random() * 1000);
+            const storageRef = ref(storage, String(name));
+            const uploadTask = uploadBytesResumable(storageRef, file!);
+
+            uploadTask.on('state_changed',
+                (snapshot) => {
+                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    console.log('Upload is ' + progress + '% done');
+                    setPercentage(progress)
+                    switch (snapshot.state) {
+                        case 'paused':
+                            console.log('Upload is paused');
+                            break;
+                        case 'running':
+                            console.log('Upload is running');
+                            break;
+                        default:
+                            break;
+                    }
+                },
+                (error) => {
+                    console.log('Error => ', error)
+                },
+                () => {
+                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                        setData({...data, photoUrl: downloadURL})
+                    });
+                }
+            );
+
+        }
+        file && uploadFile()
+    }, [file])
+
+    const validatePercentage = percentage !== null && percentage < 100
 
     return (
         <Layout>
@@ -87,7 +127,12 @@ const New = ({ inputs, title }: INew) => {
                             ))}
 
                             <S.BottomRightFormButtonContainer>
-                                <S.BottomRightFormButton type='submit'>Send</S.BottomRightFormButton>
+                                <S.BottomRightFormButton
+                                    disabled={validatePercentage}
+                                    type='submit'
+                                >
+                                    {validatePercentage ? <CustomizedProgressBars size={16}/> : 'Send'}
+                                </S.BottomRightFormButton>
                             </S.BottomRightFormButtonContainer>
                         </S.BottomRightForm>
                     </S.BottomRight>

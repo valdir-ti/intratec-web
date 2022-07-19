@@ -120,4 +120,7 @@ export const BottomRightFormButton = styled.button`
         background-color: ${props => props.theme.colors.secondBackground};
         color: ${props => props.theme.colors.hover};
     }
+    &:disabled {
+        background-color: ${props => props.theme.colors.activeBackground};
+    }
 `
