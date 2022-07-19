@@ -141,7 +141,7 @@ const Login = () => {
             </S.RememberLabel>
             <S.ForgotButton onClick={handleForgot}>Forgot Password?</S.ForgotButton>
           </S.Actions>
-          <S.Button type='submit'>{loading ? <CustomizedProgressBars size={18}/> : 'Login'}</S.Button>
+          <S.Button type='submit'>{loading ? <CustomizedProgressBars size={16}/> : 'Login'}</S.Button>
           <S.SocialLogin>
             <S.SocialLoginTitle>or sign up using</S.SocialLoginTitle>
             <S.SocialLoginIcons>
