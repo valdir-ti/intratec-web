@@ -13,6 +13,19 @@ export const Container = styled.div`
     @media only screen and (max-width: 550px) {
         width: 200px;
     }
+
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background-color: ${props => props.theme.colors.secondBackground};
+        border-radius: 50px;
+    }
+    ::-webkit-scrollbar-thumb {
+        border-radius: 20px;
+        border: 2px solid ${props => props.theme.colors.menu};
+        background-color: ${props => props.theme.colors.menu};
+    }
 `;
 export const ContainerLogo = styled.div`
     height: 60px;

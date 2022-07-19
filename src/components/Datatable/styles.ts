@@ -17,6 +17,20 @@ export const Datagrid = styled(DataGrid)`
     }
     & .MuiDataGrid-virtualScroller {
         color: ${props => props.theme.colors.text};
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background-color: ${props => props.theme.colors.secondBackground};
+            border-radius: 50px;
+        }
+        ::-webkit-scrollbar-thumb {
+            border-radius: 20px;
+            border: 2px solid ${props => props.theme.colors.menu};
+            background-color: ${props => props.theme.colors.menu};
+        }
     }
     & .MuiDataGrid-cell {
         &:focus{
@@ -97,5 +111,18 @@ export const Datagrid = styled(DataGrid)`
         &:visited {
             ${props => props.theme.colors.viewButtonText};
         }
+    }
+
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background-color: ${props => props.theme.colors.secondBackground};
+        border-radius: 50px;
+    }
+    ::-webkit-scrollbar-thumb {
+        border-radius: 20px;
+        border: 2px solid ${props => props.theme.colors.menu};
+        background-color: ${props => props.theme.colors.menu};
     }
 `;
