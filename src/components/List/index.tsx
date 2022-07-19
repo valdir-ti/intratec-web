@@ -3,11 +3,17 @@ import Datatable from '../Datatable'
 
 import * as S from './styles'
 
-const List = () => {
+interface IList {
+  item: string;
+  slug: string;
+}
+
+const List = ({ item, slug }: IList) => {
+
   return (
     <Layout>
       <S.Container>
-        <S.LinkStyled to='/users/new'><S.PlusIcon />Add new user</S.LinkStyled>
+        <S.LinkStyled to={`/${slug}/new`}><S.PlusIcon />{`Add new ${item}`}</S.LinkStyled>
         <Datatable />
       </S.Container>
     </Layout>

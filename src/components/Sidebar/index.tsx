@@ -11,7 +11,8 @@ import {
   SettingsApplications,
   SettingsSystemDaydream,
   Store,
-  Close
+  Close,
+  Business
 } from '@mui/icons-material';
 
 import useConfirm from '../../hooks/useConfirmDialog';
@@ -111,6 +112,14 @@ const Sidebar = ({ toggleTheme }: ISidebar) => {
                       <Store />
                     </IconWrapper>
                     <ContainerCenterSpan open={open}>Products</ContainerCenterSpan>
+                </LinkStyle>
+              </ContainerCenterLi>
+              <ContainerCenterLi title={'Companies'} onClick={closeSidebar}>
+                <LinkStyle to='/companies'>
+                    <IconWrapper open={open}>
+                      <Business />
+                    </IconWrapper>
+                    <ContainerCenterSpan open={open}>Companies</ContainerCenterSpan>
                 </LinkStyle>
               </ContainerCenterLi>
               <ContainerCenterLi title={'Orders'} onClick={closeSidebar}>

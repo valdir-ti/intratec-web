@@ -47,7 +47,7 @@ const AppRoutes = () => {
                 index
                 element={
                   <RequireAuth>
-                    <List />
+                    <List item="User" slug="users" />
                   </RequireAuth>
                 }
               />
@@ -73,7 +73,7 @@ const AppRoutes = () => {
                 index
                 element={
                   <RequireAuth>
-                    <List />
+                    <List item="Product" slug="products" />
                   </RequireAuth>
                 }
               />
@@ -94,12 +94,46 @@ const AppRoutes = () => {
                 }
               />
             </Route>
+            <Route path="companies">
+              <Route
+                index
+                element={
+                  <RequireAuth>
+                    <List item="Company" slug="companies" />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="new"
+                element={
+                  <RequireAuth>
+                    <New inputs={productInputs} title="Add new company"/>
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path=":companyId"
+                element={
+                  <RequireAuth>
+                    <Single />
+                  </RequireAuth>
+                }
+              />
+            </Route>
             <Route path="orders">
               <Route
                 index
                 element={
                   <RequireAuth>
-                    <List />
+                    <List item="Order" slug="orders" />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="new"
+                element={
+                  <RequireAuth>
+                    <New inputs={productInputs} title="Add new order"/>
                   </RequireAuth>
                 }
               />
@@ -117,7 +151,7 @@ const AppRoutes = () => {
                 index
                 element={
                   <RequireAuth>
-                    <List />
+                    <List item="User" slug="users"/>
                   </RequireAuth>
                 }
               />
@@ -135,7 +169,7 @@ const AppRoutes = () => {
                 index
                 element={
                   <RequireAuth>
-                    <List />
+                    <List item="User" slug="users"/>
                   </RequireAuth>
                 }
               />
@@ -153,7 +187,7 @@ const AppRoutes = () => {
                 index
                 element={
                   <RequireAuth>
-                    <List />
+                    <List item="User" slug="users"/>
                   </RequireAuth>
                 }
               />
@@ -171,7 +205,7 @@ const AppRoutes = () => {
                 index
                 element={
                   <RequireAuth>
-                    <List />
+                    <List item="User" slug="users"/>
                   </RequireAuth>
                 }
               />
@@ -189,7 +223,7 @@ const AppRoutes = () => {
                 index
                 element={
                   <RequireAuth>
-                    <List />
+                    <List item="User" slug="users"/>
                   </RequireAuth>
                 }
               />
@@ -199,7 +233,7 @@ const AppRoutes = () => {
                 index
                 element={
                   <RequireAuth>
-                    <List />
+                    <List item="User" slug="users"/>
                   </RequireAuth>
                 }
               />
