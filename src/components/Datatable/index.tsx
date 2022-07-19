@@ -1,25 +1,28 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Box from '@mui/material/Box';
-import { userRows, userColumns } from '../../datatablesource';
+import { userColumns } from '../../datatablesource';
+
+import { collection, onSnapshot } from "firebase/firestore";
 
 import useConfirm from '../../hooks/useConfirmDialog';
 
 import Toaster from '../Toaster';
 
 import { Datagrid, LinkStyle } from './styles';
+import { db } from '../../firebase';
 
 const columns = userColumns
 
 const Datatable = () => {
 
+    const [data, setData] = useState<any[]>([])
     const [open, setOpen] = useState(false);
 
     const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
       if (reason === 'clickaway') {
         return;
       }
-
       setOpen(false);
     };
 
@@ -28,15 +31,30 @@ const Datatable = () => {
       'Deseja realmente excluir o item selecionado?',
     );
 
-    const [data, setData] = useState(userRows);
-
     const handleDelete = async (id: number) => {
       const confirmAnswer = await confirm()
       if(confirmAnswer){
-        setData(data.filter((item) => item.id !== id));
+        setData(data.filter((item: any) => item.id !== id));
         setOpen(true);
       }
     };
+
+    useEffect(() => {
+      const unsub = onSnapshot(
+        collection(db, 'users'),
+        (snapshot) => {
+            let list: any = []
+            snapshot.docs.forEach(doc => {
+                list.push({ id: doc.id, ...doc.data() })
+            })
+            setData(list)
+        }, (err) => {
+            console.log('Error =>', err)
+        })
+        return () => {
+            unsub()
+        }
+    }, []);
 
     const actionColumn = [
         {

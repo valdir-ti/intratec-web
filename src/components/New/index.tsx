@@ -43,7 +43,6 @@ const New = ({ inputs, title }: INew) => {
     const handleInput = (e: any) => {
         const id = e.target.id
         const value = e.target.value
-
         setData({...data, [id]: value})
     }
 
@@ -74,7 +73,7 @@ const New = ({ inputs, title }: INew) => {
                 },
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                        setData({...data, photoUrl: downloadURL})
+                        setData({...data, img: downloadURL})
                     });
                 }
             );
