@@ -16,7 +16,8 @@ export const Container = styled.div`
 `;
 
 export const LinkStyled = styled(Link)`
-    color: #fff;
+    color: ${props => props.theme.colors.text};
+    background-color: ${props => props.theme.colors.background};
     text-decoration: none;
     font-size: 1.2rem;
     cursor: pointer;
@@ -28,7 +29,7 @@ export const LinkStyled = styled(Link)`
     padding: 8px;
     border-radius: 5px;
     &:hover {
-        color: ${props => props.theme.colors.menu};
+        color: ${props => props.theme.colors.activeText};
         background-color: ${props => props.theme.colors.secondText};
     }
 `
