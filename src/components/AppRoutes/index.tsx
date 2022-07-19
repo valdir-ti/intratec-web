@@ -15,6 +15,8 @@ import Login from "../../pages/Login";
 
 import { AuthContext } from '../../context/authentication/authContext';
 
+import { productInputs, userInputs } from "../../formSource";
+
 import './styles';
 
 const AppRoutes = () => {
@@ -53,7 +55,7 @@ const AppRoutes = () => {
                 path="new"
                 element={
                   <RequireAuth>
-                    <New />
+                    <New inputs={userInputs} title="Add new user"/>
                   </RequireAuth>
                 }
               />
@@ -72,6 +74,14 @@ const AppRoutes = () => {
                 element={
                   <RequireAuth>
                     <List />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="new"
+                element={
+                  <RequireAuth>
+                    <New inputs={productInputs} title="Add new product"/>
                   </RequireAuth>
                 }
               />
