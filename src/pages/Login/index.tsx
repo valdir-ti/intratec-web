@@ -1,6 +1,8 @@
 import { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+import CustomizedProgressBars from '../../components/CustomizedCirculrProgress';
+
 import { auth, googleProvider, githubProvider, facebookProvider } from '../../firebase'
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth"
 
@@ -17,6 +19,7 @@ const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [checked, setChecked] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const { state: { currentUser }, dispatch } = useContext(AuthContext)
 
@@ -24,6 +27,7 @@ const Login = () => {
 
   const handleLogin = (e: any) => {
     e.preventDefault()
+    setLoading(true)
     setError(false)
 
     signInWithEmailAndPassword(auth, email, password)
@@ -33,6 +37,7 @@ const Login = () => {
       navigate('/')
     })
     .catch((error) => {
+      setLoading(false)
       setError(true)
       setErrorMessage('Email e/ou Password inválidos!')
       const errorCode = error.code;
@@ -44,13 +49,15 @@ const Login = () => {
       }, 2500)
     });
   }
-  
+
   const handleLoginGithub = () => {
+    setLoading(true)
     signInWithPopup(auth, githubProvider).then((result) => {
       const user = result.user;
       dispatch({type: "LOGIN", payload: user})
       navigate('/')
     }).catch((error) => {
+      setLoading(false)
       if (error.code === 'auth/account-exists-with-different-credential') {
         setError(true)
         setErrorMessage('Email já cadastrado com outra conta!')
@@ -63,20 +70,24 @@ const Login = () => {
     })
   }
   const handleLoginGoogle = async () => {
+    setLoading(true)
     signInWithPopup(auth, googleProvider).then((result) => {
       const user = result.user;
       dispatch({type: "LOGIN", payload: user})
       navigate('/')
     }).catch((error) => {
+      setLoading(false)
       console.log('Error => ', error)
     })
   }
   const handleLoginFacebook = () => {
+    setLoading(true)
     signInWithPopup(auth, facebookProvider).then((result) => {
       const user = result.user;
       dispatch({type: "LOGIN", payload: user})
       navigate('/')
     }).catch((error) => {
+      setLoading(false)
       if (error.code === 'auth/account-exists-with-different-credential') {
         setError(true)
         setErrorMessage('Email já cadastrado com outra conta!')
@@ -130,7 +141,7 @@ const Login = () => {
             </S.RememberLabel>
             <S.ForgotButton onClick={handleForgot}>Forgot Password?</S.ForgotButton>
           </S.Actions>
-          <S.Button type='submit'>Login</S.Button>
+          <S.Button type='submit'>{loading ? <CustomizedProgressBars size={18}/> : 'Login'}</S.Button>
           <S.SocialLogin>
             <S.SocialLoginTitle>or sign up using</S.SocialLoginTitle>
             <S.SocialLoginIcons>

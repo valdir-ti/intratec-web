@@ -14,15 +14,14 @@ export const Container = styled.div`
         width: 96vw;
         height: 97vh;
     }
-    `
-
+`
 export const ColumnOne = styled.div`
     height: 500px;
     width: 350px;
     @media only screen and (max-width: 550px) {
         height: 250px;
     }
-    `
+`
 export const Background = styled.img`
     height: 100%;
     width: 100%;
@@ -33,7 +32,7 @@ export const Background = styled.img`
         border-bottom-right-radius: 5px;
         border-top-left-radius: 0px;
     }
-    `
+`
 export const Actions = styled.div`
     display: flex;
     align-items: center;
@@ -82,7 +81,7 @@ export const ColumnTwo = styled.div`
         border-top-left-radius: 5px;
         border-bottom-right-radius: 0px;
     }
-    `
+`
 export const Form = styled.form`
     display: flex;
     flex-direction: column;
@@ -91,7 +90,7 @@ export const Form = styled.form`
     width: 100%;
     height: 250px;
     @media only screen and (max-width: 550px) {
-        height: 60%;
+        height: 75%;
         justify-content: space-evenly;
     }
 `
@@ -126,7 +125,7 @@ export const Button = styled.button`
     cursor: pointer;
     font-weight: bold;
     width: 212px;
-    height: 35px;
+    height: 40px;
     margin: 0px;
     border-radius: 5px;
     border-width: 1px;
@@ -143,7 +142,7 @@ export const Error = styled.div`
     font-weight: bold;
     bottom: 150px;
     @media only screen and (max-width: 550px) {
-        bottom: 95px;
+        bottom: 80px;
     }
 `
 export const SocialLogin = styled.div`
