@@ -2,14 +2,15 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 
 import { auth, db, storage } from '../../firebase';
-import { doc, serverTimestamp, setDoc } from 'firebase/firestore'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { doc, serverTimestamp, setDoc } from 'firebase/firestore'
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 
+import Toaster from '../Toaster';
 import Layout from '../../pages/Layout'
+import CustomizedProgressBars from '../CustomizedCirculrProgress';
 
 import * as S from './styles'
-import CustomizedProgressBars from '../CustomizedCirculrProgress';
 
 interface INew {
     inputs: any;
@@ -23,6 +24,17 @@ const New = ({ inputs, title }: INew) => {
     const [file, setFile] = useState<File | null>()
     const [data, setData] = useState<any>({})
     const [percentage, setPercentage] = useState<any>(null)
+    const [toasterMessage, setToasterMessage] = useState<string>("")
+    const [toasterSeverity, setToasterSeverity] = useState<string>("")
+    const [open, setOpen] = useState<boolean>(false)
+    const [loading, setLoading] = useState<boolean>(false)
+
+    const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+        if (reason === 'clickaway') {
+          return;
+        }
+        setOpen(false);
+      };
 
     const handleFile = (e: any) => {
         if(!e.target.files) return
@@ -31,6 +43,15 @@ const New = ({ inputs, title }: INew) => {
 
     const handleAdd = async (e: any) => {
         e.preventDefault()
+        setLoading(true)
+
+        if(!file){
+            setToasterMessage("Selecione um arquivo")
+            setToasterSeverity("error")
+            setOpen(true)
+            setLoading(false)
+            return
+        }
 
         try {
             const res = await createUserWithEmailAndPassword(auth, data.email, data.password)
@@ -131,16 +152,22 @@ const New = ({ inputs, title }: INew) => {
 
                             <S.BottomRightFormButtonContainer>
                                 <S.BottomRightFormButton
-                                    disabled={validatePercentage}
+                                    disabled={validatePercentage || loading}
                                     type='submit'
                                 >
-                                    {validatePercentage ? <CustomizedProgressBars size={16}/> : 'Send'}
+                                    {validatePercentage || loading ? <CustomizedProgressBars size={16}/> : 'Send'}
                                 </S.BottomRightFormButton>
                             </S.BottomRightFormButtonContainer>
                         </S.BottomRightForm>
                     </S.BottomRight>
                 </S.Bottom>
             </S.Container>
+            <Toaster
+                open={open}
+                title={toasterMessage}
+                severity={toasterSeverity}
+                onClose={handleClose}
+            />
         </Layout>
     )
 }
