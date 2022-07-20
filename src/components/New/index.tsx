@@ -3,9 +3,8 @@ import { useLocation, useNavigate } from 'react-router-dom'
 
 import { auth, db, storage } from '../../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth'
-import { doc, serverTimestamp, setDoc } from 'firebase/firestore'
+import { doc, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore'
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
-import { getDatabase, ref as databaseRef, set } from "firebase/database";
 
 import Toaster from '../Toaster';
 import Layout from '../../pages/Layout'
@@ -46,6 +45,7 @@ const New = ({ inputs, title}: INew) => {
 
     const handleEdit = async (e: any) => {
         e.preventDefault()
+        setLoading(true)
 
         if(!data.img){
             setToasterMessage("Selecione um arquivo")
@@ -64,16 +64,16 @@ const New = ({ inputs, title}: INew) => {
         }
 
         if(JSON.stringify(data) !== JSON.stringify(location.state)){
-            console.log('data to be updated => ', data)
-
-            const db = getDatabase();
-            set(databaseRef(db, 'users/' + data.id), {...data})
-                .then((res) => {
-                    console.log('updated => ', res)
-                })
-                .catch((err) => {
-                    console.log('Error => ', err)
-            }   );
+            const usersRef = doc(db, "users", data.id);
+            await updateDoc(usersRef, {
+                ...data,
+            });
+            setOpen(true)
+            setToasterMessage("Item atualizado com sucesso!")
+            setToasterSeverity("success")
+            setTimeout(() => {
+                navigate('/users')
+            }, 1500)
         }
     }
 
@@ -104,9 +104,20 @@ const New = ({ inputs, title}: INew) => {
                 id: res.user.uid,
                 timestamp: serverTimestamp(),
             });
-            navigate('/users')
-        } catch (err) {
+            setOpen(true)
+            setToasterMessage("Item cadastrado com sucesso!")
+            setToasterSeverity("success")
+            setTimeout(() => {
+                navigate('/users')
+            }, 1500)
+        } catch (err: any) {
             console.log('Error => ', err)
+            if(err.code === "auth/email-already-in-use"){
+                setToasterMessage("Email já cadastrado")
+                setToasterSeverity("error")
+                setOpen(true)
+                setLoading(false)
+            }
         }
     }
 
@@ -165,12 +176,12 @@ const New = ({ inputs, title}: INew) => {
         <Layout>
             <S.Container>
                 <S.Top>
-                    <S.TopTitle>{title} - {data?.displayname}</S.TopTitle>
+                    <S.TopTitle>{title} {isEditing ?? `- ${data?.displayname}`}</S.TopTitle>
                 </S.Top>
                 <S.Bottom>
                     <S.BottomLeft>
                         <S.BottomLeftImg
-                            src={file ? URL.createObjectURL(file) : data ? data?.img : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"}
+                            src={file ? URL.createObjectURL(file) : data?.img || "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"}
                             alt="Image"
                         />
                     </S.BottomLeft>
@@ -199,6 +210,7 @@ const New = ({ inputs, title}: INew) => {
                                         placeholder={input.placeholder}
                                         onChange={handleInput}
                                         value={data && data[input.id]}
+                                        autoComplete="off"
                                     />
                                 </S.BottomRightFormInputContainer>
                             ))}
