@@ -1,7 +1,7 @@
 import GenericAvatar from "./assets/generic-avatar.png";
 
 export const userColumns = [
-  { field: "id", headerName: "ID", width: 70 },
+  { field: "id", headerName: "ID", width: 280 },
   {
     field: "username",
     headerName: "Username",
@@ -12,22 +12,27 @@ export const userColumns = [
           className="cellWithImg"
           style={{ display: "flex", alignItems: "center" }}
         >
-            <img
-              className="cellImg"
-              src={!params.row.img ? GenericAvatar : params.row.img}
-              alt="avatar"
-              width={32}
-              height={32}
-              style={{
-                borderRadius: "50%",
-                objectFit: "cover",
-                marginRight: 20,
-              }}
-            />
+          <img
+            className="cellImg"
+            src={!params.row.img ? GenericAvatar : params.row.img}
+            alt="avatar"
+            width={32}
+            height={32}
+            style={{
+              borderRadius: "50%",
+              objectFit: "cover",
+              marginRight: 20,
+            }}
+          />
           {params.row.username}
         </div>
       );
     },
+  },
+  {
+    field: "displayname",
+    headerName: "Name",
+    width: 230,
   },
   {
     field: "email",
