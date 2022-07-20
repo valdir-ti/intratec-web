@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, Link} from 'react-router-dom';
 
 import { db } from '../../firebase';
 import { collection, getDocs, query, where } from "firebase/firestore";
@@ -45,7 +45,14 @@ const Single = () => {
           <S.TopDetails open={open}>
             <S.TopFirstLine>
               <S.TopTitle>Information</S.TopTitle>
-              <S.EditButton>Edit</S.EditButton>
+              <S.EditButton>
+                <Link
+                  to={`/users/edit/${data.id}`}
+                  state={{...data}}
+                >
+                    Edit
+                  </Link>
+              </S.EditButton>
             </S.TopFirstLine>
             <S.TopSecondLine>
                 {Object.keys(data).length === 0 ? <CustomizedProgressBars size={60} /> :

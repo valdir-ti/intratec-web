@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
 import { auth, db, storage } from '../../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth'
@@ -17,12 +17,13 @@ interface INew {
     title: string;
 }
 
-const New = ({ inputs, title }: INew) => {
+const New = ({ inputs, title}: INew) => {
 
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+    const location = useLocation()
 
     const [file, setFile] = useState<File | null>()
-    const [data, setData] = useState<any>({})
+    const [data, setData] = useState<any>(location.state)
     const [percentage, setPercentage] = useState<any>(null)
     const [toasterMessage, setToasterMessage] = useState<string>("")
     const [toasterSeverity, setToasterSeverity] = useState<string>("")
@@ -127,7 +128,7 @@ const New = ({ inputs, title }: INew) => {
                 <S.Bottom>
                     <S.BottomLeft>
                         <S.BottomLeftImg
-                            src={file ? URL.createObjectURL(file) : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"}
+                            src={file ? URL.createObjectURL(file) : data && data.img ? data.img : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"}
                             alt="Image"
                         />
                     </S.BottomLeft>
@@ -155,6 +156,7 @@ const New = ({ inputs, title }: INew) => {
                                         type={input.type}
                                         placeholder={input.placeholder}
                                         onChange={handleInput}
+                                        value={data && data[input.id]}
                                     />
                                 </S.BottomRightFormInputContainer>
                             ))}

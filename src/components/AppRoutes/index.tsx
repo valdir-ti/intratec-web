@@ -60,6 +60,14 @@ const AppRoutes = () => {
                 }
               />
               <Route
+                path="edit/:userId"
+                element={
+                  <RequireAuth>
+                    <New inputs={userInputs} title="Edit user"/>
+                  </RequireAuth>
+                }
+              />
+              <Route
                 path=":userId"
                 element={
                   <RequireAuth>
