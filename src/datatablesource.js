@@ -1,4 +1,4 @@
-import CustomizedProgressBars from "./components/CustomizedCirculrProgress";
+import GenericAvatar from "./assets/generic-avatar.png";
 
 export const userColumns = [
   { field: "id", headerName: "ID", width: 70 },
@@ -12,12 +12,9 @@ export const userColumns = [
           className="cellWithImg"
           style={{ display: "flex", alignItems: "center" }}
         >
-          {!params.row.img ? (
-            <CustomizedProgressBars size={16} />
-            ) : (
             <img
               className="cellImg"
-              src={params.row.img}
+              src={!params.row.img ? GenericAvatar : params.row.img}
               alt="avatar"
               width={32}
               height={32}
@@ -27,7 +24,6 @@ export const userColumns = [
                 marginRight: 20,
               }}
             />
-          )}
           {params.row.username}
         </div>
       );
