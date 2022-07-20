@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import { userColumns } from '../../datatablesource';
 
-import { collection, onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot, doc, deleteDoc } from "firebase/firestore";
 
 import useConfirm from '../../hooks/useConfirmDialog';
 
@@ -31,9 +31,10 @@ const Datatable = () => {
       'Deseja realmente excluir o item selecionado?',
     );
 
-    const handleDelete = async (id: number) => {
+    const handleDelete = async (id: string) => {
       const confirmAnswer = await confirm()
       if(confirmAnswer){
+        await deleteDoc(doc(db, 'users', id));
         setData(data.filter((item: any) => item.id !== id));
         setOpen(true);
       }
