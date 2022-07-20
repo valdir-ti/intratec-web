@@ -94,14 +94,16 @@ export const BottomRightFormDriveFolderIcon = styled(DriveFolderUploadOutlined)`
 export const BottomRightFormButtonContainer = styled.div`
     width: 100%;
     display: flex;
-    padding-left: 10px;
+    padding-left: 2%;
+    margin-bottom: 10px;
     @media only screen and (max-width: 880px) {
         padding-left: 30px;
-        margin-bottom: 10px;
+    }
+    @media only screen and (max-width: 550px) {
+        padding-left: 5%;
     }
     @media only screen and (max-width: 280px) {
         padding-left: 0px;
-        margin-bottom: 10px;
     }
 `
 export const BottomRightFormButton = styled.button`

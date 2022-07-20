@@ -5,6 +5,7 @@ import { auth, db, storage } from '../../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { doc, serverTimestamp, setDoc } from 'firebase/firestore'
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
+import { getDatabase, ref as databaseRef, set } from "firebase/database";
 
 import Toaster from '../Toaster';
 import Layout from '../../pages/Layout'
@@ -41,6 +42,39 @@ const New = ({ inputs, title}: INew) => {
     const handleFile = (e: any) => {
         if(!e.target.files) return
         setFile(e.target.files[0])
+    }
+
+    const handleEdit = async (e: any) => {
+        e.preventDefault()
+
+        if(!data.img){
+            setToasterMessage("Selecione um arquivo")
+            setToasterSeverity("error")
+            setOpen(true)
+            setLoading(false)
+            return
+        }
+
+        if(!data.displayname || !data.email || !data.username || !data.password){
+            setToasterMessage("Preencha todos os campos obrigatórios")
+            setToasterSeverity("error")
+            setOpen(true)
+            setLoading(false)
+            return
+        }
+
+        if(JSON.stringify(data) !== JSON.stringify(location.state)){
+            console.log('data to be updated => ', data)
+
+            const db = getDatabase();
+            set(databaseRef(db, 'users/' + data.id), {...data})
+                .then((res) => {
+                    console.log('updated => ', res)
+                })
+                .catch((err) => {
+                    console.log('Error => ', err)
+            }   );
+        }
     }
 
     const handleAdd = async (e: any) => {
@@ -136,12 +170,12 @@ const New = ({ inputs, title}: INew) => {
                 <S.Bottom>
                     <S.BottomLeft>
                         <S.BottomLeftImg
-                            src={file ? URL.createObjectURL(file) : data ? data.img : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"}
+                            src={file ? URL.createObjectURL(file) : data ? data?.img : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"}
                             alt="Image"
                         />
                     </S.BottomLeft>
                     <S.BottomRight>
-                        <S.BottomRightForm onSubmit={handleAdd}>
+                        <S.BottomRightForm onSubmit={isEditing ? handleEdit : handleAdd}>
                             <S.BottomRightFormInputContainer>
                                 <S.BottomRightFormImageContainer>
                                     <S.BottomRightFormLabel htmlFor='file'>
