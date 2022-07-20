@@ -65,6 +65,7 @@ const New = ({ inputs, title }: INew) => {
             const res = await createUserWithEmailAndPassword(auth, data.email, data.password)
             await setDoc(doc(db, "users", res.user.uid), {
                 ...data,
+                id: res.user.uid,
                 timestamp: serverTimestamp(),
             });
             navigate('/users')
