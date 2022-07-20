@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 
 interface Props {
     open?: boolean;
@@ -223,4 +224,11 @@ export const Bottom = styled.div<Props>`
     }
 `
 export const BottomTable = styled.div`
+`
+
+export const LinkStyled = styled(Link)`
+    cursor: pointer;
+    text-decoration: none;
+    color: ${props => props.theme.colors.menu};
+    background-color: ${props => props.theme.colors.background};
 `

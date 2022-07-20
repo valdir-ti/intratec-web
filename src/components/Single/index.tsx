@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import {useParams, Link} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 
 import { db } from '../../firebase';
 import { collection, getDocs, query, where } from "firebase/firestore";
@@ -46,12 +46,12 @@ const Single = () => {
             <S.TopFirstLine>
               <S.TopTitle>Information</S.TopTitle>
               <S.EditButton>
-                <Link
+                <S.LinkStyled
                   to={`/users/edit/${data.id}`}
                   state={{...data}}
                 >
                     Edit
-                  </Link>
+                  </S.LinkStyled>
               </S.EditButton>
             </S.TopFirstLine>
             <S.TopSecondLine>

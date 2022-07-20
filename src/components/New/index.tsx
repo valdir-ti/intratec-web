@@ -23,12 +23,13 @@ const New = ({ inputs, title}: INew) => {
     const location = useLocation()
 
     const [file, setFile] = useState<File | null>()
-    const [data, setData] = useState<any>(location.state)
+    const [data, setData] = useState<any>(null)
     const [percentage, setPercentage] = useState<any>(null)
     const [toasterMessage, setToasterMessage] = useState<string>("")
     const [toasterSeverity, setToasterSeverity] = useState<string>("")
     const [open, setOpen] = useState<boolean>(false)
     const [loading, setLoading] = useState<boolean>(false)
+    const [isEditing, setIsEditing] = useState<boolean>(false)
 
     const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
         if (reason === 'clickaway') {
@@ -117,23 +118,27 @@ const New = ({ inputs, title}: INew) => {
         file && uploadFile()
     }, [file])
 
+    useEffect(() => {
+        if(location.state){
+            setIsEditing(true)
+            setData(location.state)
+        }
+    }, [location.state])
+
     const validatePercentage = percentage !== null && percentage < 100
 
     return (
         <Layout>
             <S.Container>
                 <S.Top>
-                    <S.TopTitle>{title}</S.TopTitle>
+                    <S.TopTitle>{title} - {data?.displayname}</S.TopTitle>
                 </S.Top>
                 <S.Bottom>
                     <S.BottomLeft>
-                        {!data
-                            ? <CustomizedProgressBars size={32} />
-                            : <S.BottomLeftImg
-                                src={file ? URL.createObjectURL(file) : data ? data.img : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"}
-                                alt="Image"
-                                />
-                        }
+                        <S.BottomLeftImg
+                            src={file ? URL.createObjectURL(file) : data ? data.img : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"}
+                            alt="Image"
+                        />
                     </S.BottomLeft>
                     <S.BottomRight>
                         <S.BottomRightForm onSubmit={handleAdd}>
@@ -169,7 +174,7 @@ const New = ({ inputs, title}: INew) => {
                                     disabled={validatePercentage || loading}
                                     type='submit'
                                 >
-                                    {validatePercentage || loading ? <CustomizedProgressBars size={16}/> : 'Send'}
+                                    {validatePercentage || loading ? <CustomizedProgressBars size={16}/> : isEditing ? 'Edit' : 'Save'}
                                 </S.BottomRightFormButton>
                             </S.BottomRightFormButtonContainer>
                         </S.BottomRightForm>
