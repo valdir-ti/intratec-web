@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import { auth, db, storage } from '../../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth'
@@ -127,10 +127,13 @@ const New = ({ inputs, title}: INew) => {
                 </S.Top>
                 <S.Bottom>
                     <S.BottomLeft>
-                        <S.BottomLeftImg
-                            src={file ? URL.createObjectURL(file) : data && data.img ? data.img : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"}
-                            alt="Image"
-                        />
+                        {!data
+                            ? <CustomizedProgressBars size={32} />
+                            : <S.BottomLeftImg
+                                src={file ? URL.createObjectURL(file) : data ? data.img : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"}
+                                alt="Image"
+                                />
+                        }
                     </S.BottomLeft>
                     <S.BottomRight>
                         <S.BottomRightForm onSubmit={handleAdd}>

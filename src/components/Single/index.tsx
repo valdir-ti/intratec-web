@@ -57,7 +57,9 @@ const Single = () => {
             <S.TopSecondLine>
                 {Object.keys(data).length === 0 ? <CustomizedProgressBars size={60} /> :
                   <>
+                  {!data.img ? <CustomizedProgressBars size={60} /> :
                     <S.TopImage src={data.img} />
+                  }
                     <S.TopDetailsItems>
                       <S.TopDetailsTitle>{data.displayname}</S.TopDetailsTitle>
                       <S.TopDetailsItem><S.TopDetailsItemKey>Email:</S.TopDetailsItemKey>&nbsp;{data.email}</S.TopDetailsItem>
