@@ -1,19 +1,19 @@
 export const userInputs = [
   {
     id: "username",
-    label: "Username",
+    label: "Username *",
     type: "text",
     placeholder: "john_doe",
   },
   {
     id: "displayname",
-    label: "Name and surname",
+    label: "Name and surname *",
     type: "text",
     placeholder: "John Doe",
   },
   {
     id: "email",
-    label: "Email",
+    label: "Email *",
     type: "mail",
     placeholder: "john_doe@gmail.com",
   },
@@ -25,7 +25,7 @@ export const userInputs = [
   },
   {
     id: "password",
-    label: "Password",
+    label: "Password *",
     type: "password",
   },
   {

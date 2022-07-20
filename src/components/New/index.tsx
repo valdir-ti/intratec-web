@@ -53,6 +53,14 @@ const New = ({ inputs, title }: INew) => {
             return
         }
 
+        if(!data.displayname || !data.email || !data.username || !data.password){
+            setToasterMessage("Preencha todos os campos obrigatórios")
+            setToasterSeverity("error")
+            setOpen(true)
+            setLoading(false)
+            return
+        }
+
         try {
             const res = await createUserWithEmailAndPassword(auth, data.email, data.password)
             await setDoc(doc(db, "users", res.user.uid), {
