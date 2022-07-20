@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 import { auth, db, storage } from '../../firebase';
 import { doc, serverTimestamp, setDoc } from 'firebase/firestore'
@@ -16,6 +17,8 @@ interface INew {
 }
 
 const New = ({ inputs, title }: INew) => {
+
+    const navigate = useNavigate();
 
     const [file, setFile] = useState<File | null>()
     const [data, setData] = useState<any>({})
@@ -35,6 +38,7 @@ const New = ({ inputs, title }: INew) => {
                 ...data,
                 timestamp: serverTimestamp(),
             });
+            navigate('/users')
         } catch (err) {
             console.log('Error => ', err)
         }
