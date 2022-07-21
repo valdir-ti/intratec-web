@@ -60,6 +60,18 @@ export const BottomRightForm = styled.form`
     @media only screen and (max-width: 280px) {
         align-items: flex-start;
     }
+    & .checkboxContainer {
+        display: flex;
+        align-items: center;
+        height: 35px;
+    }
+    & .checkboxLabel{
+        font-weight: bold;
+        margin-left: 5px;
+    }
+    & .checkboxInput{
+        margin: 0;
+    }
 `
 export const BottomRightFormInputContainer = styled.div`
     width: 45%;

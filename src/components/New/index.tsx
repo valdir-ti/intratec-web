@@ -196,8 +196,8 @@ const New = ({ inputs, title}: INew) => {
                             </S.BottomRightFormInputContainer>
 
                             {inputs.map((input: any, index: number) => (
-                                <S.BottomRightFormInputContainer key={index}>
-                                    <S.BottomRightFormLabel>{input.label}:</S.BottomRightFormLabel>
+                                <S.BottomRightFormInputContainer key={index} className={input.containerClass}>
+                                    <S.BottomRightFormLabel htmlFor={input.id} className={input.labelClass}>{input.label}:</S.BottomRightFormLabel>
                                     <S.BottomRightFormInput
                                         id={input.id}
                                         type={input.type}
@@ -205,6 +205,7 @@ const New = ({ inputs, title}: INew) => {
                                         onChange={handleInput}
                                         value={isEditing ? data[input.id] : ""}
                                         autoComplete="off"
+                                        className={input.inputClass}
                                     />
                                 </S.BottomRightFormInputContainer>
                             ))}

@@ -40,6 +40,22 @@ export const userInputs = [
     type: "text",
     placeholder: "USA",
   },
+  {
+    id: "isActive",
+    label: "isActive",
+    type: "checkbox",
+    containerClass: "checkboxContainer",
+    labelClass: "checkboxLabel",
+    inputClass: "checkboxInput",
+  },
+  {
+    id: "isAdmin",
+    label: "isAdmin",
+    type: "checkbox",
+    containerClass: "checkboxContainer",
+    labelClass: "checkboxLabel",
+    inputClass: "checkboxInput",
+  },
 ];
 export const productInputs = [
   {
