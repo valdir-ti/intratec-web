@@ -50,7 +50,7 @@ const New = ({ inputs, title}: INew) => {
         setLoading(true)
 
         if(!data.img){
-            toasterStart("error", "Seleione um arquivo")
+            toasterStart("error", "Selecione um arquivo")
             setLoading(false)
             return
         }
@@ -211,7 +211,7 @@ const New = ({ inputs, title}: INew) => {
 
                             <S.BottomRightFormButtonContainer>
                                 <S.BottomRightFormButton
-                                    disabled={validatePercentage || loading}
+                                    disabled={JSON.stringify(data) === JSON.stringify(location.state) || validatePercentage || loading}
                                     type='submit'
                                 >
                                     {validatePercentage || loading ? <CustomizedProgressBars size={16}/> : isEditing ? 'Edit' : 'Save'}
