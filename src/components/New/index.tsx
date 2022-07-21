@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid'
 
-import { auth, db, storage } from '../../firebase';
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { db, storage } from '../../firebase';
 import { doc, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore'
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 
@@ -48,17 +48,13 @@ const New = ({ inputs, title}: INew) => {
         setLoading(true)
 
         if(!data.img){
-            setToasterMessage("Selecione um arquivo")
-            setToasterSeverity("error")
-            setOpen(true)
+            toasterStart("error", "Seleione um arquivo")
             setLoading(false)
             return
         }
 
         if(!data.displayname || !data.email || !data.username || !data.password){
-            setToasterMessage("Preencha todos os campos obrigatórios")
-            setToasterSeverity("error")
-            setOpen(true)
+            toasterStart("error", "Preencha todos os campos obrigatórios")
             setLoading(false)
             return
         }
@@ -68,9 +64,7 @@ const New = ({ inputs, title}: INew) => {
             await updateDoc(usersRef, {
                 ...data,
             });
-            setOpen(true)
-            setToasterMessage("Item atualizado com sucesso!")
-            setToasterSeverity("success")
+            toasterStart("success", "Item atualizado com sucesso!")
             setTimeout(() => {
                 navigate('/users')
             }, 1500)
@@ -82,43 +76,41 @@ const New = ({ inputs, title}: INew) => {
         setLoading(true)
 
         if(!file){
-            setToasterMessage("Selecione um arquivo")
-            setToasterSeverity("error")
-            setOpen(true)
+            toasterStart("error", "Selecione um arquivo")
             setLoading(false)
             return
         }
 
         if(!data.displayname || !data.email || !data.username || !data.password){
-            setToasterMessage("Preencha todos os campos obrigatórios")
-            setToasterSeverity("error")
-            setOpen(true)
+            toasterStart("error", "Preencha todos os campos obrigatórios")
             setLoading(false)
             return
         }
 
         try {
-            const res = await createUserWithEmailAndPassword(auth, data.email, data.password)
-            await setDoc(doc(db, "users", res.user.uid), {
+            const userId = uuidv4()
+            await setDoc(doc(db, "users", userId), {
                 ...data,
-                id: res.user.uid,
+                id: userId,
                 timestamp: serverTimestamp(),
             });
-            setOpen(true)
-            setToasterMessage("Item cadastrado com sucesso!")
-            setToasterSeverity("success")
+            toasterStart("success", "Item cadastrado com sucesso!")
             setTimeout(() => {
                 navigate('/users')
             }, 1500)
         } catch (err: any) {
             console.log('Error => ', err)
             if(err.code === "auth/email-already-in-use"){
-                setToasterMessage("Email já cadastrado")
-                setToasterSeverity("error")
-                setOpen(true)
+                toasterStart("error", "E-mail já cadastrado")
                 setLoading(false)
             }
         }
+    }
+
+    function toasterStart(severity: string, message: string){
+        setToasterSeverity(severity)
+        setToasterMessage(message)
+        setOpen(true)
     }
 
     const handleInput = (e: any) => {
@@ -129,7 +121,7 @@ const New = ({ inputs, title}: INew) => {
 
     useEffect(() => {
         const uploadFile = () => {
-            const name = new Date().getTime() + Math.floor(Math.random() * 1000);
+            const name = uuidv4()
             const storageRef = ref(storage, String(name));
             const uploadTask = uploadBytesResumable(storageRef, file!);
 
@@ -176,7 +168,7 @@ const New = ({ inputs, title}: INew) => {
         <Layout>
             <S.Container>
                 <S.Top>
-                    <S.TopTitle>{title} {isEditing ?? `- ${data?.displayname}`}</S.TopTitle>
+                    <S.TopTitle>{title} {isEditing && `- ${data?.displayname}`}</S.TopTitle>
                 </S.Top>
                 <S.Bottom>
                     <S.BottomLeft>
