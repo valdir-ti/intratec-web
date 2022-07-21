@@ -10,6 +10,8 @@ import Toaster from '../Toaster';
 import Layout from '../../pages/Layout'
 import CustomizedProgressBars from '../CustomizedCirculrProgress';
 
+import noImage from '../../assets/no-image-icon.jpg'
+
 import * as S from './styles'
 
 interface INew {
@@ -173,7 +175,7 @@ const New = ({ inputs, title}: INew) => {
                 <S.Bottom>
                     <S.BottomLeft>
                         <S.BottomLeftImg
-                            src={file ? URL.createObjectURL(file) : data?.img || "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"}
+                            src={file ? URL.createObjectURL(file) : data?.img || noImage}
                             alt="Image"
                         />
                     </S.BottomLeft>
@@ -201,7 +203,7 @@ const New = ({ inputs, title}: INew) => {
                                         type={input.type}
                                         placeholder={input.placeholder}
                                         onChange={handleInput}
-                                        value={data && data[input.id]}
+                                        value={isEditing ? data[input.id] : ""}
                                         autoComplete="off"
                                     />
                                 </S.BottomRightFormInputContainer>
