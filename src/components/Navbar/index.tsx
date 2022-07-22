@@ -1,5 +1,7 @@
+import { useContext, useState } from 'react'
+
 import {
-  Menu,
+  Menu as MenuIcon,
   ListOutlined,
   LanguageOutlined,
   DarkModeOutlined,
@@ -7,11 +9,12 @@ import {
   NotificationsOutlined,
   LightModeOutlined
 } from '@mui/icons-material';
-import { useContext } from 'react'
+
+import MenuNav from '../Menu';
+import Counter from '../Counter';
 
 import { SidebarContext } from '../../context/sidebar/sidebarContext';
 import { AuthContext } from '../../context/authentication/authContext';
-import Counter from '../Counter';
 
 import GenericaAvatar from '../../assets/generic-avatar.png';
 
@@ -35,6 +38,17 @@ const Navbar = ({ toggleTheme, theme }: INavbar) => {
   const { state: { open }, dispatch } = sidebarContext;
   const { state: { currentUser } } = useContext(AuthContext);
 
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const openMenu = Boolean(anchorEl);
+
+  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  }
+
   function handleToggle () {
     dispatch({ type: 'TOGGLE_SIDEBAR' })
   }
@@ -51,10 +65,10 @@ const Navbar = ({ toggleTheme, theme }: INavbar) => {
     <Container>
       <Left>
         <IconWrapper open={open}>
-          <Menu onClick={handleToggle} titleAccess={open ? 'Close Menu' : 'Open Menu'} />
+          <MenuIcon onClick={handleToggle} titleAccess={open ? 'Close Menu' : 'Open Menu'} />
         </IconWrapper>
         <NavbarIconWrapperResponsive>
-          <Menu onClick={handleToggle} titleAccess={'Close Menu'} />
+          <MenuIcon onClick={handleToggle} titleAccess={'Close Menu'} />
         </NavbarIconWrapperResponsive>
       </Left>
       <Right>
@@ -79,7 +93,9 @@ const Navbar = ({ toggleTheme, theme }: INavbar) => {
           <Avatar
             src={currentUser.photoURL || GenericaAvatar}
             alt={`Avatar de ${currentUser.displayName}`}
+            onClick={handleMenu}
           />
+          <MenuNav onClose={handleClose} anchorEl={anchorEl} openMenu={openMenu} />
         </IconWrapper>
       </Right>
     </Container>
