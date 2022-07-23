@@ -118,7 +118,12 @@ const New = ({ inputs, title}: INew) => {
     const handleInput = (e: any) => {
         const id = e.target.id
         const value = e.target.value
-        setData({...data, [id]: value})
+
+        if(id === "isAdmin" || id === "isActive"){
+            setData({...data, [id]: e.target.checked})
+        }else{
+            setData({...data, [id]: value})
+        }
     }
 
     useEffect(() => {
@@ -205,9 +210,10 @@ const New = ({ inputs, title}: INew) => {
                                         type={input.type}
                                         placeholder={input.placeholder}
                                         onChange={handleInput}
-                                        value={isEditing ? data[input.id] : ""}
+                                        value={data && data[input.id]}
                                         autoComplete="off"
                                         className={input.inputClass}
+                                        checked={data && data[input.id]}
                                     />
                                 </S.BottomRightFormInputContainer>
                             ))}
