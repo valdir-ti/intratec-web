@@ -40,7 +40,7 @@ export const LeftCounter = styled.span`
     font-size: 28px;
     font-weight: 300;
 `
-export const LeftLink = styled.a`
+export const LeftLink = styled.div`
     font-size: 12px;
     border-bottom: 1px solid gray;
     width: max-content;
