@@ -185,15 +185,18 @@ export const TopImage = styled.img`
     }
 `
 export const EditButton = styled.button`
-    padding: 5px;
     font-size: 12px;
     color: ${props => props.theme.colors.menu};
     background-color: ${props => props.theme.colors.background};
     border: 1px solid ${props => props.theme.colors.menu};
     border-radius: 5px;
-    width: 60px;
+    width: 90px;
+    height: 35px;
     margin: 0 30px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `
 export const Bottom = styled.div<Props>`
     grid-area: bottom;
@@ -231,4 +234,6 @@ export const LinkStyled = styled(Link)`
     text-decoration: none;
     color: ${props => props.theme.colors.menu};
     background-color: ${props => props.theme.colors.background};
+    font-weight: bold;
+    font-size: 16px;
 `
