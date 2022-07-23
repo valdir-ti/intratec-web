@@ -50,8 +50,8 @@ const Single = () => {
                   to={`/users/edit/${data.id}`}
                   state={{...data}}
                 >
-                    Edit
-                  </S.LinkStyled>
+                  Edit
+                </S.LinkStyled>
               </S.EditButton>
             </S.TopFirstLine>
             <S.TopSecondLine>

@@ -121,7 +121,7 @@ export const TopTitle = styled.h1`
     margin-left: 18%;
     color: #80808054;
 `
-export const TopDetailsTitle = styled.h1`
+export const TopDetailsTitle = styled.div`
     font-size: 22px;
     margin-bottom: 16px;
     @media only screen and (max-width: 550px) {
@@ -140,7 +140,7 @@ export const TopDetailsItems = styled.div`
         width: auto;
     }
 `
-export const TopDetailsItem = styled.h1`
+export const TopDetailsItem = styled.div`
     font-size: 14px;
     margin-bottom: 12px;
     display: flex;
