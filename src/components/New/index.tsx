@@ -166,6 +166,8 @@ const New = ({ inputs, title}: INew) => {
 
     const validatePercentage = percentage !== null && percentage < 100
 
+    const disableButton = JSON.stringify(data) === JSON.stringify(location.state) || validatePercentage || loading
+
     return (
         <Layout>
             <S.Container>
@@ -212,7 +214,7 @@ const New = ({ inputs, title}: INew) => {
 
                             <S.BottomRightFormButtonContainer>
                                 <S.BottomRightFormButton
-                                    disabled={JSON.stringify(data) === JSON.stringify(location.state) || validatePercentage || loading}
+                                    disabled={disableButton}
                                     type='submit'
                                 >
                                     {validatePercentage || loading ? <CustomizedProgressBars size={16}/> : isEditing ? 'Edit' : 'Save'}
