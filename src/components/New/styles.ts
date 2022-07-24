@@ -71,6 +71,7 @@ export const BottomRightForm = styled.form`
     }
     & .checkboxInput{
         margin: 0;
+        width: 35px;
     }
 `
 export const BottomRightFormInputContainer = styled.div`
