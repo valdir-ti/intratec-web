@@ -86,6 +86,7 @@ const FormUser = ({ title, isEditing }: Props) => {
                 country,
                 isActive,
                 isAdmin,
+                img: fileUrl,
                 id: userId,
                 timestamp: serverTimestamp(),
             });
@@ -128,6 +129,7 @@ const FormUser = ({ title, isEditing }: Props) => {
                 password,
                 address,
                 country,
+                img: fileUrl,
                 isActive,
                 isAdmin,
                 timestamp: serverTimestamp(),
