@@ -12,7 +12,6 @@ export const Container = styled.div`
     "content1 content2 content3 content4"
     "feature feature chart chart"
     "list list list list";
-  text-transform: uppercase;
   font-size: 12px;
 
   @media only screen and (max-width: 1200px) {

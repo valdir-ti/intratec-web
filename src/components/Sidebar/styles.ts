@@ -10,6 +10,7 @@ export const Container = styled.div`
     overflow: auto;
     background-color: ${props => props.theme.colors.secondBackground};
     color: ${props => props.theme.colors.text};
+    text-transform: uppercase;
     @media only screen and (max-width: 550px) {
         width: 200px;
     }

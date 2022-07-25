@@ -12,7 +12,6 @@ export const Container = styled.div<Props>`
   grid-template-areas:
     "sidebar nav nav"
     "sidebar content content";
-  text-transform: uppercase;
   font-size: 12px;
   color: ${props => props.theme.colors.text};
   text-align: center;
