@@ -17,22 +17,26 @@ import GenericAvatar from "../../assets/generic-avatar.png";
 
 import * as S from './styles'
 
-const Single = () => {
+interface SingleProps {
+  slug: string;
+}
+
+const Single = ({ slug }: SingleProps) => {
 
   const params = useParams();
   const [data, setData] = useState<any>({});
 
   useEffect(() => {
     const getData = async () => {
-      const usersRef = collection(db, "users");
-      const q = query(usersRef, where("id", "==", params.userId));
+      const dbRef = collection(db, slug);
+      const q = query(dbRef, where("id", "==", params.id));
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc: any) => {
         setData(doc.data());
       });
     }
     getData()
-  }, [params.userId])
+  }, [params.id, slug])
 
   const sidebarContext = useContext(SidebarContext);
   const { state: { open } } = sidebarContext;

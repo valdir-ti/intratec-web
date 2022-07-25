@@ -1,7 +1,7 @@
 import GenericAvatar from "./assets/generic-avatar.png";
 
 export const userColumns = [
-  { field: "id", headerName: "ID", width: 280 },
+  { field: "id", headerName: "User ID", width: 200 },
   {
     field: "username",
     headerName: "Username",
@@ -50,13 +50,61 @@ export const userColumns = [
     width: 100,
   },
   {
+    field: "isActive",
+    headerName: "Active",
+    width: 160,
+    renderCell: (params) => {
+      return (
+        <div className={`cellWithStatus ${params.row.isActive}`}>
+          {params.row.isActive ? "Active" : "Inactive"}
+        </div>
+      );
+    },
+  },
+  {
+    field: "isAdmin",
+    headerName: "Nível",
+    width: 160,
+    renderCell: (params) => {
+      return (
+        <div className={`cellWithStatus ${params.row.isAdmin}`}>
+          {params.row.isAdmin ? "Admin" : "User"}
+        </div>
+      );
+    },
+  },
+];
+
+export const productColumns = [
+  { field: "id", headerName: "Product ID", width: 200 },
+  {
+    field: "title",
+    headerName: "Title",
+    width: 230,
+    renderCell: (params) => {
+      return (
+        <div
+          className="cellWithImg"
+          style={{ display: "flex", alignItems: "center" }}
+        >
+          {params.row.title}
+        </div>
+      );
+    },
+  },
+  {
+    field: "price",
+    headerName: "Price",
+    width: 230,
+  },
+  {
     field: "status",
     headerName: "Status",
     width: 160,
     renderCell: (params) => {
       return (
         <div className={`cellWithStatus ${params.row.status}`}>
-          {params.row.status}
+          {params.row.status ? "Active" : "Inactive"}
         </div>
       );
     },

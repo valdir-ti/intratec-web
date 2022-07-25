@@ -61,7 +61,7 @@ const AppRoutes = () => {
                 }
               />
               <Route
-                path="edit/:userId"
+                path="edit/:id"
                 element={
                   <RequireAuth>
                     <FormUser title="Edit user" isEditing/>
@@ -69,10 +69,10 @@ const AppRoutes = () => {
                 }
               />
               <Route
-                path=":userId"
+                path=":id"
                 element={
                   <RequireAuth>
-                    <Single />
+                    <Single slug='users'/>
                   </RequireAuth>
                 }
               />
@@ -95,10 +95,10 @@ const AppRoutes = () => {
                 }
               />
               <Route
-                path=":productId"
+                path=":id"
                 element={
                   <RequireAuth>
-                    <Single />
+                    <Single slug='products'/>
                   </RequireAuth>
                 }
               />
@@ -108,7 +108,7 @@ const AppRoutes = () => {
                 index
                 element={
                   <RequireAuth>
-                    <List item="Company" slug="companies" />
+                    <List item="Company" slug="users" />
                   </RequireAuth>
                 }
               />
@@ -121,10 +121,10 @@ const AppRoutes = () => {
                 }
               />
               <Route
-                path=":companyId"
+                path=":id"
                 element={
                   <RequireAuth>
-                    <Single />
+                    <Single slug='users'/>
                   </RequireAuth>
                 }
               />
@@ -134,7 +134,7 @@ const AppRoutes = () => {
                 index
                 element={
                   <RequireAuth>
-                    <List item="Order" slug="orders" />
+                    <List item="Order" slug="users" />
                   </RequireAuth>
                 }
               />
@@ -147,10 +147,10 @@ const AppRoutes = () => {
                 }
               />
               <Route
-                path=":orderId"
+                path=":id"
                 element={
                   <RequireAuth>
-                    <Single />
+                    <Single slug='users'/>
                   </RequireAuth>
                 }
               />
@@ -165,10 +165,10 @@ const AppRoutes = () => {
                 }
               />
               <Route
-                path=":statId"
+                path=":id"
                 element={
                   <RequireAuth>
-                    <Single />
+                    <Single slug='stats'/>
                   </RequireAuth>
                 }
               />
@@ -183,10 +183,10 @@ const AppRoutes = () => {
                 }
               />
               <Route
-                path=":notificationId"
+                path=":id"
                 element={
                   <RequireAuth>
-                    <Single />
+                    <Single slug='users'/>
                   </RequireAuth>
                 }
               />
@@ -201,10 +201,10 @@ const AppRoutes = () => {
                 }
               />
               <Route
-                path=":systemHealthId"
+                path=":id"
                 element={
                   <RequireAuth>
-                    <Single />
+                    <Single slug='users'/>
                   </RequireAuth>
                 }
               />
@@ -219,10 +219,10 @@ const AppRoutes = () => {
                 }
               />
               <Route
-                path=":logId"
+                path=":id"
                 element={
                   <RequireAuth>
-                    <Single />
+                    <Single slug='users'/>
                   </RequireAuth>
                 }
               />

@@ -14,7 +14,7 @@ const List = ({ item, slug }: IList) => {
     <Layout>
       <S.Container>
         <S.LinkStyled to={`/${slug}/new`}><S.PlusIcon />{`Add new ${item}`}</S.LinkStyled>
-        <Datatable />
+        <Datatable slug={slug} />
       </S.Container>
     </Layout>
   )

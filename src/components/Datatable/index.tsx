@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import Box from '@mui/material/Box';
-import { userColumns } from '../../datatablesource';
+import { userColumns, productColumns } from '../../datatablesource';
 
 import { collection, onSnapshot, doc, deleteDoc } from "firebase/firestore";
 
@@ -12,11 +12,16 @@ import Toaster from '../Toaster';
 import { Datagrid, LinkStyle } from './styles';
 import { db } from '../../firebase';
 
-const columns = userColumns
+const datatableColumns: any = {users: userColumns, products: productColumns}
 
-const Datatable = () => {
+interface DataTableProps {
+  slug: string;
+}
+
+const Datatable = ({ slug }: DataTableProps) => {
 
     const [data, setData] = useState<any[]>([])
+    const [id, setId] = useState("")
     const [open, setOpen] = useState(false);
 
     const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
@@ -34,7 +39,7 @@ const Datatable = () => {
     const handleDelete = async (id: string) => {
       const confirmAnswer = await confirm()
       if(confirmAnswer){
-        await deleteDoc(doc(db, 'users', id));
+        await deleteDoc(doc(db, slug, id));
         setData(data.filter((item: any) => item.id !== id));
         setOpen(true);
       }
@@ -42,7 +47,7 @@ const Datatable = () => {
 
     useEffect(() => {
       const unsub = onSnapshot(
-        collection(db, 'users'),
+        collection(db, slug),
         (snapshot) => {
             let list: any = []
             snapshot.docs.forEach(doc => {
@@ -55,7 +60,7 @@ const Datatable = () => {
         return () => {
             unsub()
         }
-    }, []);
+    }, [slug]);
 
     const actionColumn = [
         {
@@ -66,7 +71,7 @@ const Datatable = () => {
                 return (
                     <div className='cellAction'>
                         <div className='viewButton'>
-                          <LinkStyle to={`/users/${params.row.id}`} className='viewButtonLink'>
+                          <LinkStyle to={`/${slug}/${params.row.id}`} className='viewButtonLink'>
                             View
                           </LinkStyle>
                         </div>
@@ -81,7 +86,7 @@ const Datatable = () => {
       <Box sx={{ height: '85%', width: '100%' }}>
         <Datagrid
           rows={data}
-          columns={columns.concat(actionColumn)}
+          columns={datatableColumns[slug].concat(actionColumn)}
           pageSize={10}
           rowsPerPageOptions={[10]}
           disableSelectionOnClick
