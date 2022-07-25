@@ -13,6 +13,7 @@ import FormUser from "../FormUser";
 import NotFound from "../NotFound";
 import Home from '../../pages/Home';
 import Login from "../../pages/Login";
+import FormProduct from "../FormProduct";
 
 import { AuthContext } from '../../context/authentication/authContext';
 
@@ -90,7 +91,15 @@ const AppRoutes = () => {
                 path="new"
                 element={
                   <RequireAuth>
-                    <New inputs={productInputs} title="Add new product"/>
+                    <FormProduct header="Add new product" slug="products"/>
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="edit/:id"
+                element={
+                  <RequireAuth>
+                    <FormProduct header="Edit product" slug="products" isEditing/>
                   </RequireAuth>
                 }
               />

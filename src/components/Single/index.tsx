@@ -52,7 +52,7 @@ const Single = ({ slug }: SingleProps) => {
               <S.TopTitle>Information</S.TopTitle>
               <S.EditButton>
                 <S.LinkStyled
-                  to={`/users/edit/${data.id}`}
+                  to={`/${slug}/edit/${data.id}`}
                   state={{...data}}
                 >
                   Edit
