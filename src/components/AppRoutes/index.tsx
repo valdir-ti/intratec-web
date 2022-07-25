@@ -9,13 +9,14 @@ import {
 import New from "../New";
 import List from "../List";
 import Single from "../Single";
+import FormUser from "../FormUser";
 import NotFound from "../NotFound";
 import Home from '../../pages/Home';
 import Login from "../../pages/Login";
 
 import { AuthContext } from '../../context/authentication/authContext';
 
-import { productInputs, userInputs } from "../../formSource";
+import { productInputs } from "../../formSource";
 
 import './styles';
 
@@ -55,7 +56,7 @@ const AppRoutes = () => {
                 path="new"
                 element={
                   <RequireAuth>
-                    <New inputs={userInputs} title="Add new user"/>
+                    <FormUser title="Add new user"/>
                   </RequireAuth>
                 }
               />
@@ -63,7 +64,7 @@ const AppRoutes = () => {
                 path="edit/:userId"
                 element={
                   <RequireAuth>
-                    <New inputs={userInputs} title="Edit user"/>
+                    <FormUser title="Edit user" isEditing/>
                   </RequireAuth>
                 }
               />
