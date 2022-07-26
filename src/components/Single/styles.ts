@@ -144,8 +144,11 @@ export const TopDetailsSpan = styled.span`
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    width: 100px;
+    width: 200px;
     text-align: left;
+    @media only screen and (max-width: 550px) {
+        width: 120px;
+    }
 `
 export const TopDetailsItem = styled.div`
     font-size: 14px;
