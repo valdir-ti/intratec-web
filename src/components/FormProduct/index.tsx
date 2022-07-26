@@ -182,6 +182,7 @@ const FormProduct = ({ header, isEditing, slug }: Props) => {
                 },
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                        console.log('File available at', downloadURL);
                         setFileUrl(downloadURL)
                     });
                 }
@@ -204,6 +205,8 @@ const FormProduct = ({ header, isEditing, slug }: Props) => {
             setIsActive(isActive)
         }
     }, [state])
+
+    const disabledButton = percentage < 100 && title === state?.title && price === state?.price && description === state?.description && specifications === state?.specifications && stock === state?.stock && isActive === state?.isActive
 
     return (
         <Layout>
@@ -272,7 +275,7 @@ const FormProduct = ({ header, isEditing, slug }: Props) => {
                 <FormButton
                     label={isEditing ? 'Edit' : 'Save'}
                     loading={loading}
-                    disabled={percentage < 100}
+                    disabled={disabledButton}
                 />
 
             </S.Form>

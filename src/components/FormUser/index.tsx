@@ -193,6 +193,7 @@ const FormUser = ({ title, isEditing }: Props) => {
                 },
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                        console.log('File available at', downloadURL);
                         setFileUrl(downloadURL)
                     });
                 }
@@ -219,6 +220,8 @@ const FormUser = ({ title, isEditing }: Props) => {
         }
 
     }, [state])
+
+    const disabledButton = percentage < 100 && displayname === state.displayname && username === state.username && email === state.email && phone === state.phone && password === state.password && address === state.address && country === state.country && isActive === state.isActive && isAdmin === state.isAdmin
 
     return (
         <Layout>
@@ -310,7 +313,7 @@ const FormUser = ({ title, isEditing }: Props) => {
                 <FormButton
                     label={isEditing ? 'Edit' : 'Save'}
                     loading={loading}
-                    disabled={percentage < 100}
+                    disabled={disabledButton}
                 />
 
             </S.Form>
