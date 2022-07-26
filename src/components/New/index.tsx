@@ -8,7 +8,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 
 import Toaster from '../Toaster';
 import Layout from '../../pages/Layout'
-import CustomizedProgressBars from '../CustomizedCirculrProgress';
+import CustomizedProgressBars from '../CustomizedCircularProgress';
 
 import noImage from '../../assets/no-image-icon.jpg'
 

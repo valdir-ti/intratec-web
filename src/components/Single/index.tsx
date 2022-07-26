@@ -11,7 +11,7 @@ import Layout from '../../pages/Layout'
 import { SidebarContext } from '../../context/sidebar/sidebarContext';
 
 import useWindowDimensions from '../../hooks/getWindowDimensions';
-import CustomizedProgressBars from '../CustomizedCirculrProgress';
+import CustomizedProgressBars from '../CustomizedCircularProgress';
 
 import { productFields, userFields } from '../../singlePageSource';
 

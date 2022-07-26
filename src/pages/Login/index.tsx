@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import CustomizedProgressBars from '../../components/CustomizedCirculrProgress';
+import CustomizedProgressBars from '../../components/CustomizedCircularProgress';
 
 import { auth, googleProvider, githubProvider, facebookProvider } from '../../firebase'
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth"
