@@ -315,7 +315,9 @@ const FormUser = ({ title, isEditing }: Props) => {
                     onChange={() => setIsAdmin(!isAdmin)}
                 />
                 <S.FormButtonContainer>
-                    <S.FormButton>
+                    <S.FormButton
+                        disabled={percentage < 100}
+                    >
                         {loading ? <CustomizedProgressBars size={16}/> : isEditing ? 'Edit' : 'Save'}
                     </S.FormButton>
                 </S.FormButtonContainer>

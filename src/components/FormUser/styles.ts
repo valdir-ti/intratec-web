@@ -85,5 +85,6 @@ export const FormButton = styled.button`
     }
     &:disabled {
         background-color: ${props => props.theme.colors.activeBackground};
+        color: ${props => props.theme.colors.activeText};
     }
 `
