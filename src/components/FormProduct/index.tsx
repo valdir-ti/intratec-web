@@ -17,7 +17,10 @@ import * as S from './styles';
 interface LocationProps {
     id: string;
     title: string;
+    description: string;
+    specifications: string;
     price: string;
+    stock: number;
     img: string;
     isActive: boolean;
 }
@@ -34,12 +37,15 @@ const FormProduct = ({ header, isEditing, slug }: Props) => {
     const location = useLocation()
     const state = location.state as LocationProps
 
-    const [id, setId] = useState<string>(state?.id || "");
-    const [file, setFile] = useState<any>(null);
-    const [fileUrl, setFileUrl] = useState("");
-    const [title, setTitle] = useState("");
+    const [stock, setStock] = useState(0);
     const [price, setPrice] = useState("");
+    const [title, setTitle] = useState("");
+    const [fileUrl, setFileUrl] = useState("");
+    const [file, setFile] = useState<any>(null);
     const [isActive, setIsActive] = useState(false);
+    const [description, setDescription] = useState("");
+    const [id, setId] = useState<string>(state?.id || "");
+    const [specifications, setSpecifications] = useState("");
 
     const [loading, setLoading] = useState(false)
     const [open, setOpen] = useState<boolean>(false)
@@ -57,7 +63,7 @@ const FormProduct = ({ header, isEditing, slug }: Props) => {
             return
         }
 
-        if(!title || !price) {
+        if(!title || !price || !description || !stock) {
             toasterStart("error", "Preencha todos os campos obrigatórios (*)")
             setLoading(false)
             return
@@ -68,6 +74,10 @@ const FormProduct = ({ header, isEditing, slug }: Props) => {
             await setDoc(doc(db, slug, itemId), {
                 title,
                 price,
+                description,
+                specifications,
+                stock,
+                isActive,
                 img: fileUrl,
                 id: itemId,
                 timestamp: serverTimestamp(),
@@ -96,7 +106,7 @@ const FormProduct = ({ header, isEditing, slug }: Props) => {
             return
         }
 
-        if(!title || !price) {
+        if(!title || !price || !description) {
             toasterStart("error", "Preencha todos os campos obrigatórios (*)")
             setLoading(false)
             return
@@ -106,8 +116,11 @@ const FormProduct = ({ header, isEditing, slug }: Props) => {
             await updateDoc(doc(db, slug, id), {
                 title,
                 price,
-                img: fileUrl,
+                description,
+                specifications,
+                stock,
                 isActive,
+                img: fileUrl,
                 timestamp: serverTimestamp(),
             });
             toasterStart("success", "Item atualizado com sucesso!")
@@ -179,10 +192,13 @@ const FormProduct = ({ header, isEditing, slug }: Props) => {
 
     useEffect(() => {
         if(state) {
-            const { id, title, price, isActive, img } = state
+            const { id, title, price, description, specifications, stock, isActive, img } = state
             setId(id)
             setTitle(title)
             setPrice(price)
+            setDescription(description)
+            setSpecifications(specifications)
+            setStock(stock)
             setFileUrl(img)
             setIsActive(isActive)
         }
@@ -227,7 +243,36 @@ const FormProduct = ({ header, isEditing, slug }: Props) => {
                         autoComplete='off'
                         value={price}
                         onChange={(e) => setPrice(e.target.value)}
-                        />
+                    />
+                </S.FormInputContainer>
+                <S.FormInputContainer>
+                    <S.FormLabel>Description (*):</S.FormLabel>
+                    <S.FormInput
+                        type="text"
+                        placeholder="Description"
+                        autoComplete='off'
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                    />
+                </S.FormInputContainer>
+                <S.FormInputContainer>
+                    <S.FormLabel>Specifications:</S.FormLabel>
+                    <S.FormInput
+                        type="text"
+                        placeholder="Specifications"
+                        autoComplete='off'
+                        value={specifications}
+                        onChange={(e) => setSpecifications(e.target.value)}
+                    />
+                </S.FormInputContainer>
+                <S.FormInputContainer>
+                    <S.FormLabel>Stock (*):</S.FormLabel>
+                    <S.FormInput
+                        type="number"
+                        autoComplete='off'
+                        value={stock}
+                        onChange={(e) => setStock(+e.target.value)}
+                    />
                 </S.FormInputContainer>
                 <S.FormInputCheckboxContainer>
                     <S.FormLabel htmlFor='isActive'>IsActive:</S.FormLabel>

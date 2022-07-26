@@ -107,7 +107,22 @@ export const productColumns = [
   {
     field: "price",
     headerName: "Price",
+    width: 120,
+  },
+  {
+    field: "description",
+    headerName: "Description",
     width: 230,
+  },
+  {
+    field: "specifications",
+    headerName: "Specifications",
+    width: 230,
+  },
+  {
+    field: "stock",
+    headerName: "Stock",
+    width: 80,
   },
   {
     field: "status",
@@ -116,7 +131,7 @@ export const productColumns = [
     renderCell: (params) => {
       return (
         <div className={`cellWithStatus ${params.row.status}`}>
-          {params.row.status ? "Active" : "Inactive"}
+          {params.row.isActive ? "Active" : "Inactive"}
         </div>
       );
     },
