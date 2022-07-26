@@ -221,7 +221,7 @@ const FormUser = ({ title, isEditing }: Props) => {
 
     }, [state])
 
-    const disabledButton = percentage < 100 && displayname === state.displayname && username === state.username && email === state.email && phone === state.phone && password === state.password && address === state.address && country === state.country && isActive === state.isActive && isAdmin === state.isAdmin
+    const disabledButton = percentage < 100 && displayname === state?.displayname && username === state?.username && email === state?.email && phone === state?.phone && password === state?.password && address === state?.address && country === state?.country && isActive === state?.isActive && isAdmin === state?.isAdmin
 
     return (
         <Layout>
