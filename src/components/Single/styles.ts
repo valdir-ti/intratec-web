@@ -140,6 +140,13 @@ export const TopDetailsItems = styled.div`
         width: auto;
     }
 `
+export const TopDetailsSpan = styled.span`
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100px;
+    text-align: left;
+`
 export const TopDetailsItem = styled.div`
     font-size: 14px;
     margin-bottom: 12px;
@@ -165,8 +172,8 @@ export const TopDetailsItemKey = styled.h1`
     }
 `
 export const TopImage = styled.img`
-    width: 100px;
-    height: 100px;
+    width: 64px;
+    height: 64px;
     object-fit: cover;
     border-radius: 50%;
     margin-left: 40px;

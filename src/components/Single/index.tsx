@@ -13,9 +13,13 @@ import { SidebarContext } from '../../context/sidebar/sidebarContext';
 import useWindowDimensions from '../../hooks/getWindowDimensions';
 import CustomizedProgressBars from '../CustomizedCirculrProgress';
 
+import { productFields, userFields } from '../../singlePageSource';
+
 import GenericAvatar from "../../assets/generic-avatar.png";
 
 import * as S from './styles'
+
+const singleColumns: any = { users: userFields, products: productFields }
 
 interface SingleProps {
   slug: string;
@@ -64,11 +68,12 @@ const Single = ({ slug }: SingleProps) => {
                   <>
                     <S.TopImage src={data?.img || GenericAvatar} />
                     <S.TopDetailsItems>
-                      <S.TopDetailsTitle>{data.displayname}</S.TopDetailsTitle>
-                      <S.TopDetailsItem><S.TopDetailsItemKey>Email:</S.TopDetailsItemKey>&nbsp;{data.email}</S.TopDetailsItem>
-                      <S.TopDetailsItem><S.TopDetailsItemKey>Phone:</S.TopDetailsItemKey>&nbsp;{data.phone}</S.TopDetailsItem>
-                      <S.TopDetailsItem><S.TopDetailsItemKey>Address:</S.TopDetailsItemKey>&nbsp;{data.address}</S.TopDetailsItem>
-                      <S.TopDetailsItem><S.TopDetailsItemKey>Country:</S.TopDetailsItemKey>&nbsp;{data.country}</S.TopDetailsItem>
+                      <S.TopDetailsTitle>{data[singleColumns[slug][0]]}</S.TopDetailsTitle>
+                      {singleColumns[slug].map((item: string) => {
+                        return (
+                          <S.TopDetailsItem><S.TopDetailsItemKey>{item.toUpperCase()}:</S.TopDetailsItemKey>&nbsp;<S.TopDetailsSpan>{data[item]}</S.TopDetailsSpan></S.TopDetailsItem>
+                        )
+                      })}
                     </S.TopDetailsItems>
                   </>
                 }

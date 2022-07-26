@@ -3,14 +3,13 @@ import { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import { userColumns, productColumns } from '../../datatablesource';
 
+import { db } from '../../firebase';
 import { collection, onSnapshot, doc, deleteDoc } from "firebase/firestore";
 
+import Toaster from '../Toaster';
 import useConfirm from '../../hooks/useConfirmDialog';
 
-import Toaster from '../Toaster';
-
 import { Datagrid, LinkStyle } from './styles';
-import { db } from '../../firebase';
 
 const datatableColumns: any = {users: userColumns, products: productColumns}
 
