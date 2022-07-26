@@ -172,16 +172,17 @@ export const TopDetailsItemKey = styled.h1`
     }
 `
 export const TopImage = styled.img`
-    width: 64px;
-    height: 64px;
+    width: 80px;
+    height: 80px;
     object-fit: cover;
     border-radius: 50%;
-    margin-left: 40px;
+    margin-left: 10px;
     margin-top: 30px;
     @media only screen and (max-width: 550px) {
         margin: 0;
-        width: 72px;
-        height: 72px;
+        width: 64px;
+        height: 64px;
+        margin-top: 30px;
     }
     @media only screen and (max-width: 280px) {
         margin-top: 20px;
