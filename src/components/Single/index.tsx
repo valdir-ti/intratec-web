@@ -69,9 +69,12 @@ const Single = ({ slug }: SingleProps) => {
                     <S.TopImage src={data?.img || GenericAvatar} />
                     <S.TopDetailsItems>
                       <S.TopDetailsTitle>{data[singleColumns[slug][0]]}</S.TopDetailsTitle>
-                      {singleColumns[slug].map((item: string) => {
+                      {singleColumns[slug].map((item: string, i: number) => {
                         return (
-                          <S.TopDetailsItem><S.TopDetailsItemKey>{item.toUpperCase()}:</S.TopDetailsItemKey>&nbsp;<S.TopDetailsSpan>{data[item]}</S.TopDetailsSpan></S.TopDetailsItem>
+                          <S.TopDetailsItem key={i}>
+                            <S.TopDetailsItemKey>{item.toUpperCase()}:</S.TopDetailsItemKey>
+                              &nbsp;<S.TopDetailsSpan>{data[item]}</S.TopDetailsSpan>
+                          </S.TopDetailsItem>
                         )
                       })}
                     </S.TopDetailsItems>
