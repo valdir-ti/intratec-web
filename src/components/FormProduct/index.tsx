@@ -7,6 +7,7 @@ import { doc, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore'
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 
 import Toaster from '../Toaster';
+import FormField from '../FormField';
 import Layout from '../../pages/Layout';
 import CustomizedProgressBars from '../CustomizedCirculrProgress';
 
@@ -225,55 +226,48 @@ const FormProduct = ({ header, isEditing, slug }: Props) => {
                         onChange={(e) => handleFile(e)}
                     />
                 </S.FormInputContainer>
-                <S.FormInputContainer>
-                    <S.FormLabel>Title (*):</S.FormLabel>
-                    <S.FormInput
-                        type="text"
-                        placeholder="Title"
-                        autoComplete='off'
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        />
-                </S.FormInputContainer>
-                <S.FormInputContainer>
-                    <S.FormLabel>Price (*):</S.FormLabel>
-                    <S.FormInput
-                        type="text"
-                        placeholder="Price"
-                        autoComplete='off'
-                        value={price}
-                        onChange={(e) => setPrice(e.target.value)}
-                    />
-                </S.FormInputContainer>
-                <S.FormInputContainer>
-                    <S.FormLabel>Description (*):</S.FormLabel>
-                    <S.FormInput
-                        type="text"
-                        placeholder="Description"
-                        autoComplete='off'
-                        value={description}
-                        onChange={(e) => setDescription(e.target.value)}
-                    />
-                </S.FormInputContainer>
-                <S.FormInputContainer>
-                    <S.FormLabel>Specifications:</S.FormLabel>
-                    <S.FormInput
-                        type="text"
-                        placeholder="Specifications"
-                        autoComplete='off'
-                        value={specifications}
-                        onChange={(e) => setSpecifications(e.target.value)}
-                    />
-                </S.FormInputContainer>
-                <S.FormInputContainer>
-                    <S.FormLabel>Stock (*):</S.FormLabel>
-                    <S.FormInput
-                        type="number"
-                        autoComplete='off'
-                        value={stock}
-                        onChange={(e) => setStock(+e.target.value)}
-                    />
-                </S.FormInputContainer>
+                <FormField
+                    label='Title'
+                    obrigatory
+                    type='text'
+                    placeholder='Title'
+                    value={title}
+                    autoComplete='off'
+                    onChange={(e) => setTitle(e.target.value)}
+                />
+                <FormField
+                    label='Price'
+                    obrigatory
+                    type='text'
+                    placeholder='Price'
+                    value={price}
+                    autoComplete='off'
+                    onChange={(e) => setPrice(e.target.value)}
+                />
+                <FormField
+                    label='Description'
+                    obrigatory
+                    type='text'
+                    placeholder='Description'
+                    value={description}
+                    autoComplete='off'
+                    onChange={(e) => setDescription(e.target.value)}
+                />
+                <FormField
+                    label='Specifications'
+                    type='text'
+                    placeholder='Specifications'
+                    value={specifications}
+                    autoComplete='off'
+                    onChange={(e) => setSpecifications(e.target.value)}
+                />
+                <FormField
+                    label='Stock'
+                    obrigatory
+                    type='number'
+                    value={stock}
+                    onChange={(e) => setStock(+e.target.value)}
+                />
                 <S.FormInputCheckboxContainer>
                     <S.FormLabel htmlFor='isActive'>IsActive:</S.FormLabel>
                     <S.FormInputCheckbox

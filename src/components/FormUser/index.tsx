@@ -7,6 +7,7 @@ import { doc, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore'
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 
 import Toaster from '../Toaster';
+import FormField from '../FormField';
 import Layout from '../../pages/Layout';
 import CustomizedProgressBars from '../CustomizedCirculrProgress';
 
@@ -240,76 +241,66 @@ const FormUser = ({ title, isEditing }: Props) => {
                         onChange={(e) => handleFile(e)}
                     />
                 </S.FormInputContainer>
-                <S.FormInputContainer>
-                    <S.FormLabel>FullName (*):</S.FormLabel>
-                    <S.FormInput
-                        type="text"
-                        placeholder="Full name"
-                        autoComplete='off'
-                        value={displayname}
-                        onChange={(e) => setDisplayname(e.target.value)}
-                        />
-                </S.FormInputContainer>
-                <S.FormInputContainer>
-                    <S.FormLabel>Username (*):</S.FormLabel>
-                    <S.FormInput
-                        type="text"
-                        placeholder="Username"
-                        autoComplete='off'
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
-                        />
-                </S.FormInputContainer>
-                <S.FormInputContainer>
-                    <S.FormLabel>Email (*):</S.FormLabel>
-                    <S.FormInput
-                        type="email"
-                        placeholder="Email"
-                        autoComplete='off'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        />
-                </S.FormInputContainer>
-                <S.FormInputContainer>
-                    <S.FormLabel>Phone:</S.FormLabel>
-                    <S.FormInput
-                        type="text"
-                        placeholder="Phone"
-                        autoComplete='off'
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        />
-                </S.FormInputContainer>
-                <S.FormInputContainer>
-                    <S.FormLabel>Password (*):</S.FormLabel>
-                    <S.FormInput
-                        type="password"
-                        placeholder="********"
-                        autoComplete='off'
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        />
-                </S.FormInputContainer>
-                <S.FormInputContainer>
-                    <S.FormLabel>Address:</S.FormLabel>
-                    <S.FormInput
-                        type="text"
-                        placeholder="Address"
-                        autoComplete='off'
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
-                        />
-                </S.FormInputContainer>
-                <S.FormInputContainer>
-                    <S.FormLabel>Country:</S.FormLabel>
-                    <S.FormInput
-                        type="text"
-                        placeholder="Country"
-                        autoComplete='off'
-                        value={country}
-                        onChange={(e) => setCountry(e.target.value)}
-                        />
-                </S.FormInputContainer>
+                <FormField
+                    label='Fullname'
+                    obrigatory
+                    type='text'
+                    placeholder='Full Name'
+                    autoComplete='off'
+                    value={displayname}
+                    onChange={(e) => setDisplayname(e.target.value)}
+                />
+                <FormField
+                    label='Username'
+                    obrigatory
+                    type='text'
+                    placeholder='Username'
+                    autoComplete='off'
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                />
+                <FormField
+                    label='Email'
+                    obrigatory
+                    type='email'
+                    placeholder='Email'
+                    autoComplete='off'
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <FormField
+                    label='Phone'
+                    type='text'
+                    placeholder='Phone'
+                    autoComplete='off'
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                />
+                <FormField
+                    label='Password'
+                    obrigatory
+                    type='password'
+                    placeholder='********'
+                    autoComplete='off'
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <FormField
+                    label='Address'
+                    type='text'
+                    placeholder='Address'
+                    autoComplete='off'
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                />
+                <FormField
+                    label='Country'
+                    type='text'
+                    placeholder='Country'
+                    autoComplete='off'
+                    value={country}
+                    onChange={(e) => setCountry(e.target.value)}
+                />
                 <S.FormInputCheckboxContainer>
                     <S.FormLabel htmlFor='isActive'>IsActive:</S.FormLabel>
                     <S.FormInputCheckbox
@@ -317,7 +308,7 @@ const FormUser = ({ title, isEditing }: Props) => {
                         type="checkbox"
                         checked={isActive}
                         onChange={() => setIsActive(!isActive)}
-                        />
+                    />
                 </S.FormInputCheckboxContainer>
                 <S.FormInputCheckboxContainer>
                     <S.FormLabel htmlFor='isAdmin'>IsAdmin:</S.FormLabel>
