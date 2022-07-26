@@ -7,12 +7,11 @@ import { doc, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore'
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 
 import Toaster from '../Toaster';
+import FormImage from '../FormImage';
 import FormField from '../FormField';
 import Layout from '../../pages/Layout';
 import FormCheckbox from '../FormCheckbox';
 import CustomizedProgressBars from '../CustomizedCirculrProgress';
-
-import noImage from '../../assets/no-image-icon.jpg'
 
 import * as S from './styles';
 
@@ -226,22 +225,15 @@ const FormUser = ({ title, isEditing }: Props) => {
             <S.Form onSubmit={isEditing ? handleFormUpdate : handleFormSubmit}>
                 <S.Title>{title}</S.Title>
 
-                <S.ContainerImg>
-                    <S.ContainerContentImg
-                    src={file ? URL.createObjectURL(file) : fileUrl || noImage}
-                    alt="Imagem do usuário"
-                    />
-                </S.ContainerImg>
+                <FormImage
+                    name='file'
+                    file={file}
+                    fileUrl={fileUrl}
+                    alt='Imagem do usuário'
+                    label='User Image'
+                    onChange={(e) => handleFile(e)}
+                />
 
-                <S.FormInputContainer>
-                    <S.FormLabel htmlFor='file'>User Image:<S.FormDriveFolderIcon/></S.FormLabel>
-                    <S.FormInput
-                        id="file"
-                        type="file"
-                        style={{ display: 'none'}}
-                        onChange={(e) => handleFile(e)}
-                    />
-                </S.FormInputContainer>
                 <FormField
                     label='Fullname'
                     obrigatory

@@ -8,11 +8,10 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 
 import Toaster from '../Toaster';
 import FormField from '../FormField';
+import FormImage from '../FormImage';
 import Layout from '../../pages/Layout';
 import FormCheckbox from '../FormCheckbox';
 import CustomizedProgressBars from '../CustomizedCirculrProgress';
-
-import noImage from '../../assets/no-image-icon.jpg'
 
 import * as S from './styles';
 
@@ -211,22 +210,15 @@ const FormProduct = ({ header, isEditing, slug }: Props) => {
             <S.Form onSubmit={isEditing ? handleFormUpdate : handleFormSubmit}>
                 <S.Title>{header}</S.Title>
 
-                <S.ContainerImg>
-                    <S.ContainerContentImg
-                    src={file ? URL.createObjectURL(file) : fileUrl || noImage}
-                    alt="Imagem do produto"
-                    />
-                </S.ContainerImg>
+                <FormImage
+                    name='file'
+                    file={file}
+                    fileUrl={fileUrl}
+                    alt='Imagem do produto'
+                    label='Product Image'
+                    onChange={(e) => handleFile(e)}
+                />
 
-                <S.FormInputContainer>
-                    <S.FormLabel htmlFor='file'>Product Image:<S.FormDriveFolderIcon/></S.FormLabel>
-                    <S.FormInput
-                        id="file"
-                        type="file"
-                        style={{ display: 'none'}}
-                        onChange={(e) => handleFile(e)}
-                    />
-                </S.FormInputContainer>
                 <FormField
                     label='Title'
                     obrigatory
