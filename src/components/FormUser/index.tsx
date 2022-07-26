@@ -9,6 +9,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 import Toaster from '../Toaster';
 import FormField from '../FormField';
 import Layout from '../../pages/Layout';
+import FormCheckbox from '../FormCheckbox';
 import CustomizedProgressBars from '../CustomizedCirculrProgress';
 
 import noImage from '../../assets/no-image-icon.jpg'
@@ -301,24 +302,18 @@ const FormUser = ({ title, isEditing }: Props) => {
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
                 />
-                <S.FormInputCheckboxContainer>
-                    <S.FormLabel htmlFor='isActive'>IsActive:</S.FormLabel>
-                    <S.FormInputCheckbox
-                        id="isActive"
-                        type="checkbox"
-                        checked={isActive}
-                        onChange={() => setIsActive(!isActive)}
-                    />
-                </S.FormInputCheckboxContainer>
-                <S.FormInputCheckboxContainer>
-                    <S.FormLabel htmlFor='isAdmin'>IsAdmin:</S.FormLabel>
-                    <S.FormInputCheckbox
-                        id="isAdmin"
-                        type="checkbox"
-                        checked={isAdmin}
-                        onChange={() => setIsAdmin(!isAdmin)}
-                    />
-                </S.FormInputCheckboxContainer>
+                <FormCheckbox
+                    label='isActive'
+                    checked={isActive}
+                    type='checkbox'
+                    onChange={() => setIsActive(!isActive)}
+                />
+                <FormCheckbox
+                    label='isAdmin'
+                    checked={isAdmin}
+                    type='checkbox'
+                    onChange={() => setIsAdmin(!isAdmin)}
+                />
                 <S.FormButtonContainer>
                     <S.FormButton>
                         {loading ? <CustomizedProgressBars size={16}/> : isEditing ? 'Edit' : 'Save'}

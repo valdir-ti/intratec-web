@@ -9,6 +9,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 import Toaster from '../Toaster';
 import FormField from '../FormField';
 import Layout from '../../pages/Layout';
+import FormCheckbox from '../FormCheckbox';
 import CustomizedProgressBars from '../CustomizedCirculrProgress';
 
 import noImage from '../../assets/no-image-icon.jpg'
@@ -268,15 +269,14 @@ const FormProduct = ({ header, isEditing, slug }: Props) => {
                     value={stock}
                     onChange={(e) => setStock(+e.target.value)}
                 />
-                <S.FormInputCheckboxContainer>
-                    <S.FormLabel htmlFor='isActive'>IsActive:</S.FormLabel>
-                    <S.FormInputCheckbox
-                        id="isActive"
-                        type="checkbox"
-                        checked={isActive}
-                        onChange={() => setIsActive(!isActive)}
-                    />
-                </S.FormInputCheckboxContainer>
+
+                <FormCheckbox
+                    label='isActive'
+                    checked={isActive}
+                    type='checkbox'
+                    onChange={() => setIsActive(!isActive)}
+                />
+
                 <S.FormButtonContainer>
                     <S.FormButton>
                         {loading ? <CustomizedProgressBars size={16}/> : isEditing ? 'Edit' : 'Save'}
