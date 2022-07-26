@@ -9,9 +9,9 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 import Toaster from '../Toaster';
 import FormField from '../FormField';
 import FormImage from '../FormImage';
+import FormButton from '../FormButton';
 import Layout from '../../pages/Layout';
 import FormCheckbox from '../FormCheckbox';
-import CustomizedProgressBars from '../CustomizedCirculrProgress';
 
 import * as S from './styles';
 
@@ -269,13 +269,12 @@ const FormProduct = ({ header, isEditing, slug }: Props) => {
                     onChange={() => setIsActive(!isActive)}
                 />
 
-                <S.FormButtonContainer>
-                    <S.FormButton
-                        disabled={percentage < 100}
-                    >
-                        {loading ? <CustomizedProgressBars size={16}/> : isEditing ? 'Edit' : 'Save'}
-                    </S.FormButton>
-                </S.FormButtonContainer>
+                <FormButton
+                    label={isEditing ? 'Edit' : 'Save'}
+                    loading={loading}
+                    disabled={percentage < 100}
+                />
+
             </S.Form>
             <Toaster
                 open={open}
