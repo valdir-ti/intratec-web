@@ -141,8 +141,8 @@ export const productColumns = [
 export const companyColumns = [
   { field: "id", headerName: "Company ID", width: 200 },
   {
-    field: "title",
-    headerName: "Title",
+    field: "username",
+    headerName: "Username",
     width: 230,
     renderCell: (params) => {
       return (
@@ -162,39 +162,51 @@ export const companyColumns = [
               marginRight: 20,
             }}
           />
-          {params.row.title}
+          {params.row.username}
         </div>
       );
     },
   },
   {
-    field: "price",
-    headerName: "Price",
-    width: 120,
-  },
-  {
-    field: "description",
-    headerName: "Description",
+    field: "displayname",
+    headerName: "Name",
     width: 230,
   },
   {
-    field: "specifications",
-    headerName: "Specifications",
+    field: "email",
+    headerName: "Email",
     width: 230,
   },
   {
-    field: "stock",
-    headerName: "Stock",
-    width: 80,
+    field: "phone",
+    headerName: "Phone",
+    width: 100,
   },
   {
-    field: "status",
-    headerName: "Status",
+    field: "country",
+    headerName: "Country",
+    width: 100,
+  },
+  {
+    field: "isActive",
+    headerName: "Active",
     width: 160,
     renderCell: (params) => {
       return (
-        <div className={`cellWithStatus ${params.row.status}`}>
+        <div className={`cellWithStatus ${params.row.isActive}`}>
           {params.row.isActive ? "Active" : "Inactive"}
+        </div>
+      );
+    },
+  },
+  {
+    field: "isAdmin",
+    headerName: "Nível",
+    width: 160,
+    renderCell: (params) => {
+      return (
+        <div className={`cellWithStatus ${params.row.isAdmin}`}>
+          {params.row.isAdmin ? "Admin" : "User"}
         </div>
       );
     },

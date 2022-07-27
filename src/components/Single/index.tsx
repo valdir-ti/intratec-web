@@ -13,13 +13,13 @@ import { SidebarContext } from '../../context/sidebar/sidebarContext';
 import useWindowDimensions from '../../hooks/getWindowDimensions';
 import CustomizedProgressBars from '../CustomizedCircularProgress';
 
-import { productFields, userFields } from '../../singlePageSource';
+import { productFields, userFields, companyFields } from '../../singlePageSource';
 
 import GenericAvatar from "../../assets/generic-avatar.png";
 
 import * as S from './styles'
 
-const singleColumns: any = { users: userFields, products: productFields }
+const singleColumns: any = { users: userFields, products: productFields, companies: companyFields }
 
 interface SingleProps {
   slug: string;

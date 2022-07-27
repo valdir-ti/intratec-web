@@ -142,7 +142,7 @@ const AppRoutes = () => {
                 path=":id"
                 element={
                   <RequireAuth>
-                    <Single slug='users'/>
+                    <Single slug='companies'/>
                   </RequireAuth>
                 }
               />
