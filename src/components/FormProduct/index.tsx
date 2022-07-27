@@ -27,12 +27,10 @@ interface LocationProps {
 }
 
 interface Props {
-    header: string;
     isEditing?: boolean;
-    slug: string;
 }
 
-const FormProduct = ({ header, isEditing, slug }: Props) => {
+const FormProduct = ({ isEditing }: Props) => {
 
     const navigate = useNavigate()
     const location = useLocation()
@@ -72,7 +70,7 @@ const FormProduct = ({ header, isEditing, slug }: Props) => {
 
         try {
             const itemId = uuidv4()
-            await setDoc(doc(db, slug, itemId), {
+            await setDoc(doc(db, 'products', itemId), {
                 title,
                 price,
                 description,
@@ -85,7 +83,7 @@ const FormProduct = ({ header, isEditing, slug }: Props) => {
             });
             toasterStart("success", "Item cadastrado com sucesso!")
             setTimeout(() => {
-                navigate(`/${slug}`)
+                navigate('/products')
             }, 1500)
         } catch (err: any) {
             console.log('Error => ', err)
@@ -114,7 +112,7 @@ const FormProduct = ({ header, isEditing, slug }: Props) => {
         }
 
         try {
-            await updateDoc(doc(db, slug, id), {
+            await updateDoc(doc(db, 'products', id), {
                 title,
                 price,
                 description,
@@ -126,7 +124,7 @@ const FormProduct = ({ header, isEditing, slug }: Props) => {
             });
             toasterStart("success", "Item atualizado com sucesso!")
             setTimeout(() => {
-                navigate(`/${slug}`)
+                navigate('/products')
             }, 1500)
         } catch (err: any) {
             console.log('Error => ', err)
@@ -211,7 +209,7 @@ const FormProduct = ({ header, isEditing, slug }: Props) => {
     return (
         <Layout>
             <S.Form onSubmit={isEditing ? handleFormUpdate : handleFormSubmit}>
-                <S.Title>{header}</S.Title>
+                <S.Title>Add New Product</S.Title>
 
                 <FormImage
                     name='file'

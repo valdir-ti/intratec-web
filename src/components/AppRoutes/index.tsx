@@ -92,7 +92,7 @@ const AppRoutes = () => {
                 path="new"
                 element={
                   <RequireAuth>
-                    <FormProduct header="Add new product" slug="products"/>
+                    <FormProduct />
                   </RequireAuth>
                 }
               />
@@ -100,7 +100,7 @@ const AppRoutes = () => {
                 path="edit/:id"
                 element={
                   <RequireAuth>
-                    <FormProduct header="Edit product" slug="products" isEditing/>
+                    <FormProduct isEditing/>
                   </RequireAuth>
                 }
               />
