@@ -56,11 +56,11 @@ const Widget = ({ item }: IWidget) => {
         status: 'negative',
       }
     break;
-    case 'earnings':
+    case 'companies':
       data = {
-        title: 'EARNINGS',
+        title: 'COMPANIES',
         isMoney: true,
-        link: 'View net earnings',
+        link: 'View all companies',
         icon: <MonetizationOn />,
         iconColor: 'rgba(0,128,0,0.2)',
         fontIconColor: 'green',

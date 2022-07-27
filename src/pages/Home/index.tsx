@@ -27,7 +27,7 @@ const Home = () => {
             <Widget item='products' />
           </ContentTwo>
           <ContentThree>
-            <Widget item='earnings' />
+            <Widget item='companies' />
           </ContentThree>
           <ContentFour>
             <Widget item='balance' />
