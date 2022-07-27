@@ -59,7 +59,7 @@ const Widget = ({ item }: IWidget) => {
     case 'companies':
       data = {
         title: 'COMPANIES',
-        isMoney: true,
+        isMoney: false,
         link: 'View all companies',
         icon: <MonetizationOn />,
         iconColor: 'rgba(0,128,0,0.2)',
