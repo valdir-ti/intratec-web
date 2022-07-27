@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import {
-  KeyboardArrowDown,
-  KeyboardArrowUp,
+  Business,
+  Inventory,
   PersonOutline,
-  MonetizationOn,
+  KeyboardArrowUp,
+  KeyboardArrowDown,
   AccountBalanceWallet,
-  Inventory
 } from '@mui/icons-material';
 
 import { db } from '../../firebase';
@@ -61,7 +61,7 @@ const Widget = ({ item }: IWidget) => {
         title: 'COMPANIES',
         isMoney: false,
         link: 'View all companies',
-        icon: <MonetizationOn />,
+        icon: <Business />,
         iconColor: 'rgba(0,128,0,0.2)',
         fontIconColor: 'green',
         status: 'negative',
