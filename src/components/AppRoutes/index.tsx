@@ -14,6 +14,7 @@ import NotFound from "../NotFound";
 import Home from '../../pages/Home';
 import Login from "../../pages/Login";
 import FormProduct from "../FormProduct";
+import FormCompany from "../FormCompany";
 
 import { AuthContext } from '../../context/authentication/authContext';
 
@@ -117,7 +118,7 @@ const AppRoutes = () => {
                 index
                 element={
                   <RequireAuth>
-                    <List item="Company" slug="users" />
+                    <List item="Company" slug="companies" />
                   </RequireAuth>
                 }
               />
@@ -125,7 +126,15 @@ const AppRoutes = () => {
                 path="new"
                 element={
                   <RequireAuth>
-                    <New inputs={productInputs} title="Add new company"/>
+                    <FormCompany />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="edit/:id"
+                element={
+                  <RequireAuth>
+                    <FormCompany isEditing/>
                   </RequireAuth>
                 }
               />

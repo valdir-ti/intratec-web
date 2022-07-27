@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import Box from '@mui/material/Box';
-import { userColumns, productColumns } from '../../datatablesource';
+import { userColumns, productColumns, companyColumns } from '../../datatablesource';
 
 import { db } from '../../firebase';
 import { collection, onSnapshot, doc, deleteDoc } from "firebase/firestore";
@@ -11,7 +11,7 @@ import useConfirm from '../../hooks/useConfirmDialog';
 
 import { Datagrid, LinkStyle } from './styles';
 
-const datatableColumns: any = {users: userColumns, products: productColumns}
+const datatableColumns: any = {users: userColumns, products: productColumns, companies: companyColumns};
 
 interface DataTableProps {
   slug: string;
