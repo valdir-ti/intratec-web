@@ -1,4 +1,4 @@
-import CustomizedProgressBars from '../CustomizedCircularProgress'
+import CustomizedProgressBars from '../../CustomizedCircularProgress'
 
 import * as S from './styles'
 

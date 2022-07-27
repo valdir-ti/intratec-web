@@ -7,11 +7,11 @@ import { doc, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore'
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 
 import Toaster from '../Toaster';
-import FormImage from '../FormImage';
-import FormField from '../FormField';
-import FormButton from '../FormButton';
+import FormImage from '../Form/FormImage';
+import FormField from '../Form/FormField';
+import FormButton from '../Form/FormButton';
 import Layout from '../../pages/Layout';
-import FormCheckbox from '../FormCheckbox';
+import FormCheckbox from '../Form/FormCheckbox';
 
 import * as S from './styles';
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import noImage from '../../assets/no-image-icon.jpg'
+import noImage from '../../../assets/no-image-icon.jpg'
 
 import * as S from './styles'
 
