@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
         background: ${props => props.theme.colors.background};
         color: ${props => props.theme.colors.text};
         font-family: 'Roboto', sans-serif;
-        font-size: 14;
+        font-size: 14px;
     }
 
     :root {
