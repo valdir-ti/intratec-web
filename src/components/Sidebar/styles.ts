@@ -1,3 +1,4 @@
+import { Collapse } from "@mui/material";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
@@ -87,11 +88,21 @@ export const ContainerCenterLi = styled.li`
     cursor: pointer;
     width: 100%;
     font-weight: bold;
+    color: ${props => props.theme.colors.menu};
     &:hover, &:active {
         background-color: ${props => props.theme.colors.hover};
         color: ${props => props.theme.colors.secondText};
     }
 `;
+export const ContainerCollapse = styled(Collapse)`
+    width: 100%;
+`;
+export const ContainerMenuIcon = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+`
 export const ContainerCenterLiLogout = styled.li`
     display: flex;
     align-items: center;

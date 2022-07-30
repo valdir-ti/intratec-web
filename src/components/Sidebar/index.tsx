@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import {
   AccountCircleOutlined,
   CreditCard,
@@ -12,7 +12,11 @@ import {
   SettingsSystemDaydream,
   Store,
   Close,
-  Business
+  Business,
+  StarBorder,
+  Send,
+  ExpandLess,
+  ExpandMore
 } from '@mui/icons-material';
 
 import useConfirm from '../../hooks/useConfirmDialog';
@@ -34,7 +38,9 @@ import {
   MenuIconWrapper,
   ContainerBottom,
   ContainerBottomDiv,
-  LinkStyle
+  LinkStyle,
+  ContainerCollapse,
+  ContainerMenuIcon
 } from './styles'
 
 interface ISidebar {
@@ -47,6 +53,8 @@ const Sidebar = ({ toggleTheme }: ISidebar) => {
     'Sair',
     'Deseja realmente fazer o logout?',
   )
+
+  const [menuActive, setMenuActive] = useState("")
 
   const { dispatch: AuthDispatch } = useContext(AuthContext);
   const { state: { open }, dispatch: SidebarDispatch } = useContext(SidebarContext);
@@ -72,6 +80,14 @@ const Sidebar = ({ toggleTheme }: ISidebar) => {
 
   function handleTheme(theme: string) {
     toggleTheme(theme)
+  }
+
+  function handleMenuActive(item: any) {
+    if(menuActive === item){
+      setMenuActive("")
+      return
+    }
+    setMenuActive(item)
   }
 
   return (
@@ -106,22 +122,80 @@ const Sidebar = ({ toggleTheme }: ISidebar) => {
                     <ContainerCenterSpan open={open}>Users</ContainerCenterSpan>
                 </LinkStyle>
               </ContainerCenterLi>
-              <ContainerCenterLi title={'Products'} onClick={closeSidebar}>
-                <LinkStyle to='/products'>
-                    <IconWrapper open={open}>
-                      <Store />
-                    </IconWrapper>
-                    <ContainerCenterSpan open={open}>Products</ContainerCenterSpan>
-                </LinkStyle>
+
+              <ContainerCenterLi title={'Products'} onClick={() => handleMenuActive('products')}>
+                  <IconWrapper open={open}>
+                    <Store />
+                  </IconWrapper>
+                  <ContainerMenuIcon>
+                    <ContainerCenterSpan open={open}>Gestão de Produtos</ContainerCenterSpan>
+                    {menuActive === 'products' ? <ExpandLess /> : <ExpandMore />}
+                  </ContainerMenuIcon>
               </ContainerCenterLi>
-              <ContainerCenterLi title={'Companies'} onClick={closeSidebar}>
-                <LinkStyle to='/companies'>
-                    <IconWrapper open={open}>
-                      <Business />
-                    </IconWrapper>
-                    <ContainerCenterSpan open={open}>Companies</ContainerCenterSpan>
-                </LinkStyle>
+              <ContainerCollapse in={menuActive === 'products'} timeout="auto" unmountOnExit>
+                  <ContainerCenterLi>
+                    <LinkStyle to='/products'>
+                      <IconWrapper>
+                        <StarBorder />
+                      </IconWrapper>
+                      <ContainerCenterSpan open={open}>Produtos</ContainerCenterSpan>
+                    </LinkStyle>
+                  </ContainerCenterLi>
+                  <ContainerCenterLi>
+                    <LinkStyle to='/categories'>
+                      <IconWrapper>
+                        <StarBorder />
+                        </IconWrapper>
+                        <ContainerCenterSpan open={open}>Categorias</ContainerCenterSpan>
+                      </LinkStyle>
+                  </ContainerCenterLi>
+                  <ContainerCenterLi>
+                    <LinkStyle to='/brands'>
+                      <IconWrapper>
+                        <Send />
+                      </IconWrapper>
+                      <ContainerCenterSpan open={open}>Marcas</ContainerCenterSpan>
+                    </LinkStyle>
+                  </ContainerCenterLi>
+              </ContainerCollapse>
+
+              <ContainerCenterLi title={'Companies'} onClick={() => handleMenuActive('companies')}>
+                  <IconWrapper open={open}>
+                    <Business />
+                  </IconWrapper>
+                  <ContainerMenuIcon>
+                    <ContainerCenterSpan open={open}>Gestão das Empresas</ContainerCenterSpan>
+                    {menuActive === 'companies' ? <ExpandLess /> : <ExpandMore />}
+                  </ContainerMenuIcon>
               </ContainerCenterLi>
+              <ContainerCollapse in={menuActive === 'companies'} timeout="auto" unmountOnExit>
+                  <ContainerCenterLi>
+                    <LinkStyle to='/products'>
+                      <IconWrapper>
+                        <StarBorder />
+                      </IconWrapper>
+                      <ContainerCenterSpan open={open}>Produtos</ContainerCenterSpan>
+                    </LinkStyle>
+                  </ContainerCenterLi>
+                  <ContainerCenterLi>
+                    <LinkStyle to='/categories'>
+                      <IconWrapper>
+                        <StarBorder />
+                        </IconWrapper>
+                        <ContainerCenterSpan open={open}>Categorias</ContainerCenterSpan>
+                      </LinkStyle>
+                  </ContainerCenterLi>
+                  <ContainerCenterLi>
+                    <LinkStyle to='/brands'>
+                      <IconWrapper>
+                        <Send />
+                      </IconWrapper>
+                      <ContainerCenterSpan open={open}>Marcas</ContainerCenterSpan>
+                    </LinkStyle>
+                  </ContainerCenterLi>
+              </ContainerCollapse>
+
+
               <ContainerCenterLi title={'Orders'} onClick={closeSidebar}>
                 <LinkStyle to='/orders'>
                     <IconWrapper open={open}>
