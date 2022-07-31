@@ -37,6 +37,8 @@ const Login = () => {
   const arrayImage = [backgroundImg01, backgroundImg02, backgroundImg03, backgroundImg04, backgroundImg05, backgroundImg06, backgroundImg07, backgroundImg08, backgroundImg09, backgroundImg10, backgroundImg11, backgroundImg12, backgroundImg13, backgroundImg14]
   const randomImage = Math.floor(Math.random() * 15);
 
+  console.log('randomImage', randomImage)
+
   const { state: { currentUser }, dispatch } = useContext(AuthContext)
 
   const navigate = useNavigate()
@@ -143,7 +145,7 @@ const Login = () => {
   return (
     <S.Container>
       <S.ColumnOne>
-        <S.Background src={arrayImage[randomImage]} alt="Background image" />
+        <S.Background src={arrayImage[randomImage] || backgroundImg01} alt="Background image" />
       </S.ColumnOne>
       <S.ColumnTwo>
         <S.Title>Login to continue</S.Title>
