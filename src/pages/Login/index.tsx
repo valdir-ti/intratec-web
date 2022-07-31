@@ -8,7 +8,20 @@ import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth"
 
 import { AuthContext } from '../../context/authentication/authContext'
 
-import backgroundImg from '../../assets/bg-01.jpg'
+import backgroundImg01 from '../../assets/bg-01.png'
+import backgroundImg02 from '../../assets/bg-02.png'
+import backgroundImg03 from '../../assets/bg-03.png'
+import backgroundImg04 from '../../assets/bg-04.png'
+import backgroundImg05 from '../../assets/bg-05.png'
+import backgroundImg06 from '../../assets/bg-06.png'
+import backgroundImg07 from '../../assets/bg-07.png'
+import backgroundImg08 from '../../assets/bg-08.png'
+import backgroundImg09 from '../../assets/bg-09.png'
+import backgroundImg10 from '../../assets/bg-10.png'
+import backgroundImg11 from '../../assets/bg-11.png'
+import backgroundImg12 from '../../assets/bg-12.png'
+import backgroundImg13 from '../../assets/bg-13.png'
+import backgroundImg14 from '../../assets/bg-14.png'
 
 import * as S from './styles'
 
@@ -20,6 +33,9 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [checked, setChecked] = useState(false)
   const [loading, setLoading] = useState(false)
+
+  const arrayImage = [backgroundImg01, backgroundImg02, backgroundImg03, backgroundImg04, backgroundImg05, backgroundImg06, backgroundImg07, backgroundImg08, backgroundImg09, backgroundImg10, backgroundImg11, backgroundImg12, backgroundImg13, backgroundImg14]
+  const randomImage = Math.floor(Math.random() * 15);
 
   const { state: { currentUser }, dispatch } = useContext(AuthContext)
 
@@ -127,7 +143,7 @@ const Login = () => {
   return (
     <S.Container>
       <S.ColumnOne>
-        <S.Background src={backgroundImg} alt="Background image" />
+        <S.Background src={arrayImage[randomImage]} alt="Background image" />
       </S.ColumnOne>
       <S.ColumnTwo>
         <S.Title>Login to continue</S.Title>
