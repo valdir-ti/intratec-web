@@ -150,18 +150,6 @@ export const categoryColumns = [
           className="cellWithImg"
           style={{ display: "flex", alignItems: "center" }}
         >
-          <img
-            className="cellImg"
-            src={!params.row.img ? GenericAvatar : params.row.img}
-            alt="avatar"
-            width={32}
-            height={32}
-            style={{
-              borderRadius: "50%",
-              objectFit: "cover",
-              marginRight: 20,
-            }}
-          />
           {params.row.title}
         </div>
       );
@@ -192,18 +180,6 @@ export const brandColumns = [
           className="cellWithImg"
           style={{ display: "flex", alignItems: "center" }}
         >
-          <img
-            className="cellImg"
-            src={!params.row.img ? GenericAvatar : params.row.img}
-            alt="avatar"
-            width={32}
-            height={32}
-            style={{
-              borderRadius: "50%",
-              objectFit: "cover",
-              marginRight: 20,
-            }}
-          />
           {params.row.title}
         </div>
       );
