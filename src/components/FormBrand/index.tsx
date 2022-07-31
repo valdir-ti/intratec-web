@@ -27,6 +27,7 @@ const FormBrand = ({ isEditing }: Props) => {
     const navigate = useNavigate()
     const location = useLocation()
     const state = location.state as LocationProps
+    const currentUser = JSON.parse(localStorage.getItem("user")!)
 
     const [title, setTitle] = useState("");
     const [status, setStatus] = useState(false);
@@ -36,6 +37,7 @@ const FormBrand = ({ isEditing }: Props) => {
     const [open, setOpen] = useState<boolean>(false)
     const [toasterMessage, setToasterMessage] = useState<string>("")
     const [toasterSeverity, setToasterSeverity] = useState<string>("")
+
 
     async function handleFormSubmit(e: FormEvent) {
         e.preventDefault();
@@ -50,7 +52,7 @@ const FormBrand = ({ isEditing }: Props) => {
         try {
             const itemId = uuidv4()
             const { error } = await supabaseClient.from('brands').insert([
-                { id: itemId, title: title, status: status },
+                { id: itemId, title: title, status: status, user_id: currentUser.uid  },
             ])
 
             if(!error){
@@ -77,7 +79,7 @@ const FormBrand = ({ isEditing }: Props) => {
 
         try {
             const { error } = await supabaseClient.from('brands')
-            .update({ title: title, status: status })
+            .update({ title: title, status: status, user_id: currentUser.uid, updated_at: new Date() })
             .eq('id', id)
 
             if(!error){
