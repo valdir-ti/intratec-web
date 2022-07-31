@@ -43,8 +43,8 @@ const Datatable = ({ slug }: DataTableProps) => {
         await deleteDoc(doc(db, slug, id));
         setData(data!.filter((item: any) => item.id !== id));
         setOpen(true);
-      }else{
-
+      }
+      if(confirmAnswer && slug === 'brands'){
         const { error } = await supabaseClient.from('brands')
         .delete()
         .eq('id', id)
