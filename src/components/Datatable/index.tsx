@@ -136,36 +136,33 @@ const Datatable = ({ slug }: DataTableProps) => {
 
     useEffect(() => {
       setLoading(true)
-      const unsub = onSnapshot(
-        collection(db, slug),
-        (snapshot) => {
-            let list: any = []
-            snapshot.docs.forEach(doc => {
-                list.push({ id: doc.id, ...doc.data() })
-            })
-            setData(list)
-        }, (err) => {
-            console.log('Error =>', err)
-        })
-        return () => {
-          setLoading(false)
-          unsub()
-        }
-    }, [slug]);
-
-    useEffect(() => {
-      setLoading(true)
-      const fetchBrands = async () => {
-        const resp = await supabaseClient.from(slug).select("id, status, title")
-        if(resp.status === 200){
-          setData(resp.data)
-        }
-      }
       if(slug === 'brands'){
+        const fetchBrands = async () => {
+          const resp = await supabaseClient.from(slug).select("id, status, title")
+          setLoading(false)
+          if(resp.status === 200){
+            setData(resp.data)
+          }
+        }
         fetchBrands()
+      }else{
+        const unsub = onSnapshot(
+          collection(db, slug),
+          (snapshot) => {
+              let list: any = []
+              snapshot.docs.forEach(doc => {
+                  list.push({ id: doc.id, ...doc.data() })
+              })
+              setLoading(false)
+              setData(list)
+          }, (err) => {
+              console.log('Error =>', err)
+          })
+          return () => {
+            unsub()
+          }
       }
-      setLoading(false)
-    }, [slug])
+    }, [slug]);
 
     const actionColumn = [
         {
