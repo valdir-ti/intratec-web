@@ -14,6 +14,10 @@ export const productFields = [
   "specifications",
 ];
 
+export const categoryFields = [
+  "title",
+];
+
 export const companyFields = [
   "displayname",
   "email",

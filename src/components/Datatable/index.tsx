@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import Box from '@mui/material/Box';
-import { userColumns, productColumns, companyColumns } from '../../datatablesource';
+import { userColumns, productColumns, companyColumns, categoryColumns } from '../../datatablesource';
 
 import { db } from '../../firebase';
 import { collection, onSnapshot, doc, deleteDoc } from "firebase/firestore";
@@ -11,7 +11,7 @@ import useConfirm from '../../hooks/useConfirmDialog';
 
 import { Datagrid, LinkStyle } from './styles';
 
-const datatableColumns: any = {users: userColumns, products: productColumns, companies: companyColumns};
+const datatableColumns: any = {users: userColumns, products: productColumns, companies: companyColumns, categories: categoryColumns};
 
 interface DataTableProps {
   slug: string;
@@ -20,7 +20,6 @@ interface DataTableProps {
 const Datatable = ({ slug }: DataTableProps) => {
 
     const [data, setData] = useState<any[]>([])
-    const [id, setId] = useState("")
     const [open, setOpen] = useState(false);
 
     const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {

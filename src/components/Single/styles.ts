@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 interface Props {
     open?: boolean;
+    defaultValue?: string;
 }
 
 export const Container = styled.div`
@@ -122,6 +123,10 @@ export const TopTitle = styled.h1`
     color: #80808054;
 `
 export const TopDetailsTitle = styled.div`
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 340px;
     font-size: 22px;
     margin-bottom: 16px;
     @media only screen and (max-width: 550px) {
@@ -140,11 +145,12 @@ export const TopDetailsItems = styled.div`
         width: auto;
     }
 `
-export const TopDetailsSpan = styled.span`
+export const TopDetailsSpan = styled.span<Props>`
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    width: 200px;
+    width: ${props => props!.defaultValue !== 'title' ? '55%' : '200px'};
+    max-width: 65%;
     text-align: left;
     @media only screen and (max-width: 550px) {
         width: 120px;
@@ -156,6 +162,7 @@ export const TopDetailsItem = styled.div`
     display: flex;
     align-items: center;
     font-weight: 500;
+    width: 100%;
     @media only screen and (max-width: 550px) {
         margin-bottom: 10px;
         font-size: 12px;

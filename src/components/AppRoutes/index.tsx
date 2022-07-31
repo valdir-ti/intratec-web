@@ -15,6 +15,7 @@ import Home from '../../pages/Home';
 import Login from "../../pages/Login";
 import FormProduct from "../FormProduct";
 import FormCompany from "../FormCompany";
+import FormCategory from "../FormCategory";
 
 import { AuthContext } from '../../context/authentication/authContext';
 
@@ -109,6 +110,40 @@ const AppRoutes = () => {
                 element={
                   <RequireAuth>
                     <Single slug='products'/>
+                  </RequireAuth>
+                }
+              />
+            </Route>
+            <Route path="categories">
+              <Route
+                index
+                element={
+                  <RequireAuth>
+                    <List item="Category" slug="categories" />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="new"
+                element={
+                  <RequireAuth>
+                    <FormCategory />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="edit/:id"
+                element={
+                  <RequireAuth>
+                    <FormCategory isEditing/>
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path=":id"
+                element={
+                  <RequireAuth>
+                    <Single slug='categories'/>
                   </RequireAuth>
                 }
               />

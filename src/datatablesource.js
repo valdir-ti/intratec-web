@@ -138,6 +138,49 @@ export const productColumns = [
   },
 ];
 
+export const categoryColumns = [
+  { field: "id", headerName: "Category ID", width: 200 },
+  {
+    field: "title",
+    headerName: "Title",
+    width: 230,
+    renderCell: (params) => {
+      return (
+        <div
+          className="cellWithImg"
+          style={{ display: "flex", alignItems: "center" }}
+        >
+          <img
+            className="cellImg"
+            src={!params.row.img ? GenericAvatar : params.row.img}
+            alt="avatar"
+            width={32}
+            height={32}
+            style={{
+              borderRadius: "50%",
+              objectFit: "cover",
+              marginRight: 20,
+            }}
+          />
+          {params.row.title}
+        </div>
+      );
+    },
+  },
+  {
+    field: "status",
+    headerName: "Status",
+    width: 160,
+    renderCell: (params) => {
+      return (
+        <div className={`cellWithStatus ${params.row.status}`}>
+          {params.row.isActive ? "Active" : "Inactive"}
+        </div>
+      );
+    },
+  },
+];
+
 export const companyColumns = [
   { field: "id", headerName: "Company ID", width: 200 },
   {

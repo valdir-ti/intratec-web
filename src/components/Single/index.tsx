@@ -13,13 +13,13 @@ import { SidebarContext } from '../../context/sidebar/sidebarContext';
 import useWindowDimensions from '../../hooks/getWindowDimensions';
 import CustomizedProgressBars from '../CustomizedCircularProgress';
 
-import { productFields, userFields, companyFields } from '../../singlePageSource';
+import { productFields, userFields, companyFields, categoryFields } from '../../singlePageSource';
 
 import GenericAvatar from "../../assets/generic-avatar.png";
 
 import * as S from './styles'
 
-const singleColumns: any = { users: userFields, products: productFields, companies: companyFields }
+const singleColumns: any = { users: userFields, products: productFields, companies: companyFields, categories: categoryFields }
 
 interface SingleProps {
   slug: string;
@@ -66,14 +66,14 @@ const Single = ({ slug }: SingleProps) => {
             <S.TopSecondLine>
                 {Object.keys(data).length === 0 ? <CustomizedProgressBars size={60} /> :
                   <>
-                    <S.TopImage src={data?.img || GenericAvatar} />
+                    {data.img && <S.TopImage src={data?.img || GenericAvatar} />}
                     <S.TopDetailsItems>
                       <S.TopDetailsTitle>{data[singleColumns[slug][0]]}</S.TopDetailsTitle>
                       {singleColumns[slug].map((item: string, i: number) => {
                         return (
                           <S.TopDetailsItem key={i}>
                             <S.TopDetailsItemKey>{item.toUpperCase()}:</S.TopDetailsItemKey>
-                              &nbsp;<S.TopDetailsSpan>{data[item]}</S.TopDetailsSpan>
+                              &nbsp;<S.TopDetailsSpan defaultValue={item}>{data[item]}</S.TopDetailsSpan>
                           </S.TopDetailsItem>
                         )
                       })}

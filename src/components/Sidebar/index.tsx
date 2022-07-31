@@ -152,7 +152,7 @@ const Sidebar = ({ toggleTheme }: ISidebar) => {
                   <ContainerCenterLi>
                     <LinkStyle to='/brands'>
                       <IconWrapper>
-                        <Send />
+                        <StarBorder />
                       </IconWrapper>
                       <ContainerCenterSpan open={open}>Marcas</ContainerCenterSpan>
                     </LinkStyle>
@@ -170,11 +170,11 @@ const Sidebar = ({ toggleTheme }: ISidebar) => {
               </ContainerCenterLi>
               <ContainerCollapse in={menuActive === 'companies'} timeout="auto" unmountOnExit>
                   <ContainerCenterLi>
-                    <LinkStyle to='/products'>
+                    <LinkStyle to='/companies'>
                       <IconWrapper>
                         <StarBorder />
                       </IconWrapper>
-                      <ContainerCenterSpan open={open}>Produtos</ContainerCenterSpan>
+                      <ContainerCenterSpan open={open}>Empresas</ContainerCenterSpan>
                     </LinkStyle>
                   </ContainerCenterLi>
                   <ContainerCenterLi>
@@ -188,7 +188,7 @@ const Sidebar = ({ toggleTheme }: ISidebar) => {
                   <ContainerCenterLi>
                     <LinkStyle to='/brands'>
                       <IconWrapper>
-                        <Send />
+                        <StarBorder />
                       </IconWrapper>
                       <ContainerCenterSpan open={open}>Marcas</ContainerCenterSpan>
                     </LinkStyle>
