@@ -1,7 +1,7 @@
 import GenericAvatar from "./assets/generic-avatar.png";
 
 export const userColumns = [
-  { field: "id", headerName: "User ID", width: 200 },
+  { field: "id", headerName: "User ID", width: 180 },
   {
     field: "username",
     headerName: "Username",
@@ -200,7 +200,7 @@ export const brandColumns = [
 ];
 
 export const companyColumns = [
-  { field: "id", headerName: "Company ID", width: 200 },
+  { field: "id", headerName: "Company ID", width: 180 },
   {
     field: "username",
     headerName: "Username",
