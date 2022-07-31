@@ -23,6 +23,7 @@ const Datatable = ({ slug }: DataTableProps) => {
 
     const [data, setData] = useState<any[] | null>([])
     const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
       if (reason === 'clickaway') {
@@ -58,6 +59,7 @@ const Datatable = ({ slug }: DataTableProps) => {
     };
 
     useEffect(() => {
+      setLoading(true)
       const unsub = onSnapshot(
         collection(db, slug),
         (snapshot) => {
@@ -70,11 +72,13 @@ const Datatable = ({ slug }: DataTableProps) => {
             console.log('Error =>', err)
         })
         return () => {
-            unsub()
+          setLoading(false)
+          unsub()
         }
     }, [slug]);
 
     useEffect(() => {
+      setLoading(true)
       const fetchBrands = async () => {
         const resp = await supabaseClient.from(slug).select("id, status, title")
         if(resp.status === 200){
@@ -85,6 +89,7 @@ const Datatable = ({ slug }: DataTableProps) => {
       if(slug === 'brands'){
         fetchBrands()
       }
+      setLoading(false)
     }, [slug])
 
     const actionColumn = [
@@ -115,6 +120,7 @@ const Datatable = ({ slug }: DataTableProps) => {
           pageSize={10}
           rowsPerPageOptions={[10]}
           disableSelectionOnClick
+          loading={loading}
         />
         <ConfirmationDialog />
         <Toaster
