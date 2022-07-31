@@ -12,6 +12,7 @@ import Single from "../Single";
 import FormUser from "../FormUser";
 import NotFound from "../NotFound";
 import Home from '../../pages/Home';
+import FormBrand from "../FormBrand";
 import Login from "../../pages/Login";
 import FormProduct from "../FormProduct";
 import FormCompany from "../FormCompany";
@@ -144,6 +145,40 @@ const AppRoutes = () => {
                 element={
                   <RequireAuth>
                     <Single slug='categories'/>
+                  </RequireAuth>
+                }
+              />
+            </Route>
+            <Route path="brands">
+              <Route
+                index
+                element={
+                  <RequireAuth>
+                    <List item="Brand" slug="brands" />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="new"
+                element={
+                  <RequireAuth>
+                    <FormBrand />
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path="edit/:id"
+                element={
+                  <RequireAuth>
+                    <FormBrand isEditing/>
+                  </RequireAuth>
+                }
+              />
+              <Route
+                path=":id"
+                element={
+                  <RequireAuth>
+                    <Single slug='brands'/>
                   </RequireAuth>
                 }
               />

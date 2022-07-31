@@ -1,6 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import {useParams} from 'react-router-dom';
 
+import { supabaseClient } from '../../supabase';
+
 import { db } from '../../firebase';
 import { collection, getDocs, query, where } from "firebase/firestore";
 
@@ -13,13 +15,13 @@ import { SidebarContext } from '../../context/sidebar/sidebarContext';
 import useWindowDimensions from '../../hooks/getWindowDimensions';
 import CustomizedProgressBars from '../CustomizedCircularProgress';
 
-import { productFields, userFields, companyFields, categoryFields } from '../../singlePageSource';
+import { productFields, userFields, companyFields, categoryFields, brandFields } from '../../singlePageSource';
 
 import GenericAvatar from "../../assets/generic-avatar.png";
 
 import * as S from './styles'
 
-const singleColumns: any = { users: userFields, products: productFields, companies: companyFields, categories: categoryFields }
+const singleColumns: any = { users: userFields, products: productFields, companies: companyFields, categories: categoryFields, brands: brandFields };
 
 interface SingleProps {
   slug: string;
@@ -28,7 +30,7 @@ interface SingleProps {
 const Single = ({ slug }: SingleProps) => {
 
   const params = useParams();
-  const [data, setData] = useState<any>({});
+  const [data, setData] = useState<any | null>({});
 
   useEffect(() => {
     const getData = async () => {
@@ -40,6 +42,19 @@ const Single = ({ slug }: SingleProps) => {
       });
     }
     getData()
+  }, [params.id, slug])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data, status } = await supabaseClient.from(slug).select('id, title, status').eq("id", params.id)
+      if(status === 200){
+        setData(data![0])
+      }
+    }
+
+    if(slug === 'brands'){
+      fetchData()
+    }
   }, [params.id, slug])
 
   const sidebarContext = useContext(SidebarContext);

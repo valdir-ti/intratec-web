@@ -17,6 +17,9 @@ export const productFields = [
 export const categoryFields = [
   "title",
 ];
+export const brandFields = [
+  "title",
+];
 
 export const companyFields = [
   "displayname",
