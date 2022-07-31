@@ -133,7 +133,7 @@ const Sidebar = ({ toggleTheme }: ISidebar) => {
                   </ContainerMenuIcon>
               </ContainerCenterLi>
               <ContainerCollapse in={menuActive === 'products'} timeout="auto" unmountOnExit>
-                  <ContainerCenterLi>
+                  <ContainerCenterLi onClick={closeSidebar}>
                     <LinkStyle to='/products'>
                       <IconWrapper>
                         <StarBorder />
@@ -141,7 +141,7 @@ const Sidebar = ({ toggleTheme }: ISidebar) => {
                       <ContainerCenterSpan open={open}>Produtos</ContainerCenterSpan>
                     </LinkStyle>
                   </ContainerCenterLi>
-                  <ContainerCenterLi>
+                  <ContainerCenterLi onClick={closeSidebar}>
                     <LinkStyle to='/categories'>
                       <IconWrapper>
                         <StarBorder />
@@ -149,7 +149,7 @@ const Sidebar = ({ toggleTheme }: ISidebar) => {
                         <ContainerCenterSpan open={open}>Categorias</ContainerCenterSpan>
                       </LinkStyle>
                   </ContainerCenterLi>
-                  <ContainerCenterLi>
+                  <ContainerCenterLi onClick={closeSidebar}>
                     <LinkStyle to='/brands'>
                       <IconWrapper>
                         <StarBorder />
@@ -169,7 +169,7 @@ const Sidebar = ({ toggleTheme }: ISidebar) => {
                   </ContainerMenuIcon>
               </ContainerCenterLi>
               <ContainerCollapse in={menuActive === 'companies'} timeout="auto" unmountOnExit>
-                  <ContainerCenterLi>
+                  <ContainerCenterLi onClick={closeSidebar}>
                     <LinkStyle to='/companies'>
                       <IconWrapper>
                         <StarBorder />
@@ -177,7 +177,7 @@ const Sidebar = ({ toggleTheme }: ISidebar) => {
                       <ContainerCenterSpan open={open}>Empresas</ContainerCenterSpan>
                     </LinkStyle>
                   </ContainerCenterLi>
-                  <ContainerCenterLi>
+                  <ContainerCenterLi onClick={closeSidebar}>
                     <LinkStyle to='/categories'>
                       <IconWrapper>
                         <StarBorder />
@@ -185,7 +185,7 @@ const Sidebar = ({ toggleTheme }: ISidebar) => {
                         <ContainerCenterSpan open={open}>Categorias</ContainerCenterSpan>
                       </LinkStyle>
                   </ContainerCenterLi>
-                  <ContainerCenterLi>
+                  <ContainerCenterLi onClick={closeSidebar}>
                     <LinkStyle to='/brands'>
                       <IconWrapper>
                         <StarBorder />
