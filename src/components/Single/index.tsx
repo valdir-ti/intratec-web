@@ -46,13 +46,13 @@ const Single = ({ slug }: SingleProps) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const { data, status } = await supabaseClient.from(slug).select('id, title, status').eq("id", params.id)
+      const { data, status } = await supabaseClient.from(slug).select('*').eq("id", params.id)
       if(status === 200){
         setData(data![0])
       }
     }
 
-    if(slug === 'brands'){
+    if(slug === 'brands' || slug === 'categories'){
       fetchData()
     }
   }, [params.id, slug])

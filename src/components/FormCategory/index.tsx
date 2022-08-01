@@ -12,16 +12,14 @@ import Layout from '../../pages/Layout';
 import FormCheckbox from '../Form/FormCheckbox';
 
 import * as S from './styles';
+import { supabaseClient } from '../../supabase';
+import FormSelect from '../Form/FormSelect';
 
 interface LocationProps {
     id: string;
     title: string;
-    description: string;
-    specifications: string;
-    price: string;
-    stock: number;
-    img: string;
-    isActive: boolean;
+    parent_id: string;
+    status: boolean;
 }
 
 interface Props {
@@ -33,10 +31,13 @@ const FormProduct = ({ isEditing }: Props) => {
     const navigate = useNavigate()
     const location = useLocation()
     const state = location.state as LocationProps
+    const currentUser = JSON.parse(localStorage.getItem("user")!)
 
     const [title, setTitle] = useState("");
-    const [isActive, setIsActive] = useState(false);
+    const [status, setStatus] = useState(false);
+    const [parentId, setParentId] = useState("");
     const [id, setId] = useState<string>(state?.id || "");
+    const [categories, setCategories] = useState<string[]>([]);
 
     const [loading, setLoading] = useState(false)
     const [open, setOpen] = useState<boolean>(false)
@@ -48,27 +49,27 @@ const FormProduct = ({ isEditing }: Props) => {
         setLoading(true)
 
         if(!title) {
-            toasterStart("error", "O título é obrigatório (*)")
+            toasterStart("error", "O título da categoria é obrigatório (*)")
             setLoading(false)
             return
         }
 
         try {
             const itemId = uuidv4()
-            await setDoc(doc(db, 'categories', itemId), {
-                title,
-                isActive,
-                id: itemId,
-                timestamp: serverTimestamp(),
-            });
-            toasterStart("success", "Item cadastrado com sucesso!")
-            setTimeout(() => {
-                navigate('/categories')
-            }, 1500)
-        } catch (err: any) {
-            console.log('Error => ', err)
-        }
+            const { error } = await supabaseClient.from('categories').insert([
+                { id: itemId, title: title, status: status, user_id: currentUser.uid, parent_id: parentId },
+            ])
 
+            if(!error){
+                toasterStart("success", "Categoria cadastrada com sucesso!")
+                setTimeout(() => {
+                    navigate('/categories')
+                }, 1500)
+            }
+
+        } catch (err) {
+            console.log('Error: ', err)
+        }
     }
 
     async function handleFormUpdate(e: FormEvent) {
@@ -76,24 +77,27 @@ const FormProduct = ({ isEditing }: Props) => {
         setLoading(true)
 
         if(!title) {
-            toasterStart("error", "O título é obrigatório (*)")
+            toasterStart("error", "O título da categoria é obrigatório (*)")
             setLoading(false)
             return
         }
 
         try {
-            await updateDoc(doc(db, 'categories', id), {
-                title,
-                isActive,
-                timestamp: serverTimestamp(),
-            });
-            toasterStart("success", "Item atualizado com sucesso!")
-            setTimeout(() => {
-                navigate('/categories')
-            }, 1500)
-        } catch (err: any) {
-            console.log('Error => ', err)
+            const { error } = await supabaseClient.from('categories')
+            .update({ title: title, status: status, user_id: currentUser.uid, parent_id: parentId, updated_at: new Date() })
+            .eq('id', id)
+
+            if(!error){
+                toasterStart("success", "Categoria atualizada com sucesso!")
+                setTimeout(() => {
+                    navigate('/categories')
+                }, 1500)
+            }
+
+        } catch (err) {
+            console.log('Error: ', err)
         }
+
     }
 
     function toasterStart(severity: string, message: string){
@@ -111,14 +115,27 @@ const FormProduct = ({ isEditing }: Props) => {
 
     useEffect(() => {
         if(state) {
-            const { id, title, isActive } = state
+            const { id, title, status, parent_id } = state
             setId(id)
             setTitle(title)
-            setIsActive(isActive)
+            setStatus(status)
+            setParentId(parent_id)
         }
     }, [state])
 
-    const disabledButton = title === state?.title && isActive === state?.isActive
+    useEffect(() => {
+        const fetchCategories = async () => {
+            const { data, status } = await supabaseClient
+                .from('categories')
+                .select("id, status, title, parent_id")
+            if(status === 200 && data?.length){
+              setCategories(data)
+            }
+          }
+          fetchCategories()
+    }, [id])
+
+    const disabledButton = title === state?.title && status === state?.status && parentId === state?.parent_id
 
     return (
         <Layout>
@@ -135,11 +152,18 @@ const FormProduct = ({ isEditing }: Props) => {
                     onChange={(e) => setTitle(e.target.value)}
                 />
 
+                {categories.length ? <FormSelect
+                    label='Parent Category'
+                    data={categories}
+                    selected={parentId}
+                    onChange={(e) => setParentId(e.target.value)}
+                /> : <></>}
+
                 <FormCheckbox
                     label='isActive'
-                    checked={isActive}
+                    checked={status}
                     type='checkbox'
-                    onChange={() => setIsActive(!isActive)}
+                    onChange={() => setStatus(!status)}
                 />
 
                 <FormButton

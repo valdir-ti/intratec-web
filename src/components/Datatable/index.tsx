@@ -115,20 +115,36 @@ const Datatable = ({ slug }: DataTableProps) => {
       const confirmAnswer = await confirm()
       setLoading(true)
 
-      if(confirmAnswer && slug !== 'brands'){
+      if(confirmAnswer && slug !== 'brands' && slug !== 'categories') {
         await deleteDoc(doc(db, slug, id));
         setData(data!.filter((item: any) => item.id !== id));
         setOpen(true);
       }
-      if(confirmAnswer && slug === 'brands'){
-        const { error } = await supabaseClient.from('brands')
-        .delete()
-        .eq('id', id)
+      if(confirmAnswer && (slug === 'brands' || slug === 'categories')) {
 
-        if(!error){
-          setData(data!.filter((item: any) => item.id !== id));
-          setOpen(true);
+        if(slug === 'brands') {
+          const { error } = await supabaseClient.from('brands')
+          .delete()
+          .eq('id', id)
+
+          if(!error){
+            setData(data!.filter((item: any) => item.id !== id));
+            setOpen(true);
+          }
         }
+
+        if(slug === 'categories') {
+          const { error } = await supabaseClient.from('categories')
+          .delete()
+          .eq('id', id)
+
+          if(!error){
+            setData(data!.filter((item: any) => item.id !== id));
+            setOpen(true);
+          }
+        }
+
+
       }
       setLoading(false)
 
@@ -136,7 +152,7 @@ const Datatable = ({ slug }: DataTableProps) => {
 
     useEffect(() => {
       setLoading(true)
-      if(slug === 'brands'){
+      if(slug === 'brands' || slug === 'categories'){
         const fetchBrands = async () => {
           const resp = await supabaseClient.from(slug).select("id, status, title")
           setLoading(false)

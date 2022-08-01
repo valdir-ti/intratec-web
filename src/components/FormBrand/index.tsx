@@ -38,7 +38,6 @@ const FormBrand = ({ isEditing }: Props) => {
     const [toasterMessage, setToasterMessage] = useState<string>("")
     const [toasterSeverity, setToasterSeverity] = useState<string>("")
 
-
     async function handleFormSubmit(e: FormEvent) {
         e.preventDefault();
         setLoading(true)
