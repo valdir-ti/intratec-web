@@ -18,10 +18,6 @@ import backgroundImg07 from '../../assets/bg-07.png'
 import backgroundImg08 from '../../assets/bg-08.png'
 import backgroundImg09 from '../../assets/bg-09.png'
 import backgroundImg10 from '../../assets/bg-10.png'
-import backgroundImg11 from '../../assets/bg-11.png'
-import backgroundImg12 from '../../assets/bg-12.png'
-import backgroundImg13 from '../../assets/bg-13.png'
-import backgroundImg14 from '../../assets/bg-14.png'
 
 import * as S from './styles'
 
@@ -34,8 +30,8 @@ const Login = () => {
   const [checked, setChecked] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  const arrayImage = [backgroundImg01, backgroundImg02, backgroundImg03, backgroundImg04, backgroundImg05, backgroundImg06, backgroundImg07, backgroundImg08, backgroundImg09, backgroundImg10, backgroundImg11, backgroundImg12, backgroundImg13, backgroundImg14]
-  const randomImage = Math.floor(Math.random() * 15);
+  const arrayImage = [backgroundImg01, backgroundImg02, backgroundImg03, backgroundImg04, backgroundImg05, backgroundImg06, backgroundImg07, backgroundImg08, backgroundImg09, backgroundImg10]
+  const randomImage = Math.floor(Math.random() * 11);
 
   const { state: { currentUser }, dispatch } = useContext(AuthContext)
 
@@ -47,30 +43,30 @@ const Login = () => {
     setError(false)
 
     signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      dispatch({type: "LOGIN", payload: user})
-      navigate('/')
-    })
-    .catch((error) => {
-      setLoading(false)
-      setError(true)
-      setErrorMessage('Email e/ou Password inválidos!')
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode, errorMessage)
-      setTimeout(() => {
-        setError(false)
-        setErrorMessage('')
-      }, 2500)
-    });
+      .then((userCredential) => {
+        const user = userCredential.user;
+        dispatch({ type: "LOGIN", payload: user })
+        navigate('/')
+      })
+      .catch((error) => {
+        setLoading(false)
+        setError(true)
+        setErrorMessage('Email e/ou Password inválidos!')
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage)
+        setTimeout(() => {
+          setError(false)
+          setErrorMessage('')
+        }, 2500)
+      });
   }
 
   const handleLoginGithub = () => {
     setLoading(true)
     signInWithPopup(auth, githubProvider).then((result) => {
       const user = result.user;
-      dispatch({type: "LOGIN", payload: user})
+      dispatch({ type: "LOGIN", payload: user })
       navigate('/')
     }).catch((error) => {
       setLoading(false)
@@ -89,7 +85,7 @@ const Login = () => {
     setLoading(true)
     signInWithPopup(auth, googleProvider).then((result) => {
       const user = result.user;
-      dispatch({type: "LOGIN", payload: user})
+      dispatch({ type: "LOGIN", payload: user })
       navigate('/')
     }).catch((error) => {
       setLoading(false)
@@ -100,7 +96,7 @@ const Login = () => {
     setLoading(true)
     signInWithPopup(auth, facebookProvider).then((result) => {
       const user = result.user;
-      dispatch({type: "LOGIN", payload: user})
+      dispatch({ type: "LOGIN", payload: user })
       navigate('/')
     }).catch((error) => {
       setLoading(false)
@@ -152,18 +148,18 @@ const Login = () => {
           <S.Input type="password" placeholder='Password' onChange={(e) => setPassword(e.target.value)} />
           <S.Actions>
             <S.RememberLabel>
-              <S.RememberInput type="checkbox"  checked={checked} onChange={handleRemember} />
+              <S.RememberInput type="checkbox" checked={checked} onChange={handleRemember} />
               <S.RememberText>Remember me</S.RememberText>
             </S.RememberLabel>
             <S.ForgotButton onClick={handleForgot}>Forgot Password?</S.ForgotButton>
           </S.Actions>
-          <S.Button type='submit'>{loading ? <CustomizedProgressBars size={16}/> : 'Login'}</S.Button>
+          <S.Button type='submit'>{loading ? <CustomizedProgressBars size={16} /> : 'Login'}</S.Button>
           <S.SocialLogin>
             <S.SocialLoginTitle>or sign up using</S.SocialLoginTitle>
             <S.SocialLoginIcons>
-              <S.SocialIconGithub sx={{ fontSize: '1.2rem' }} onClick={handleLoginGithub}/>
-              <S.SocialIconGoogle sx={{ fontSize: '1.2rem' }} onClick={handleLoginGoogle}/>
-              <S.SocialIconFacebook sx={{ fontSize: '1.2rem' }} onClick={handleLoginFacebook}/>
+              <S.SocialIconGithub sx={{ fontSize: '1.2rem' }} onClick={handleLoginGithub} />
+              <S.SocialIconGoogle sx={{ fontSize: '1.2rem' }} onClick={handleLoginGoogle} />
+              <S.SocialIconFacebook sx={{ fontSize: '1.2rem' }} onClick={handleLoginFacebook} />
             </S.SocialLoginIcons>
           </S.SocialLogin>
           {error && <S.Error>{errorMessage}</S.Error>}
