@@ -29,9 +29,9 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [checked, setChecked] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [image, setImage] = useState(0)
 
   const arrayImage = [backgroundImg01, backgroundImg02, backgroundImg03, backgroundImg04, backgroundImg05, backgroundImg06, backgroundImg07, backgroundImg08, backgroundImg09, backgroundImg10]
-  const randomImage = Math.floor(Math.random() * 11);
 
   const { state: { currentUser }, dispatch } = useContext(AuthContext)
 
@@ -136,10 +136,15 @@ const Login = () => {
     currentUser && navigate('/')
   }, [currentUser])
 
+  useEffect(() => {
+    const randomImage = Math.floor(Math.random() * 11);
+    setImage(randomImage)
+  }, [])
+
   return (
     <S.Container>
       <S.ColumnOne>
-        <S.Background src={arrayImage[randomImage] || backgroundImg01} alt="Background image" />
+        <S.Background src={arrayImage[image] || backgroundImg01} alt="Background image" />
       </S.ColumnOne>
       <S.ColumnTwo>
         <S.Title>Login to continue</S.Title>
