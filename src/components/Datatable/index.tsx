@@ -120,6 +120,7 @@ const Datatable = ({ slug }: DataTableProps) => {
         setData(data!.filter((item: any) => item.id !== id));
         setOpen(true);
       }
+
       if(confirmAnswer && (slug === 'brands' || slug === 'categories')) {
 
         if(slug === 'brands') {
@@ -152,16 +153,19 @@ const Datatable = ({ slug }: DataTableProps) => {
 
     useEffect(() => {
       setLoading(true)
+      setData([])
+      //Supabase
       if(slug === 'brands' || slug === 'categories'){
-        const fetchBrands = async () => {
+        const fetchData = async () => {
           const resp = await supabaseClient.from(slug).select("id, status, title")
           setLoading(false)
           if(resp.status === 200){
             setData(resp.data)
           }
         }
-        fetchBrands()
+        fetchData()
       }else{
+        //Firebase
         const unsub = onSnapshot(
           collection(db, slug),
           (snapshot) => {
