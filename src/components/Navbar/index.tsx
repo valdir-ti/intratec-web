@@ -16,6 +16,8 @@ import Counter from '../Counter';
 import { SidebarContext } from '../../context/sidebar/sidebarContext';
 import { AuthContext } from '../../context/authentication/authContext';
 
+import { isImage } from '../../utils';
+
 import GenericaAvatar from '../../assets/generic-avatar.png';
 
 import {
@@ -61,6 +63,8 @@ const Navbar = ({ toggleTheme, theme }: INavbar) => {
     }
   }
 
+  const userImg = isImage(currentUser.photoURL) ? currentUser.photoURL : GenericaAvatar
+
   return (
     <Container>
       <Left>
@@ -91,7 +95,7 @@ const Navbar = ({ toggleTheme, theme }: INavbar) => {
         </IconWrapper>
         <IconWrapper right title={`Avatar de ${currentUser.displayName}`}>
           <Avatar
-            src={currentUser.photoURL || GenericaAvatar}
+            src={userImg}
             alt={`Avatar de ${currentUser.displayName}`}
             onClick={handleMenu}
           />
