@@ -37,7 +37,6 @@ const FormCategories = ({ isEditing }: Props) => {
   const [parentId, setParentId] = useState("");
   const [id, setId] = useState<string>(state?.id || "");
   const [categories, setCategories] = useState<string[]>([]);
-
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState<boolean>(false);
   const [toasterMessage, setToasterMessage] = useState<string>("");
@@ -164,7 +163,7 @@ const FormCategories = ({ isEditing }: Props) => {
           onChange={(e) => setTitle(e.target.value)}
         />
 
-        {categories.length ? (
+        {categories?.length ? (
           <FormSelect
             label="Parent Category"
             data={categories}
